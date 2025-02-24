@@ -51,7 +51,7 @@ export default function Navbar() {
                 href={href}
                 key={index}
                 className={`text-gray-600 hover:text-gray-900 transition duration-300 ${
-                  activeSection === href.replace("#", "") ? "activeNavbarLink" : ""
+                  activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
                 }`}
               >
                 {t[name]}
