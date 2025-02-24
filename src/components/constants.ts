@@ -1,9 +1,9 @@
 export const navbarLinks = [
     { name: 'step', href: "/" },
-    { name: 'our_nannies', href: "/" },
-    { name: 'Plan', href: "/" },
-    { name: 'testimonials', href: "/" },
-    { name: 'why_halaNanny', href: "/" },
+    { name: 'our_nannies', href: "#" },
+    { name: 'Plan', href: "#" },
+    { name: 'testimonials', href: "#" },
+    { name: 'why_halaNanny', href: "#" },
 ]
 
 export const nannies = [
@@ -144,7 +144,7 @@ export const faqs = [
 export const footerLinks = [
     [
         { name: 'home', href: '/' },
-        { name: 'plans', href: '/' },
+        { name: 'Plan', href: '/' },
         { name: 'about_us', href: '/' },
         { name: 'contact', href: '/' },
     ],

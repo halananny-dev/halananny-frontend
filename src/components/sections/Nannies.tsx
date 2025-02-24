@@ -15,7 +15,7 @@ import Card from "./Card";
 import Img from "./Img";
 
 export default function Nannies() {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
   const [swiper, setSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -30,15 +30,15 @@ export default function Nannies() {
 
   return (
     <Card title={t.nannies.title}>
-      <h3 className="text-center text-gray-900 text-2xl font-semibold mx-auto">
+      <h3 className="text-center text-gray-900 lg:text-2xl font-semibold mx-auto">
         {t.nannies.subtitle}
       </h3>
       <div className="relative">
-        <div className="absolute w-full top-10 flex rtl:flex-row-reverse justify-between z-40">
-          <button onClick={() => swiper?.slidePrev()} className="-ml-12">
+        <div className="absolute w-full sm:top-10 top-40 flex rtl:flex-row-reverse justify-between z-40">
+          <button onClick={() => swiper?.slidePrev()} className="xl:-ml-12 md:-ml-8">
             <Img src="/slide-left.svg" />
           </button>
-          <button onClick={() => swiper?.slideNext()} className="-mr-12">
+          <button onClick={() => swiper?.slideNext()} className="xl:-mr-12 md:-mr-8">
             <Img src="slide-right.svg" />
           </button>
         </div>
@@ -47,9 +47,23 @@ export default function Nannies() {
           pagination={{ clickable: true }}
           centeredSlides
           onSwiper={setSwiper}
-          className="w-full mt-20 !pb-8"
+          className="w-full md:mt-20 mt-16 !pb-8"
           spaceBetween={32}
-          slidesPerView={3}      >
+          breakpoints={{
+            1320: {
+              slidesPerView: 3
+            },
+            768: {
+              slidesPerView: 2
+            },
+            460: {
+              slidesPerView: 1.5,
+            },
+            320: {
+              slidesPerView: 1,
+            }
+          }}
+        >
           {nannies.map(
             (
               {
@@ -69,7 +83,7 @@ export default function Nannies() {
               return (
                 <SwiperSlide
                   key={index}
-                  className={`transition-all duration-300 py-1 ${active ? "blur-0" : "blur-[8px]"
+                  className={`transition-all duration-300 py-1 ${active ? "blur-none" : "blur-[8px]"
                     }`}
                 >
                   <div className="bg-white rounded-lg overflow-hidden border border-gray-200 shadow">
@@ -151,7 +165,7 @@ export default function Nannies() {
           )}
         </Swiper>
         <div className="text-center mt-9">
-          <Btn size="lg" variant="primary" className="w-96">
+          <Btn size="lg" variant="primary" className="md:w-96">
             {t.nannies.viewAll}
           </Btn>
         </div>

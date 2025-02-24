@@ -12,15 +12,28 @@ export default function Testimonials() {
   return (
     <Card title={t.testimonial}>
       <Swiper
-        className="w-full mt-16 !pb-9"
+        className="w-full md:mt-16 mt-10 !pb-9"
         spaceBetween={20}
-        slidesPerView={2.6}
         pagination={{ clickable: true }}
+        breakpoints={{
+          1320: {
+            slidesPerView: 2.6
+          },
+          900: {
+            slidesPerView: 2
+          },
+          600: {
+            slidesPerView: 1.5
+          },
+          320: {
+            slidesPerView: 1,
+          }
+        }}
         loop
       >
         {testimonials.map(({ image, content, name, role }, index) => (
           <SwiperSlide key={index} className="py-1">
-            <div className='bg-white rounded-18 border-gray-80 drop-shadow-sm py-8 px-12 border'>
+            <div className="bg-white rounded-18 border-gray-80 sm:py-8 p-4 sm:px-12 border">
               <p className="text-gray-900">{content}</p>
               <div className="flex mt-6 items-center justify-between">
                 <div className='flex items-center gap-4'>

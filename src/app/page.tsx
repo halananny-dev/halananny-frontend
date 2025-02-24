@@ -1,6 +1,7 @@
 import FAQ from '@/components/sections/FAQ';
 import Footer from '@/components/sections/Footer';
 import Hero from '@/components/sections/Hero';
+import Img from '@/components/sections/Img';
 import Nannies from '@/components/sections/Nannies';
 import Navbar from '@/components/sections/Navbar';
 import Preferences from '@/components/sections/Preferences';
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <>
       <div
-        className="bg-hero bg-cover bg-center bg-no-repeat transition-all duration-300">
+        className="md:bg-hero md:bg-cover md:bg-center md:bg-no-repeat">
         <Navbar />
         <Hero />
       </div>

@@ -127,6 +127,7 @@ html[dir="rtl"] .swiper-wrapper {
 
 .swiper-pagination-bullet {
   background: #D9D9D9 !important;
+  opacity: 1 !important;
   width: 16px !important;
   height: 16px !important;
 }
@@ -137,4 +138,13 @@ html[dir="rtl"] .swiper-wrapper {
 
 .swiper-pagination-bullet-active {
   background: #64CDC7 !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
