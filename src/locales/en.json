@@ -1,0 +1,151 @@
+{
+  "step": "Steps",
+  "our_nannies": "Our Nannies",
+  "Plan": "Plans",
+  "testimonials": "Testimonials",
+  "why_halaNanny": "Why HalaNanny",
+  "login": "Login",
+  "register": "Register",
+  "AR": "Ar",
+  "EN": "En",
+  "hero_title": "Finding the {highlight1} in the {highlight2} Just Got Easier",
+  "hero_highlight1": "Perfect Nanny",
+  "hero_highlight2": "Middle East",
+  "hero_description": "We connect you with curated & professional verified nannies.",
+  "hero_button": "Find your perfect Nanny",
+  "steps_title": "Our Simple Steps",
+  "steps": [
+    {
+      "img": "/step1.svg",
+      "title": "Tell Us About Your Family",
+      "description": "Parents fill out basic info: child’s age, location, special preferences (language, cultural requirements)."
+    },
+    {
+      "img": "/step2.svg",
+      "title": "Explore Recommended Nannies",
+      "description": "Your platform suggests suitable matches based on the family’s input."
+    },
+    {
+      "img": "/step3.svg",
+      "title": "Interview & Book",
+      "description": "Get in touch with the Nanny and interview her."
+    },
+    {
+      "img": "/step4.svg",
+      "title": "Rate & Review",
+      "description": "Provide feedback to help others and maintain community quality."
+    }
+  ],
+  "why_choose_us_title": "Why Choose Us?",
+  "reasons": [
+    {
+      "img": "/reason1.svg",
+      "title": "Verified and Trusted Nannies",
+      "description": "Background checks, identity verification, and certifications."
+    },
+    {
+      "img": "/reason2.svg",
+      "title": "AI-Powered Matching",
+      "description": "Intelligent recommendations based on detailed family preferences and nanny skill sets."
+    },
+    {
+      "img": "/reason3.svg",
+      "title": "Secure and Seamless Payments",
+      "description": "Integrated payment gateway, transparent fees."
+    }
+  ],
+  "footer_about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in cul",
+  "home": "Home",
+  "about_us": "About Us",
+  "contact": "Contact",
+  "privacy_policy": "Privacy Policy",
+  "terms_of_service": "Terms of Service",
+  "labor_law": "Labor law compliance for each country in the Middle East",
+  "footer_copyright": "© {year} HalaNanny. All rights reserved.",
+  "ar": "Arabic",
+  "en": "English",
+  "faqTitle": "FAQ",
+  "faqs": [
+    {
+      "question": "1. Lorem ipsum dolor sit amet, consectetur adipiscing eli?",
+      "answer": "We conduct thorough background checks, verify references, check employment history, and conduct in-person interviews. All nannies must also provide proof of relevant certifications."
+    },
+    {
+      "question": "2. Lorem ipsum dolor sit amet, consectetur adipiscing eli?",
+      "answer": "We offer a replacement guarantee within the first 30 days. If you're not satisfied with your nanny, we'll help you find a replacement at no additional cost."
+    },
+    {
+      "question": "3. Lorem ip sit amet, consectetu olp popor adipiscing eli?",
+      "answer": "Nanny rates vary based on experience, qualifications, and responsibilities. We can help you understand market rates and develop a fair compensation package."
+    },
+    {
+      "question": "4. Lorem ip sit amet, consectetur adipiscing eli?",
+      "answer": "Yes, we can help you find temporary or backup care solutions. Many of our nannies are available for short-term assignments or last-minute care."
+    },
+    {
+      "question": "5. Lorem ipsum dolor sit amet, consectetupiscing eli?",
+      "answer": "While individual nannies are typically covered under your homeowners insurance, we recommend additional liability insurance. We can provide guidance on insurance options."
+    }
+  ],
+  "preferencesTitle": "Share Your Preferences, We’ll Do the Rest",
+  "preferencesDescription": "Tell us about your family’s needs, and we’ll suggest the perfect nanny matches for you!",
+  "preferencesButton": "Get Personalized Matches",
+  "nanny": "Nanny",
+  "mother": "Mother",
+  "testimonial": "Testimonials",
+  "pricingTitle": "Plans & Pricing",
+  "mostPopular": "Most Popular",
+  "plan": "Plan",
+  "currency": "AED",
+  "off": "off",
+  "refundPolicy": "100% refund if not satisfied",
+  "getStarted": "Get Started",
+  "choose": "Choose",
+  "pricing": {
+    "title": "Plans & Pricing",
+    "mostPopular": "Most Popular",
+    "refund": "100% refund if not satisfied",
+    "getStarted": "Get Started",
+    "choose": "Choose {plan}",
+    "plans": {
+      "basic plan": {
+        "name": "Basic Plan",
+        "price": "AED 180",
+        "features": [
+          "Access to the nanny directory for a limited time"
+        ]
+      },
+      "premium plan": {
+        "name": "Premium Plan",
+        "price": "AED 350",
+        "discount": "30% off",
+        "features": [
+          "Priority booking, unlimited interviews, advanced filters (language, special needs)",
+          "Access to AI-powered 'Personalized Recommendations'"
+        ]
+      },
+      "ultimate plan": {
+        "name": "Ultimate Plan",
+        "price": "AED 399",
+        "description": "(if you offer advanced services)",
+        "features": [
+          "Priority booking, unlimited interviews, advanced filters (language, special needs)",
+          "Access to AI-powered 'Personalized Recommendations'",
+          "Ongoing dedicated support, premium nanny profiles, extra screening options"
+        ]
+      }
+    }
+  },
+  "nannies": {
+    "title": "Meet Some of Our Nannies",
+    "subtitle": "All the nannies are already in UAE",
+    "highlyDemand": "Highly in demand",
+    "experience": "Experience",
+    "languages": "Languages",
+    "salary": "Desired Salary",
+    "testimonial": "Testimonial from a previous family",
+    "profile": "See my profile",
+    "videoCv": "Video CV Available",
+    "viewAll": "View All Nannies"
+  }
+}

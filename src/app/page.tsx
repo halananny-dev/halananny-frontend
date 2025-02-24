@@ -12,7 +12,8 @@ import WhyChooseUs from '@/components/sections/WhyChooseUs';
 export default function Home() {
   return (
     <>
-      <div className="bg-hero bg-cover bg-center bg-no-repeat">
+      <div
+        className="bg-hero bg-cover bg-center bg-no-repeat transition-all duration-300">
         <Navbar />
         <Hero />
       </div>

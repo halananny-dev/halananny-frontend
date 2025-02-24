@@ -1,43 +1,10 @@
-export const steps = [
-    {
-        img: "/step1.svg",
-        title: 'Tell Us About Your Family',
-        description: 'Parents fill out basic info: child’s age, location, special preferences (language, cultural requirements).'
-    },
-    {
-        img: "/step2.svg",
-        title: 'Explore Recommended Nannies',
-        description: 'Your platform suggests suitable matches based on the family’s input.'
-    },
-    {
-        img: "/step3.svg",
-        title: 'Interview & Book',
-        description: 'Get in touch with the Nanny and interview her.'
-    },
-    {
-        img: "/step4.svg",
-        title: 'Rate & Review',
-        description: 'Provide feedback to help others and maintain community quality.'
-    }
-];
-
-export const reasons = [
-    {
-        img: '/reason1.svg',
-        title: 'Verified and Trusted Nannies',
-        description: 'Background checks, identity verification, and certifications.'
-    },
-    {
-        img: '/reason2.svg',
-        title: 'AI-Powered Matching',
-        description: 'Intelligent recommendations based on detailed family preferences and nanny skill sets.'
-    },
-    {
-        img: '/reason3.svg',
-        title: 'Secure and Seamless Payments',
-        description: 'Integrated payment gateway, transparent fees.'
-    },
-];
+export const navbarLinks = [
+    { name: 'step', href: "/" },
+    { name: 'our_nannies', href: "/" },
+    { name: 'Plan', href: "/" },
+    { name: 'testimonials', href: "/" },
+    { name: 'why_halaNanny', href: "/" },
+]
 
 export const nannies = [
     {
@@ -92,14 +59,14 @@ experience in raising and caring for children. ‘’`,
 
 export const plans = [
     {
-        name: 'Basic',
+        name: 'Basic Plan',
         price: 'AED 180',
         features: [
             'Access to the nanny directory for a limited time',
         ]
     },
     {
-        name: 'Premium',
+        name: 'Premium Plan',
         price: 'AED 350',
         discount: '30%',
         popular: true,
@@ -109,7 +76,7 @@ export const plans = [
         ],
     },
     {
-        name: 'Ultimate',
+        name: 'Ultimate Plan',
         price: 'AED 399',
         description: '(if you offer advanced services)',
         features: [
@@ -123,21 +90,28 @@ export const plans = [
 export const testimonials = [
     {
         name: 'Aisha, Riyadh',
-        role: 'Mother',
+        role: 'mother',
         image: '/user1.svg',
         content: '“Finding a bilingual nanny for our newborn was a breeze. The in-app chat and background checks gave us total peace of mind.”',
         rating: 5
     },
     {
         name: 'Reem, Dubai',
-        role: 'Nanny',
+        role: 'nanny',
         image: '/user2.svg',
         content: '“I love that I can showcase my certifications and easily connect with families who value my background.”',
         rating: 5
     },
     {
         name: 'Fatima, Riyadh',
-        role: 'Mother',
+        role: 'mother',
+        image: '/user3.svg',
+        content: '“Finding a bilingual nanny for our newborn was a breeze. The in-app chat and background checks gave us total peace of mind.”',
+        rating: 5
+    },
+    {
+        name: 'Fatima, Riyadh',
+        role: 'mother',
         image: '/user3.svg',
         content: '“Finding a bilingual nanny for our newborn was a breeze. The in-app chat and background checks gave us total peace of mind.”',
         rating: 5
@@ -169,18 +143,18 @@ export const faqs = [
 
 export const footerLinks = [
     [
-        { name: 'Home', href: '/' },
-        { name: 'Plans', href: '/' },
-        { name: 'About Us', href: '/' },
-        { name: 'Contact', href: '/' },
+        { name: 'home', href: '/' },
+        { name: 'plans', href: '/' },
+        { name: 'about_us', href: '/' },
+        { name: 'contact', href: '/' },
     ],
     [
-        { name: 'Privacy Policy', href: '/' },
-        { name: 'Terms of Service', href: '/' },
-        { name: 'labor law compliance for each country in the Middle East', href: '/' },
+        { name: 'privacy_policy', href: '/' },
+        { name: 'terms_of_service', href: '/' },
+        { name: 'labor_law', href: '/' },
     ],
     [
-        { name: 'Register', href: '/' },
-        { name: 'Login', href: '/' },
+        { name: 'register', href: '/' },
+        { name: 'login', href: '/' },
     ]
-]
+];
