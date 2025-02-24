@@ -1,111 +1,48 @@
-'use client';
-
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { footerLinks } from '../constants';
+import Img from './Img';
+import LanguageSelect from './Select';
 
-export function Footer() {
-  const links = {
-    company: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Press', href: '/press' },
-      { label: 'Blog', href: '/blog' }
-    ],
-    services: [
-      { label: 'Find a Nanny', href: '/search' },
-      { label: 'Become a Nanny', href: '/apply' },
-      { label: 'Pricing', href: '/pricing' },
-      { label: 'Background Checks', href: '/checks' }
-    ],
-    support: [
-      { label: 'Help Center', href: '/help' },
-      { label: 'Safety Center', href: '/safety' },
-      { label: 'Community', href: '/community' },
-      { label: 'Contact Us', href: '/contact' }
-    ],
-    legal: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
-      { label: 'Accessibility', href: '/accessibility' }
-    ]
-  };
-
+export default function Footer() {
   return (
-    <footer className="bg-primary-foreground text-background">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
-          <div className="col-span-2">
-            <Link href="/" className="text-2xl font-bold mb-4 block">
-              HalaNanny
-            </Link>
-            <p className="text-background/80 mb-4">
-              Connecting families with trusted childcare professionals for a brighter future.
+    <footer className="bg-gray-900 mt-20 text-white relative">
+      <div className="max-w-max mx-auto p-20">
+        <div className="flex items-center justify-between">
+          <Link href="/">
+            <Img src="logo-white.svg" />
+          </Link>
+          <LanguageSelect />
+        </div>
+
+        <div className="flex justify-between gap-4 mt-12 mb-6">
+          <div className='max-w-sm'>
+            <p className="text-sm">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="hover:text-primary">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="hover:text-primary">
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="hover:text-primary">
-                <Twitter className="w-6 h-6" />
-              </a>
+            <div className='flex items-center mt-7 gap-5'>
+              <Link href="/">
+                <Img src="instagram.svg" />
+              </Link>
+              <Link href="/">
+                <Img src="linkedin.svg" />
+              </Link>
+              <Link href="/">
+                <Img src="facebook.svg" />
+              </Link>
             </div>
           </div>
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              {links.company.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="text-background/80 hover:text-background">
-                    {link.label}
-                  </Link>
-                </li>
+          {footerLinks.map((link, index) => (
+            <div key={index} className="flex max-w-60 gap-6 flex-col">
+              {link.map(({ href, name }, i) => (
+                <Link className='hover:opacity-90 font-medium' href={href} key={i}>{name}</Link>
               ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              {links.services.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="text-background/80 hover:text-background">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-2">
-              {links.support.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="text-background/80 hover:text-background">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            </div>
+          ))}
         </div>
-        <div className="border-t border-background/20 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/80">
-              © {new Date().getFullYear()} HalaNanny. All rights reserved.
-            </p>
-            <ul className="flex gap-8">
-              {links.legal.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="text-background/80 hover:text-background text-sm">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="border-t border-background/20 pt-7 mt-8">
+          <p className="text-sm">
+            © {new Date().getFullYear()} HalaNanny. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

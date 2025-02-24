@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './src/i18n';
+import { locales, defaultLocale } from './src/i18n/config';
 
 // Get all public routes that should be internationalized
 export default createMiddleware({
