@@ -8,7 +8,7 @@ export default function WhyChooseUs() {
 
   return (
     <Card title={t.why_choose_us_title}>
-      <div className="grid lg:grid-cols-3 justify-center md:mt-20 mt-10 items-center gap-8">
+      <div id="why" className="grid lg:grid-cols-3 justify-center md:mt-20 mt-10 items-center gap-8">
         {t.reasons.map(({ img, description, title }: any, index: number) => (
           <div key={index} className="flex flex-col text-center justify-between h-full items-center flex-1">
             <Img src={img} />

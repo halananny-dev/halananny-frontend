@@ -22,7 +22,7 @@ export default function Pricing() {
 
   return (
     <Card title={t.pricing.title}>
-      <div ref={containerRef} className="overflow-x-auto">
+      <div id="plans" ref={containerRef} className="overflow-x-auto">
         <div className="grid grid-cols-3 gap-8 mt-10 md:mt-16 min-w-max">
           {plans.map((plan, index) => (
             <div key={index} className="h-full flex flex-col max-w-80 sm:max-w-96">

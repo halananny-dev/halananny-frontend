@@ -9,7 +9,7 @@ export default function Steps() {
 
   return (
     <Card title={t.steps_title} >
-      <div className="flex justify-center">
+      <div id="steps" className="flex justify-center">
         <div className="grid xl:grid-cols-4 md:mt-32 mt-16 sm:grid-cols-2 gap-6 relative">
           {t.steps.map(({ img, description, title }: any, index: number) => (
             <div key={index} className="flex max-w-72 items-center text-center flex-col">
