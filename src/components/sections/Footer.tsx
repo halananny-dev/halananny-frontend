@@ -67,11 +67,15 @@ export default function Footer() {
         </div>
       </div>
       {showArrow && (
-        <img
-          src="/arrow-top.svg"
-          className={`md:w-20 md:h-20 w-10 h-10 cursor-pointer transition-all right-5 duration-300 z-40 rtl:!left-5 rtl:right-auto ${stickToFooter ? "absolute top-0 -translate-y-1/2" : "fixed bottom-5"}`}
+        <button
+          className={`right-5 duration-300 z-40 rtl:!left-5 rtl:right-auto ${stickToFooter ? "absolute top-0 -translate-y-1/2" : "fixed bottom-5"}`}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        />
+        >
+          <Img
+            src="/arrow-top.svg"
+            className="md:!w-20 md:!h-20 !w-10 !h-10"
+          />
+        </button>
       )}
     </footer>
   );

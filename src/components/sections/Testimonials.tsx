@@ -12,6 +12,7 @@ export default function Testimonials() {
   return (
     <Card title={t.testimonial}>
       <Swiper
+        id='testimonial'
         className="w-full md:mt-16 mt-10 !pb-9"
         spaceBetween={20}
         pagination={{ clickable: true }}

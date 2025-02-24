@@ -30,7 +30,7 @@ export default function Nannies() {
 
   return (
     <Card title={t.nannies.title}>
-      <h3 className="text-center text-gray-900 lg:text-2xl font-semibold mx-auto">
+      <h3 id="nannies" className="text-center text-gray-900 lg:text-2xl font-semibold mx-auto">
         {t.nannies.subtitle}
       </h3>
       <div className="relative">

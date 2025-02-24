@@ -2,6 +2,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { I18nProvider } from "../i18/i18Context";
 import "./globals.css";
+import "./font.css";
 
 export const metadata = {
   title: "Hala Nanny",
