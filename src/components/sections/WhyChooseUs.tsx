@@ -1,4 +1,3 @@
-import { Check } from 'lucide-react';
 import { reasons } from '../constants';
 import Card from './Card';
 import Img from './Img';
