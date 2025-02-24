@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Bell, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function DashboardNavbar() {
   return (
@@ -12,7 +11,6 @@ export default function DashboardNavbar() {
         </Link>
 
         <div className="flex items-center gap-4">
-          <LanguageSwitcher />
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
           </Button>

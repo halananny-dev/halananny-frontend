@@ -9,7 +9,6 @@ import Steps from '@/components/sections/Steps';
 import Testimonials from '@/components/sections/Testimonials';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
 
-
 export default function Home() {
   return (
     <>
