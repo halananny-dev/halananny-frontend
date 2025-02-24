@@ -1,7 +1,6 @@
 import FAQ from '@/components/sections/FAQ';
 import Footer from '@/components/sections/Footer';
 import Hero from '@/components/sections/Hero';
-import Img from '@/components/sections/Img';
 import Nannies from '@/components/sections/Nannies';
 import Navbar from '@/components/sections/Navbar';
 import Preferences from '@/components/sections/Preferences';

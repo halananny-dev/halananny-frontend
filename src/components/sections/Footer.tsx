@@ -2,10 +2,10 @@
 
 import { useI18n } from '@/i18/i18Context';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { footerLinks } from '../constants';
 import Img from './Img';
 import LanguageSwitch from './LanguageSwitch';
-import { useState, useEffect } from 'react';
 
 export default function Footer() {
   const { t } = useI18n();
@@ -67,15 +67,11 @@ export default function Footer() {
         </div>
       </div>
       {showArrow && (
-        <div className={`w-full z-50 flex justify-center ${stickToFooter ? "absolute top-0 -translate-y-1/2" : "fixed bottom-5"}`}>
-          <div className='max-w-max w-full md:px-16 px-4 flex justify-end'>
-            <img
-              src="/arrow-top.svg"
-              className="md:w-20 md:h-20 w-10 h-10 cursor-pointer transition-all duration-300"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            />
-          </div>
-        </div>
+        <img
+          src="/arrow-top.svg"
+          className={`md:w-20 md:h-20 w-10 h-10 cursor-pointer transition-all right-5 duration-300 z-40 rtl:!left-5 rtl:right-auto ${stickToFooter ? "absolute top-0 -translate-y-1/2" : "fixed bottom-5"}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        />
       )}
     </footer>
   );

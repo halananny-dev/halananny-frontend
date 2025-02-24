@@ -49,6 +49,7 @@ export default function Nannies() {
           onSwiper={setSwiper}
           className="w-full md:mt-20 mt-16 !pb-8"
           spaceBetween={32}
+          dir={"ltr"}
           breakpoints={{
             1320: {
               slidesPerView: 3
