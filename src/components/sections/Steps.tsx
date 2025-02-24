@@ -1,41 +1,27 @@
-'use client';
+import { steps } from '../constants';
+import Card from './Card';
+import Img from './Img';
 
-export function Steps() {
-  const steps = [
-    {
-      title: 'Share Your Needs',
-      description: 'Tell us about your family and what you\'re looking for in a nanny.'
-    },
-    {
-      title: 'Browse Profiles',
-      description: 'Review detailed profiles of qualified nannies in your area.'
-    },
-    {
-      title: 'Connect & Interview',
-      description: 'Schedule interviews with your favorite candidates.'
-    },
-    {
-      title: 'Make Your Choice',
-      description: 'Select the perfect nanny and start your journey together.'
-    }
-  ];
-
+export default function Steps() {
   return (
-    <section id="how-it-works" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Simple Steps</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
-            <div key={index} className="p-6 rounded-lg border bg-card">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <span className="text-xl font-bold text-primary">{index + 1}</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-              <p className="text-muted-foreground">{step.description}</p>
-            </div>
-          ))}
+    <Card title='Our Simple Steps' >
+      <div className="flex mt-32 justify-between relative">
+        <div className="absolute w-full top-0 flex z-40 justify-evenly px-6 pt-12">
+          <Img src='/arc.svg' />
+          <Img src='/arc-rotated.svg' className='-mr-9' />
+          <Img src='/arc.svg' />
         </div>
+        {steps.map(({ img, description, title }, index) => (
+          <div key={index} className="flex max-w-72 items-center text-center flex-col">
+            <Img src={img} className='h-32' />
+            <h3 className="text-2xl text-gray-900 font-semibold mt-8">
+              <span className="text-teal-500">{index}·  </span>
+              {title}
+            </h3>
+            <p className="mt-4 text-gray-900 text-sm">{description}</p>
+          </div>
+        ))}
       </div>
-    </section>
+    </Card>
   );
 }

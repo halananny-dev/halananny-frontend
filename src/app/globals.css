@@ -3,6 +3,33 @@
 @tailwind utilities;
 
 
+body {
+  font-family: "SF-Pro", sans-serif;
+  background-color: #FAFAFA;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.swiper-slide-active>div {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.swiper-pagination-bullet {
+  background: #D9D9D9 !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.swiper-pagination {
+  bottom: -5px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #64CDC7 !important;
+}
 
 @layer base {
   :root {
@@ -57,6 +84,7 @@
 
     --radius: 0.5rem
   }
+
   .dark {
 
     --background: 0 0% 3.9%;
@@ -115,6 +143,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

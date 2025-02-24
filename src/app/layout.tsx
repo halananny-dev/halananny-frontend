@@ -1,15 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "swiper/css/pagination";
+import 'swiper/css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const metadata = {
+  title: "Hala Nanny",
+  description: "Find the perfect nanny for your family",
+}
 
 export default function RootLayout({
   children,
@@ -18,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
         {children}
       </body>
     </html>

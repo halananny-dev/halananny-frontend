@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'SF-Pro';
+    src: url('/font/SF-Pro-Rounded-Black.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Light.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Medium.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Regular.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Semibold.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Bold.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Thin.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Heavy.otf') format('otf'),
+        url('/font/SF-Pro-Rounded-Ultralight.otf') format('otf'),
+}
