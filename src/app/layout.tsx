@@ -8,22 +8,18 @@ export const metadata = {
   description: "Find the perfect nanny for your family",
 };
 
-export default function RootLayout({
-  children,
-  params,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-  params: { locale?: string };
-}) {
-  const locale = params?.locale || "en";
+}
 
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
       <head>
         <title>{metadata.title}</title>
       </head>
       <body>
-        <I18nProvider defaultLocale={locale}>{children}</I18nProvider>
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );
