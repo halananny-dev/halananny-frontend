@@ -9,7 +9,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, children, className }) => {
     return (
-        <section className={"mt-14 py-16 px-10 max-w-max mx-auto rounded-26 bg-white " + className}>
+        <section className={"lg:mt-14 mt-10 lg:py-16 py-10 md:px-10 px-4 max-w-max mx-auto rounded-26 bg-white " + className}>
             {title && <Title>{title}</Title>}
             {children}
         </section>)

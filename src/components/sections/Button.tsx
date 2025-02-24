@@ -16,9 +16,9 @@ const Btn: React.FC<ButtonProps> = ({ children, className, size, variant }) => {
     })
 
     const sizeClass = classnames({
-        "py-4 text-xl font-semibold": size === 'lg',
+        "md:py-4 py-2 md:text-xl font-semibold": size === 'lg',
         "py-4 font-semibold": size === 'md',
-        "py-6 font-semibold text-lg ": size === 'xl'
+        "md:py-6 font-semibold text-lg py-4": size === 'xl'
     })
 
     return (
