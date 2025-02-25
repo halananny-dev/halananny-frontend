@@ -10,14 +10,8 @@ export default function SignUp() {
 
 	return (
 		<AnimatePresence mode="wait">
-			{screen === "signup" && <Welcome
-				screen={screen}
-				setScreen={setScreen}
-			/>}
-
-			{screen === "verify" && <VerifyNumber
-				setScreen={setScreen}
-			/>}
+			{screen === "signup" && <Welcome setScreen={setScreen} />}
+			{screen === "verify" && <VerifyNumber setScreen={setScreen} />}
 		</AnimatePresence>
 	);
 }

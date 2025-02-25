@@ -3,36 +3,63 @@ import { motion } from "framer-motion";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import Img from "../sections/Img";
-import { Input } from "../ui/input";
+import OTPInput from "./OTPInput";
 
 interface LoginProps {
-	setScreen: any
+	setScreen: any;
 }
 
 const VerifyNumber: React.FC<LoginProps> = ({ setScreen }) => {
-	const { t } = useI18n()
+	const { t } = useI18n();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setScreen("signup");
+	};
 
 	return (
-		<motion.div key="verify" variants={screenVariants} initial="initial" animate="animate" exit="exit">
+		<motion.div
+			key="verify"
+			variants={screenVariants}
+			initial="initial"
+			animate="animate"
+			exit="exit"
+		>
 			<div className="flex rounded-2xl border border-gray-200">
-				<Img src="/verify.svg" className="hidden lg:block" />
-				<div className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow">
-					<div>
-						<div className="flex items-center gap-4">
-							<h2 className="text-3xl font-bold">{t.Login.forgot_password_title}</h2>
+				<Img  src="/verify.svg"  className="hidden lg:block" />
+				<form
+					onSubmit={handleSubmit}
+					className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow"
+				>
+					<div className="sm:w-96 w-full font-semibold">
+						<p className="text-teal-500 text-center font-bold text-lg">{t.stepn}</p>
+						<h2 className="text-3xl text-center mt-1.2 font-bold">
+							{t.verify_your_details}
+						</h2>
+						<div className="flex items-center mt-4 p-2.5 gap-5 justify-center w-full rounded-md bg-teal-100">
+							<Img src="/check.svg" />
+							<p className="text-sm font-medium text-green-500 max-w-60">
+								{t.otp_sent_message}
+							</p>
 						</div>
-						<div className="mt-9 flex flex-col gap-2">
-							<label htmlFor="email2">{t.Login.username_email}</label>
-							<Input name="email2" id="email2" type="email" />
-						</div>
-						<Btn size="lg" variant="primary" className="mt-8 md:mt-8" onClick={() => setScreen("reset")}>
-							{t.Login.send_code}
+						<p className="mt-10 text-sm text-center">
+							{t.otp_expiry} <span className="text-teal-500">{t.otp_expiry_time}</span>
+						</p>
+						<OTPInput />
+						<Btn size="lg" variant="primary" className="mt-11">
+							{t.verify_otp}
 						</Btn>
+						<p className="mt-5 text-center">
+							{t.didnt_receive_otp} {" "}
+							<button className="font-semibold underline text-teal-500">
+								{t.resend_otp}
+							</button>
+						</p>
 					</div>
-				</div>
+				</form>
 			</div>
 		</motion.div>
-	)
-}
+	);
+};
 
-export default VerifyNumber
+export default VerifyNumber;

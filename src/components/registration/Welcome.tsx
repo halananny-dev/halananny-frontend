@@ -1,7 +1,7 @@
+import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
-import { useI18n } from "@/i18/i18Context"; // Import i18n
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CountryCodeSelect from "../sections/CountryCodeSelect";
@@ -10,20 +10,24 @@ import { Input } from "../ui/input";
 
 interface Props {
 	setScreen: any;
-	screen: string;
 }
 
-const Welcome: React.FC<Props> = ({ setScreen, screen }) => {
-	const { t } = useI18n(); // Use translations
+const Welcome: React.FC<Props> = ({ setScreen }) => {
+	const { t } = useI18n();
+
+	const handleSubmit = (e: any) => {
+		e.preventDefault()
+		setScreen('verify')
+	}
 
 	return (
 		<motion.div key="login" variants={screenVariants} initial="initial" animate="animate" exit="exit">
 			<div className="flex rounded-2xl border border-gray-200">
 				<Img src="/sign-up.svg" className="hidden lg:block" />
-				<form onSubmit={(e) => e.preventDefault()} className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow">
+				<form onSubmit={handleSubmit} className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow">
 					<div className="sm:w-96 w-full font-semibold">
 						<p className="text-teal-500 text-center font-bold text-lg">
-							{screen === "signup" ? 1 : 2}/2
+							1/2
 						</p>
 						<h2 className="text-3xl text-center mt-1.2 font-bold">
 							{t.welcome.title}
@@ -54,7 +58,7 @@ const Welcome: React.FC<Props> = ({ setScreen, screen }) => {
 						</Btn>
 						<p className="mt-5 text-center">
 							{t.welcome.loginText}{" "}
-							<Link className="font-semibold text-teal-500" href="/register">
+							<Link className="font-semibold underline text-teal-500" href="/register">
 								{t.welcome.login}
 							</Link>
 						</p>
