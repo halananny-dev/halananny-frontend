@@ -1,0 +1,25 @@
+name: Check Image Metadata
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install ImageMagick
+      run: sudo apt-get update && sudo apt-get install -y imagemagick
+      
+    - name: Check image metadata
+      run: |
+        echo "Checking image metadata..."
+        find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
+          -not -path "*/node_modules/*" \
+          -not -path "*/.git/*" \
+          -exec identify -verbose {} \; | grep -E 'Image:|Filesize:|Resolution:|Compression:|Format:'
