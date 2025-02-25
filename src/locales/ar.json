@@ -148,12 +148,19 @@
   },
   "Login": {
     "title": "تسجيل الدخول",
-    "username_email": "اسم المستخدم / البريد الإلكتروني",
+    "username_email": "اسم المستخدم أو البريد الإلكتروني",
     "password": "كلمة المرور",
     "remember": "تذكرني",
-    "lost_password": "نسيت كلمة المرور؟",
+    "lost_password": "هل نسيت كلمة المرور؟",
     "login_button": "تسجيل الدخول",
-    "new_user": "جديد في HalaNanny؟",
-    "create_account": "إنشاء حساب"
+    "new_user": "جديد هنا؟",
+    "create_account": "إنشاء حساب",
+    "forgot_password_title": "نسيت كلمة المرور",
+    "send_code": "إرسال الرمز",
+    "reset_password_title": "إعادة تعيين كلمة المرور",
+    "new_password": "كلمة مرور جديدة",
+    "confirm_password": "تأكيد كلمة المرور",
+    "resend_code": "إعادة إرسال الرمز",
+    "reset_button": "إعادة تعيين"
   }
 }

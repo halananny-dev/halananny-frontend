@@ -153,7 +153,14 @@
     "remember": "Remember",
     "lost_password": "Lost Password?",
     "login_button": "Login",
-    "new_user": "New to HalaNanny?",
-    "create_account": "Create your account"
+    "new_user": "New to HalaNanny ",
+    "create_account": " Create your account",
+    "forgot_password_title": "Forgot Password",
+    "send_code": "Send Code",
+    "reset_password_title": "Reset Password",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "resend_code": "Resend Code",
+    "reset_button": "Reset"
   }
 }
