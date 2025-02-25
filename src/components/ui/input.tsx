@@ -12,7 +12,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
     return (
       <div className="relative flex items-center">
         <input
-          type={type}
+          type={t}
           className={cn(
             "rounded-xl !bg-white border border-gray-10 flex w-full px-6 py-3 font-semibold outline-none",
             className
