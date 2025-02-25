@@ -9,7 +9,7 @@ import {
 import { useI18n } from '@/i18/i18Context';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { navbarLinks } from '../constants';
 import { Button } from '../ui/button';
 import Img from './Img';
@@ -21,7 +21,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const sections = navbarLinks.map(({ href }) => document.querySelector(href));
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleSection = entries.find(entry => entry.isIntersecting);
@@ -50,9 +50,8 @@ export default function Navbar() {
               <Link
                 href={href}
                 key={index}
-                className={`text-gray-600 hover:text-gray-900 transition duration-300 ${
-                  activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
-                }`}
+                className={`text-gray-600 hover:text-gray-900 transition duration-300 ${activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
+                  }`}
               >
                 {t[name]}
               </Link>
@@ -60,9 +59,12 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button variant="ghost" className="text-gray-600 font-bold text-sm hover:bg-gray-100">
-              {t.login}
-            </Button>
+            <Link href="/login">
+              <Button variant="ghost" className="text-gray-600 font-bold text-sm hover:bg-gray-100">
+                {t.login}
+              </Button>
+            </Link>
+
             <Button className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
               {t.register}
             </Button>
@@ -70,9 +72,8 @@ export default function Navbar() {
               {['en', 'ar'].map(l => (
                 <button
                   key={l}
-                  className={`text-sm font-bold transition-colors duration-300 ${
-                    locale === l ? 'text-gray-900' : 'text-gray-400 hover:text-gray-600'
-                  }`}
+                  className={`text-sm font-bold transition-colors duration-300 ${locale === l ? 'text-gray-900' : 'text-gray-400 hover:text-gray-600'
+                    }`}
                   onClick={() => setLocale(l)}
                 >
                   {t[l.toUpperCase()]}
@@ -97,9 +98,8 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed top-0 px-4 left-0 w-full h-full bg-white z-[55] transform ${
-          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform justify-center duration-300 lg:hidden flex flex-col items-start gap-4 shadow-xl`}
+        className={`fixed top-0 px-4 left-0 w-full h-full bg-white z-[55] transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          } transition-transform justify-center duration-300 lg:hidden flex flex-col items-start gap-4 shadow-xl`}
       >
         {navbarLinks.map(({ name, href }, index) => (
           <Link

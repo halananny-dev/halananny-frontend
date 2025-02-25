@@ -111,9 +111,7 @@
       "basic plan": {
         "name": "Basic Plan",
         "price": "AED 180",
-        "features": [
-          "Access to the nanny directory for a limited time"
-        ]
+        "features": ["Access to the nanny directory for a limited time"]
       },
       "premium plan": {
         "name": "Premium Plan",
@@ -147,5 +145,15 @@
     "profile": "See my profile",
     "videoCv": "Video CV Available",
     "viewAll": "View All Nannies"
+  },
+  "Login": {
+    "title": "Login",
+    "username_email": "Username/Email",
+    "password": "Password",
+    "remember": "Remember",
+    "lost_password": "Lost Password?",
+    "login_button": "Login",
+    "new_user": "New to HalaNanny?",
+    "create_account": "Create your account"
   }
 }
