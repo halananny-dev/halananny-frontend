@@ -162,5 +162,19 @@
     "confirm_password": "Confirm Password",
     "resend_code": "Resend Code",
     "reset_button": "Reset"
+  },
+  "Register": {
+    "title": "Registration",
+    "subtitle": "Let’s get started. Choose an option.",
+    "jobSeeker": {
+      "title": "I’m looking for a job",
+      "description": "You’re one step closer to connecting with great families",
+      "button": "Find jobs"
+    },
+    "nannySeeker": {
+      "title": "I’m looking for a nanny",
+      "description": "Search & contact hundreds of qualified nannies ready to join in the UAE.",
+      "button": "Find Nannies"
+    }
   }
 }

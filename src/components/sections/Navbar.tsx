@@ -64,10 +64,11 @@ export default function Navbar() {
                 {t.login}
               </Button>
             </Link>
-
-            <Button className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
-              {t.register}
-            </Button>
+            <Link href="/register">
+              <Button className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
+                {t.register}
+              </Button>
+            </Link>
             <div className="flex items-center gap-2 ml-2 text-sm font-bold">
               {['en', 'ar'].map(l => (
                 <button

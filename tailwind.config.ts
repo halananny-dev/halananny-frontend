@@ -73,9 +73,11 @@ export default {
       },
       maxWidth: {
         max: "1320px",
+        390: "390px",
       },
       fontSize: {
         "10": "10px",
+        28: "28px",
         "40": "40px",
       },
       dropShadow: {
@@ -83,9 +85,11 @@ export default {
       },
       boxShadow: {
         navbar: "0 4px 12px 0 rgba(0,0,0,0.06)",
+        lg: "0 12px 44px 0 rgba(0, 0, 0, 0.1)",
       },
       backgroundImage: {
         hero: "url('/hero.svg')",
+        register: "url('/register.svg')",
       },
       keyframes: {
         "accordion-down": {
