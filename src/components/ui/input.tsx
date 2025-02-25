@@ -1,22 +1,35 @@
-import * as React from "react"
+"use client"
 
 import { cn } from "@/lib/utils"
+import * as React from "react"
+import { FaEye, FaEyeSlash } from "react-icons/fa"
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {
+
+    const [t, setType] = React.useState(type)
+
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
+      <div className="relative flex items-center">
+        <input
+          type={t}
+          className={cn(
+            "rounded-xl !bg-white border border-gray-10 flex w-full px-6 py-3 font-semibold outline-none",
+            className
+          )}
+          ref={ref}
+          {...props}
+        />
+        {type === 'password' && <button
+          onClick={() => setType(t === 'password' ? 'text' : 'password')}
+          className="absolute text-2xl text-gray-20 right-5 rtl:left-5 rtl:right-auto">
+          {t === 'password' ? <FaEye /> : <FaEyeSlash />}
+        </button>}
+      </div>
     )
   }
 )
 Input.displayName = "Input"
 
 export { Input }
+
