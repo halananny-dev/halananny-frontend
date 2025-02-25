@@ -55,6 +55,8 @@ export default {
           "300": "#8EA6B8",
           "400": "#A6B1B7",
           "500": "#8A97A1",
+          600: "#858A9B",
+          700:"#E0E0E0",
           "800": "#F8F8F8",
           "900": "#385469",
         },
@@ -90,6 +92,7 @@ export default {
       backgroundImage: {
         hero: "url('/hero.svg')",
         register: "url('/register.svg')",
+        "nanny-register": "url('/nanny-register.svg')",
       },
       keyframes: {
         "accordion-down": {

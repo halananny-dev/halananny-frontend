@@ -137,3 +137,35 @@ export const footerLinks = [
     { name: "login", href: "/" },
   ],
 ];
+
+export const screenVariants = {
+  initial: { opacity: 0, x: 50 },
+  animate: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  exit: { opacity: 0, x: -50, transition: { duration: 0.5 } },
+};
+
+export const countries = [
+  { code: "+1", flag: "US" },
+  { code: "+44", flag: "GB" },
+  { code: "+33", flag: "FR" },
+  { code: "+49", flag: "DE" },
+  { code: "+91", flag: "IN" },
+  { code: "+81", flag: "JP" },
+  { code: "+86", flag: "CN" },
+  { code: "+61", flag: "AU" },
+  { code: "+7", flag: "RU" },
+  { code: "+55", flag: "BR" },
+  { code: "+34", flag: "ES" },
+  { code: "+39", flag: "IT" },
+  { code: "+27", flag: "ZA" },
+  { code: "+82", flag: "KR" },
+  { code: "+62", flag: "ID" },
+  { code: "+31", flag: "NL" },
+  { code: "+46", flag: "SE" },
+  { code: "+41", flag: "CH" },
+  { code: "+52", flag: "MX" },
+  { code: "+90", flag: "TR" },
+  { code: "+20", flag: "EG" },
+  { code: "+351", flag: "PT" },
+  { code: "+380", flag: "UA" },
+];

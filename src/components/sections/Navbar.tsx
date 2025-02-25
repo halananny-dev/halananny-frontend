@@ -84,7 +84,7 @@ export default function Navbar() {
           </div>
           <Select>
             <SelectTrigger className="w-20 h-10 text-base border rounded-full bg-white shadow">
-              <SelectValue placeholder={<Img src='/egypt.svg' className="w-5 h-5 rounded-full mr-3 rtl:mr-0 rtl:ml-3" />} />
+              <SelectValue placeholder={<Img src='/egypt.svg' className="w-5 h-5 rounded-full ltr:mr-3 rtl:ml-3" />} />
             </SelectTrigger>
             <SelectContent></SelectContent>
           </Select>

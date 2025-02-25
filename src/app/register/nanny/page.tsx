@@ -1,0 +1,53 @@
+"use client";
+
+import SignUp from "@/components/registration/SignUp";
+import Img from "@/components/sections/Img";
+import Navbar from "@/components/sections/Navbar";
+import { useI18n } from "@/i18/i18Context";
+import { useState } from "react";
+
+export default function NannyRegistration() {
+	const { t } = useI18n();
+	const tabs = t.tabs;
+	const [activeTab, setActiveTab] = useState(1);
+
+	return (
+		<>
+			<div className="bg-nanny-register bg-center bg-cover bg-no-repeat pb-12 pt-36">
+				<Navbar />
+				<h2 className="text-center text-white font-bold text-3xl lg:text-5xl">
+					{t.nannyRegistration}
+				</h2>
+			</div>
+
+			<div className="mt-7 hidden max-w-4xl mx-auto md:flex justify-between px-4">
+				{tabs.map((tab, index) => {
+					const active = activeTab > index;
+
+					return (
+						<div key={index} className="flex w-20 flex-col items-center cursor-pointer">
+							<div className="relative flex items-center">
+								<Img src={active ? "/step-active.svg" : "/step-disabled.svg"} />
+								{index !== tabs.length - 1 && (
+									<div className="bg-gray-700 lg:w-48 w-40 h-px absolute ltr:left-7 rtl:right-7"></div>
+								)}
+							</div>
+							<p
+								className={
+									"mt-4 truncate " +
+									(active ? "font-bold text-teal-500" : "font-semibold text-gray-600")
+								}
+							>
+								{tab}
+							</p>
+						</div>
+					);
+				})}
+			</div>
+
+			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8">
+				{activeTab === 1 && <SignUp />}
+			</div>
+		</>
+	);
+}

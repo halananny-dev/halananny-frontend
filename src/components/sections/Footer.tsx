@@ -68,7 +68,7 @@ export default function Footer() {
       </div>
       {showArrow && (
         <button
-          className={`right-5 duration-300 z-40 rtl:!left-5 rtl:right-auto ${stickToFooter ? "absolute top-0 -translate-y-1/2" : "fixed bottom-5"}`}
+          className={`ltr:right-5 duration-300 z-40 rtl:!left-5 ${stickToFooter ? "absolute top-0 -translate-y-1/2" : "fixed bottom-5"}`}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <Img

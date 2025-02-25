@@ -176,5 +176,24 @@
       "description": "Search & contact hundreds of qualified nannies ready to join in the UAE.",
       "button": "Find Nannies"
     }
+  },
+  "nannyRegistration": "Nanny Registration",
+  "tabs": [
+    "Sign up",
+    "Your profile",
+    "Experience Details",
+    "Job Preferences",
+    "Verification"
+  ],
+  "welcome": {
+    "title": "Welcome to HalaNanny",
+    "subtitle": "You’re one step closer to connecting with great families!",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "password": "Password",
+    "signUp": "Sign Up",
+    "loginText": "Log in if you already have an account ",
+    "login": "Login"
   }
 }

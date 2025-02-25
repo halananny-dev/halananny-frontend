@@ -1,16 +1,16 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { IoIosArrowBack } from "react-icons/io";
+import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 interface LoginProps {
-	screenVariants: any,
 	setScreen: any
 }
 
-const ForgotPassword: React.FC<LoginProps> = ({ screenVariants, setScreen }) => {
+const ForgotPassword: React.FC<LoginProps> = ({ setScreen }) => {
 	const { t } = useI18n()
 
 	return (
