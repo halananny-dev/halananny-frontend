@@ -2,15 +2,15 @@ import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
+import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import { Input } from "../ui/input";
 
 interface LoginProps {
-	screenVariants: any,
 	setScreen: any
 }
 
-const LoginScreen: React.FC<LoginProps> = ({ screenVariants, setScreen }) => {
+const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 	const { t } = useI18n()
 
 	return (

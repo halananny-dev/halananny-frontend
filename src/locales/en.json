@@ -176,5 +176,32 @@
       "description": "Search & contact hundreds of qualified nannies ready to join in the UAE.",
       "button": "Find Nannies"
     }
-  }
+  },
+  "nannyRegistration": "Nanny Registration",
+  "tabs": [
+    "Sign up",
+    "Your profile",
+    "Experience Details",
+    "Job Preferences",
+    "Verification"
+  ],
+  "welcome": {
+    "title": "Welcome to HalaNanny",
+    "subtitle": "You’re one step closer to connecting with great families!",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "password": "Password",
+    "signUp": "Sign Up",
+    "loginText": "Log in if you already have an account ",
+    "login": "Login"
+  },
+  "stepn": "2/2",
+  "verify_your_details": "Verify Your Details",
+  "otp_sent_message": "We’ve sent an OTP to your WhatsApp. Enter it below to move to the next level!",
+  "otp_expiry": "Your OTP will expire in",
+  "otp_expiry_time": "15 min",
+  "verify_otp": "Verify OTP",
+  "didnt_receive_otp": "Didn't Receive OTP?",
+  "resend_otp": "Resend OTP"
 }

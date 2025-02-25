@@ -18,6 +18,8 @@ const Img: React.FC<ImgProps> = ({ src, width = 10, height = 10, className, alt 
             height={height}
             className={`w-auto h-auto ` + className}
             priority
+            loading='eager'
+            fetchPriority='high'
         />)
 }
 

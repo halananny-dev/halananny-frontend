@@ -55,15 +55,22 @@ export default {
           "300": "#8EA6B8",
           "400": "#A6B1B7",
           "500": "#8A97A1",
+          600: "#858A9B",
+          700: "#E0E0E0",
           "800": "#F8F8F8",
           "900": "#385469",
         },
         teal: {
+          100: "#F1FFF6",
           "300": "#E8F8F7",
           "500": "#64CDC7",
         },
         yellow: {
           "500": "#FABB3B",
+        },
+        green: {
+          500: "#16BB52",
+          600: "#2DC690",
         },
       },
       borderRadius: {
@@ -90,6 +97,7 @@ export default {
       backgroundImage: {
         hero: "url('/hero.svg')",
         register: "url('/register.svg')",
+        "nanny-register": "url('/nanny-register.svg')",
       },
       keyframes: {
         "accordion-down": {

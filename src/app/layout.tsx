@@ -19,7 +19,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <title>{metadata.title}</title>
       </head>
-      <body>
+      <body className="pb-4">
         <I18nProvider>{children}</I18nProvider>
       </body>
     </html>

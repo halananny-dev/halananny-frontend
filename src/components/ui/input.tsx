@@ -22,7 +22,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
         />
         {type === 'password' && <button
           onClick={() => setType(t === 'password' ? 'text' : 'password')}
-          className="absolute text-2xl text-gray-20 right-5 rtl:left-5 rtl:right-auto">
+          className="absolute text-2xl text-gray-20 ltr:right-5 rtl:left-5">
           {t === 'password' ? <FaEye /> : <FaEyeSlash />}
         </button>}
       </div>

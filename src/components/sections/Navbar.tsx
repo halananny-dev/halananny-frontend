@@ -9,6 +9,7 @@ import {
 import { useI18n } from '@/i18/i18Context';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
 import { navbarLinks } from '../constants';
 import { Button } from '../ui/button';
@@ -18,6 +19,7 @@ export default function Navbar() {
   const { t, locale, setLocale } = useI18n();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const router = useRouter()
 
   useEffect(() => {
     const sections = navbarLinks.map(({ href }) => document.querySelector(href));
@@ -29,12 +31,12 @@ export default function Navbar() {
           setActiveSection(visibleSection.target.id);
         }
       },
-      { threshold: 0.6 } // Trigger when 60% of section is visible
+      { threshold: 0.6 }
     );
 
     sections.forEach(section => section && observer.observe(section));
 
-    return () => observer.disconnect(); // Cleanup on unmount
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -47,14 +49,14 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           <div className="flex xl:gap-6 gap-3 items-center text-xs xl:text-sm font-bold">
             {navbarLinks.map(({ name, href }, index) => (
-              <Link
-                href={href}
+              <button
+                onClick={() => router.push('/' + href)}
                 key={index}
                 className={`text-gray-600 hover:text-gray-900 transition duration-300 ${activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
                   }`}
               >
                 {t[name]}
-              </Link>
+              </button>
             ))}
           </div>
 
@@ -84,7 +86,7 @@ export default function Navbar() {
           </div>
           <Select>
             <SelectTrigger className="w-20 h-10 text-base border rounded-full bg-white shadow">
-              <SelectValue placeholder={<Img src='/egypt.svg' className="w-5 h-5 rounded-full mr-3 rtl:mr-0 rtl:ml-3" />} />
+              <SelectValue placeholder={<Img src='/egypt.svg' className="w-5 h-5 rounded-full ltr:mr-3 rtl:ml-3" />} />
             </SelectTrigger>
             <SelectContent></SelectContent>
           </Select>
