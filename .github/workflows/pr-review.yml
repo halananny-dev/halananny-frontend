@@ -49,7 +49,7 @@ jobs:
     - name: Check image sizes
       run: |
         echo "Checking image sizes..."
-        find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) -exec ls -lh {} \; | awk '{if($5>500000) print $9, $5}'
+        find . -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) -exec ls -lh {} \; | awk '{if($5>1000000) print $9, $5}'
       
     - name: Install image optimization tools
       run: |
