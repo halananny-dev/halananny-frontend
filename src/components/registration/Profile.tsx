@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { MARTIAL_STATUS, NATIONALITIES, RELIGION, screenVariants } from "../constants";
 import Btn from "../sections/Button";
+import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
 import { CustomSelect } from "../sections/CustomSelect";
 import Img from "../sections/Img";
@@ -16,6 +17,7 @@ import VideoUpload from "./VideoUpload";
 const Profile = ({ setActiveTab }) => {
 	const { t } = useI18n();
 	const [img, setImg] = useState(null)
+	const [kids, setKids] = useState(0)
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -60,7 +62,7 @@ const Profile = ({ setActiveTab }) => {
 					<VideoUpload />
 
 					<div className="flex sm:pl-5 gap-2 text-xs mt-6 font-semibold text-teal-500 items-center">
-						<input type="checkbox" name="consent" id="consent" />
+						<CheckBox name="consent" />
 						<label htmlFor="consent">{t.profile.consent}</label>
 					</div>
 
@@ -101,7 +103,7 @@ const Profile = ({ setActiveTab }) => {
 
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.number_of_kids}</label>
-							<Counter />
+							<Counter setValue={setKids} value={kids} />
 						</div>
 					</div>
 

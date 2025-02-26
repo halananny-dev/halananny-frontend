@@ -1,5 +1,6 @@
 "use client";
 
+import Experience from "@/components/registration/Experience";
 import Profile from "@/components/registration/Profile";
 import SignUp from "@/components/registration/SignUp";
 import Img from "@/components/sections/Img";
@@ -11,7 +12,7 @@ import { useState } from "react";
 export default function NannyRegistration() {
 	const { t } = useI18n();
 	const tabs = t.tabs;
-	const [activeTab, setActiveTab] = useState(2);
+	const [activeTab, setActiveTab] = useState(1);
 
 	return (
 		<>
@@ -51,6 +52,7 @@ export default function NannyRegistration() {
 				<AnimatePresence mode="wait">
 					{activeTab === 1 && <SignUp setActiveTab={setActiveTab} />}
 					{activeTab === 2 && <Profile setActiveTab={setActiveTab} />}
+					{activeTab === 3 && <Experience setActiveTab={setActiveTab} />}
 				</AnimatePresence>
 			</div>
 		</>

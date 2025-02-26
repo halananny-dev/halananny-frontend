@@ -1,10 +1,9 @@
-"use client"
+interface CounterProps {
+	value: number
+	setValue: any
+}
 
-import { useState } from "react"
-
-export default function Counter() {
-	const [value, setValue] = useState(0)
-
+const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
 	const decrement = () => {
 		if (value !== 0) {
 			setValue(value - 1)
@@ -17,7 +16,9 @@ export default function Counter() {
 
 	return (
 		<div className="w-28 border border-gray-10 shadow-lg h-11 rounded flex font-bold overflow-hidden">
-			<button className="w-8 disabled:text-gray-10"
+			<button
+				type="button"
+				className="w-8 disabled:text-gray-10"
 				disabled={value === 0}
 				onClick={decrement}
 			>
@@ -31,6 +32,7 @@ export default function Counter() {
 				value={value === 0 ? "" : value}
 			/>
 			<button
+				type="button"
 				onClick={increment}
 				className="w-8 flex items-center justify-center text-gray-900"
 			>
@@ -39,3 +41,5 @@ export default function Counter() {
 		</div>
 	)
 }
+
+export default Counter

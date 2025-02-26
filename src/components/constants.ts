@@ -179,3 +179,31 @@ export const NATIONALITIES = [
 
 export const RELIGION = ["Christianity", "Islam", "Atheism"];
 export const MARTIAL_STATUS = ["Single", "Married", "Divorced", "Widowed"];
+
+export const EXPERIENCE_WITH_KIDS = [
+  {
+    title: "Newborn",
+    description: "Newborn_desc",
+  },
+  {
+    title: "Toddler",
+    description: "Toddler_desc",
+  },
+  {
+    title: "Pre-school kids",
+    description: "Pre-school kids_desc",
+  },
+  {
+    title: "Older kids",
+    description: "Older kids_desc",
+  },
+];
+
+export const CAPABILITIES = [
+  { title: "Babycare", img: "/capability1.svg" },
+  { title: "Housecleaning", img: "/capability2.svg" },
+  { title: "Cooking", img: "/capability3.svg" },
+  { title: "Driving", img: "/capability4.svg" },
+  { title: "Petcare", img: "/capability5.svg" },
+  { title: "Gardening", img: "/capability6.svg" },
+];
