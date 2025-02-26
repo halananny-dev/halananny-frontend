@@ -144,28 +144,38 @@ export const screenVariants = {
   exit: { opacity: 0, x: -50, transition: { duration: 0.5 } },
 };
 
-export const countries = [
-  { code: "+1", flag: "US" },
-  { code: "+44", flag: "GB" },
-  { code: "+33", flag: "FR" },
-  { code: "+49", flag: "DE" },
-  { code: "+91", flag: "IN" },
-  { code: "+81", flag: "JP" },
-  { code: "+86", flag: "CN" },
-  { code: "+61", flag: "AU" },
-  { code: "+7", flag: "RU" },
-  { code: "+55", flag: "BR" },
-  { code: "+34", flag: "ES" },
-  { code: "+39", flag: "IT" },
-  { code: "+27", flag: "ZA" },
-  { code: "+82", flag: "KR" },
-  { code: "+62", flag: "ID" },
-  { code: "+31", flag: "NL" },
-  { code: "+46", flag: "SE" },
-  { code: "+41", flag: "CH" },
-  { code: "+52", flag: "MX" },
-  { code: "+90", flag: "TR" },
-  { code: "+20", flag: "EG" },
-  { code: "+351", flag: "PT" },
-  { code: "+380", flag: "UA" },
+export const COUNTRIES = [
+  {
+    code: "+971",
+    flag: "AE",
+  },
 ];
+
+export const NATIONALITIES = [
+  "American",
+  "British",
+  "French",
+  "German",
+  "Indian",
+  "Japanese",
+  "Chinese",
+  "Australian",
+  "Russian",
+  "Brazilian",
+  "Spanish",
+  "Italian",
+  "South African",
+  "South Korean",
+  "Indonesian",
+  "Dutch",
+  "Swedish",
+  "Swiss",
+  "Mexican",
+  "Turkish",
+  "Egyptian",
+  "Portuguese",
+  "Ukrainian",
+];
+
+export const RELIGION = ["Christianity", "Islam", "Atheism"];
+export const MARTIAL_STATUS = ["Single", "Married", "Divorced", "Widowed"];

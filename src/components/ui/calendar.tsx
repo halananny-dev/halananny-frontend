@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
 
-import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { IoChevronBack, IoChevronForward } from "react-icons/io5"
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
@@ -60,15 +60,11 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        PreviousMonthButton: ({ ...props }) => (
-          <button {...props}>
-            <ChevronLeft className="h-4 w-4" />
-          </button>
+        IconLeft: ({ className, ...props }) => (
+          <IoChevronBack className={className} {...props} />
         ),
-        NextMonthButton: ({ ...props }) => (
-          <button {...props}>
-            <ChevronRight className="h-4 w-4" />
-          </button>
+        IconRight: ({ className, ...props }) => (
+          <IoChevronForward className={className} {...props} />
         ),
       }}
       {...props}
@@ -78,3 +74,4 @@ function Calendar({
 Calendar.displayName = "Calendar"
 
 export { Calendar }
+

@@ -56,9 +56,16 @@ export default {
           "400": "#A6B1B7",
           "500": "#8A97A1",
           600: "#858A9B",
+          650: "#F6FFFF",
           700: "#E0E0E0",
+          750: "#FBFBFB",
           "800": "#F8F8F8",
+          850: "#9C9C9C",
           "900": "#385469",
+          950:"#E8E8E8",
+        },
+        red: {
+          500: "#F05E5E",
         },
         teal: {
           100: "#F1FFF6",
@@ -71,6 +78,7 @@ export default {
         green: {
           500: "#16BB52",
           600: "#2DC690",
+          700:"#01C248"
         },
       },
       borderRadius: {
@@ -80,7 +88,12 @@ export default {
       },
       maxWidth: {
         max: "1320px",
+        800: "800px",
+        540: "540px",
         390: "390px",
+      },
+      spacing: {
+        18: "72px",
       },
       fontSize: {
         "10": "10px",

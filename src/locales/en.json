@@ -203,5 +203,105 @@
   "otp_expiry_time": "15 min",
   "verify_otp": "Verify OTP",
   "didnt_receive_otp": "Didn't Receive OTP?",
-  "resend_otp": "Resend OTP"
+  "resend_otp": "Resend OTP",
+  "profile": {
+    "title": "Build Your Profile",
+    "profile_picture": "Profile picture",
+    "profile_picture_desc": "Put a photo where your face is clearly visible",
+    "video_upload": "Video Introduction Upload",
+    "video_upload_desc": "Add a friendly tip like, “Families love to see your smile!”",
+    "video_guidelines": "Make sure your video meets the below guidelines",
+    "guideline_1": "Talk about your experiences",
+    "guideline_2": "Ensure your voice is clear.",
+    "guideline_3": "Smile throughout the video.",
+    "guideline_4": "Keep it under 1 minute.",
+    "consent": "I consent to the use of my introductory video for marketing purposes",
+    "about_me": "About Me",
+    "about_me_placeholder": "Tell us about yourself in 150 characters or less to earn your first star!",
+    "nationality": "Nationality",
+    "religion": "Religion",
+    "visa_status": "Visa Status",
+    "age": "Age",
+    "marital_status": "Marital Status",
+    "number_of_kids": "Number of Kids",
+    "next_step": "Next Step"
+  },
+  "upload": {
+    "drop": "Drop",
+    "choose_video": "Choose Video",
+    "or_take_picture": "or take a picture."
+  },
+  "Australian": "Australian",
+  "American": "American",
+  "British": "British",
+  "French": "French",
+  "German": "German",
+  "Indian": "Indian",
+  "Japanese": "Japanese",
+  "Chinese": "Chinese",
+  "Russian": "Russian",
+  "Brazilian": "Brazilian",
+  "Spanish": "Spanish",
+  "Italian": "Italian",
+  "South African": "South African",
+  "South Korean": "South Korean",
+  "Indonesian": "Indonesian",
+  "Dutch": "Dutch",
+  "Swedish": "Swedish",
+  "Swiss": "Swiss",
+  "Mexican": "Mexican",
+  "Turkish": "Turkish",
+  "Egyptian": "Egyptian",
+  "Portuguese": "Portuguese",
+  "Ukrainian": "Ukrainian",
+  "Christianity": "Christianity",
+  "Islam": "Islam",
+  "Atheism": "Atheism",
+  "Single": "Single",
+  "Married": "Married",
+  "Divorced": "Divorced",
+  "Widowed": "Widowed",
+  "pickDate": "Pick a date",
+  "imageUploader": {
+    "title": "Your photo",
+    "upload": {
+      "drop": "Drop",
+      "or_take_picture": "or take a picture"
+    },
+    "instructionsTitle": "Show clients the best version of yourself 🤩!",
+    "uploadInstructions": "Upload instructions:",
+    "steps": {
+      "1": {
+        "title": "Use natural lighting",
+        "description": "Position yourself near a window for soft, flattering light."
+      },
+      "2": {
+        "title": "Choose a plain background",
+        "description": "Opt for a neutral wall or uncluttered space to avoid distractions."
+      },
+      "3": {
+        "title": "Wear professional, approachable clothing",
+        "description": "Select solid-colored tops in soft tones (e.g., light blue, beige)."
+      },
+      "4": {
+        "title": "Smile warmly with eye contact",
+        "description": "Relax your face and imagine interacting with a child for a genuine expression."
+      },
+      "5": {
+        "title": "Use portrait mode on a smartphone",
+        "description": "Have someone take a chest-up shot (no selfies) and lightly adjust brightness."
+      }
+    },
+    "delete": "Delete current image",
+    "cancel": "Cancel",
+    "attach": "Attach photo",
+    "sizeLimit": "250x250 Min / 5 MB Max"
+  },
+  "upload_video": {
+    "choose_video": "Choose a video",
+    "uploading": "Uploading",
+    "uploaded": "Uploaded",
+    "remove_video": "Remove video",
+    "video_not_supported": "Your browser does not support the video tag."
+  }
 }

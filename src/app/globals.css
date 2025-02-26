@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "SF-Pro";
+  background-color: #fafafa;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -106,11 +111,6 @@
   }
 }
 
-body {
-  font-family: "SF-Pro";
-  background-color: #fafafa;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -145,4 +145,13 @@ html[dir="rtl"] .swiper-wrapper {
 * {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

@@ -1,17 +1,26 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { screenVariants } from "../constants";
 import VerifyNumber from "./VerifyNumber";
 import Welcome from "./Welcome";
 
-export default function SignUp() {
+interface SignUpProps {
+	setActiveTab: any
+}
+
+const SignUp: React.FC<SignUpProps> = ({ setActiveTab }) => {
 	const [screen, setScreen] = useState("signup");
 
 	return (
-		<AnimatePresence mode="wait">
-			{screen === "signup" && <Welcome setScreen={setScreen} />}
-			{screen === "verify" && <VerifyNumber setScreen={setScreen} />}
-		</AnimatePresence>
+		<motion.div key="sign-up" variants={screenVariants} initial="initial" animate="animate" exit="exit">
+			<AnimatePresence mode="wait">
+				{screen === "signup" && <Welcome setScreen={setScreen} />}
+				{screen === "verify" && <VerifyNumber setActiveTab={setActiveTab} />}
+			</AnimatePresence>
+		</motion.div>
 	);
 }
+
+export default SignUp
