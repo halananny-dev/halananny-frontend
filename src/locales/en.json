@@ -260,5 +260,41 @@
   "Single": "Single",
   "Married": "Married",
   "Divorced": "Divorced",
-  "Widowed": "Widowed"
+  "Widowed": "Widowed",
+  "pickDate": "Pick a date",
+  "imageUploader": {
+    "title": "Your photo",
+    "upload": {
+      "drop": "Drop",
+      "or_take_picture": "or take a picture"
+    },
+    "instructionsTitle": "Show clients the best version of yourself 🤩!",
+    "uploadInstructions": "Upload instructions:",
+    "steps": {
+      "1": {
+        "title": "Use natural lighting",
+        "description": "Position yourself near a window for soft, flattering light."
+      },
+      "2": {
+        "title": "Choose a plain background",
+        "description": "Opt for a neutral wall or uncluttered space to avoid distractions."
+      },
+      "3": {
+        "title": "Wear professional, approachable clothing",
+        "description": "Select solid-colored tops in soft tones (e.g., light blue, beige)."
+      },
+      "4": {
+        "title": "Smile warmly with eye contact",
+        "description": "Relax your face and imagine interacting with a child for a genuine expression."
+      },
+      "5": {
+        "title": "Use portrait mode on a smartphone",
+        "description": "Have someone take a chest-up shot (no selfies) and lightly adjust brightness."
+      }
+    },
+    "delete": "Delete current image",
+    "cancel": "Cancel",
+    "attach": "Attach photo",
+    "sizeLimit": "250x250 Min / 5 MB Max"
+  }
 }

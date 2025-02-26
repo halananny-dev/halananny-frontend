@@ -7,10 +7,10 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { useI18n } from '@/i18/i18Context';
-import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
+import { IoCloseSharp, IoMenuOutline } from "react-icons/io5";
 import { navbarLinks } from '../constants';
 import { Button } from '../ui/button';
 import Img from './Img';
@@ -96,7 +96,7 @@ export default function Navbar() {
           className="lg:hidden p-2 focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={28} className="text-gray-900" /> : <Menu size={28} className="text-gray-900" />}
+          {isMobileMenuOpen ? <IoCloseSharp className="text-gray-900 text-3xl" /> : <IoMenuOutline className="text-gray-900 text-3xl" />}
         </button>
       </nav>
 

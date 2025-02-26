@@ -11,16 +11,18 @@ import Img from "../sections/Img";
 import Title from "../sections/Title";
 import { DatePicker } from "../ui/datepicker";
 import FileUpload from "./FileUpload";
-import ImageUploaderModal from "./ImgUploaderModal";
 import VideoUpload from "./VideoUpload";
 
 const Profile = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const [modalOpen, setModalOpen] = useState(false);
-	const [image, setImage] = useState<string | null>(null);
+	const [img, setImg] = useState(null)
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		if (img) {
+			setActiveTab(3)
+		}
 	};
 
 	return (
@@ -30,16 +32,7 @@ const Profile = ({ setActiveTab }) => {
 				<form onSubmit={handleSubmit} className="grow text-gray-900">
 					<h4 className="font-bold">{t.profile.profile_picture}</h4>
 					<p className="text-sm mt-1">{t.profile.profile_picture_desc}</p>
-					<FileUpload onClick={() => setModalOpen(true)} />
-					<ImageUploaderModal
-						setImage={setImage}
-						image={image}
-						open={modalOpen}
-						onClose={() => {
-							setModalOpen(false)
-							setImage(null)
-						}}
-					/>
+					<FileUpload onComplete={(img) => setImg(img)} />
 
 					<h4 className="font-bold mt-8">{t.profile.video_upload}</h4>
 					<p className="text-sm mt-1">{t.profile.video_upload_desc}</p>
@@ -110,7 +103,9 @@ const Profile = ({ setActiveTab }) => {
 						</div>
 					</div>
 
-					<Btn className="mt-12 lg:max-w-540" variant="primary" size="lg" disabled={true}>
+					<Btn
+						type="submit"
+						className="mt-12 lg:max-w-540" variant="primary" size="lg" disabled={!img}>
 						{t.profile.next_step}
 					</Btn>
 				</form>

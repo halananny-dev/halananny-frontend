@@ -1,22 +1,15 @@
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import {
-  Home,
-  Search,
-  MessageSquare,
-  Calendar,
-  User,
-  Settings,
-} from 'lucide-react';
+import { FaHome } from 'react-icons/fa';
 
 const navigation = [
-  { name: 'Home', href: '/dashboard', icon: Home },
-  { name: 'Find Nanny', href: '/dashboard/search', icon: Search },
-  { name: 'Messages', href: '/dashboard/messages', icon: MessageSquare },
-  { name: 'Schedule', href: '/dashboard/schedule', icon: Calendar },
-  { name: 'Profile', href: '/dashboard/profile', icon: User },
-  { name: 'Settings', href: '/dashboard/settings', icon: Settings },
+  { name: 'Home', href: '/dashboard', icon: FaHome },
+  { name: 'Find Nanny', href: '/dashboard/search', icon: FaHome },
+  { name: 'Messages', href: '/dashboard/messages', icon: FaHome },
+  { name: 'Schedule', href: '/dashboard/schedule', icon: FaHome },
+  { name: 'Profile', href: '/dashboard/profile', icon: FaHome },
+  { name: 'Settings', href: '/dashboard/settings', icon: FaHome },
 ];
 
 export default function DashboardSidebar() {
