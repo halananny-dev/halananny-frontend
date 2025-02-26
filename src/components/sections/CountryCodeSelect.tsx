@@ -8,8 +8,8 @@ export default function CountryCodeSelect() {
 			<SelectTrigger className="w-28 font-semibold bg-white text-gray-900 focus:ring-0 h-12 outline-none border-0 border-r border-r-gray-10 rounded-none">
 				<SelectValue className="pl-2" placeholder={
 					<div className="flex items-center gap-2.5">
-						<Flag code="US" className="h-4" />
-						<span>+1</span>
+						<Flag code="AE" className="h-3" />
+						<span>+971</span>
 					</div>
 				} />
 			</SelectTrigger>
@@ -18,7 +18,7 @@ export default function CountryCodeSelect() {
 					{COUNTRIES.map(({ code, flag }, index) => (
 						<SelectItem key={index} value={code}>
 							<div className="flex items-center gap-2.5">
-								<Flag code={flag} className="h-4" />
+								<Flag code={flag} className="h-3" />
 								<span>{code}</span>
 							</div>
 						</SelectItem>

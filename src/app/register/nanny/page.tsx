@@ -11,7 +11,7 @@ import { useState } from "react";
 export default function NannyRegistration() {
 	const { t } = useI18n();
 	const tabs = t.tabs;
-	const [activeTab, setActiveTab] = useState(1);
+	const [activeTab, setActiveTab] = useState(2);
 
 	return (
 		<>

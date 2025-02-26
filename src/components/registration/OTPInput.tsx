@@ -1,11 +1,16 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-export default function OTPInput({ length = 6, onComplete }: { length?: number; onComplete?: (otp: string) => void }) {
-	const [otp, setOtp] = useState(Array(length).fill(""));
+interface InputProps {
+	otp: any;
+	setOtp: any
+}
+
+const OTPInput: React.FC<InputProps> = ({ otp, setOtp }) => {
 	const inputsRef = useRef<HTMLInputElement[]>([]);
+	const length = 6
 
 	const handleChange = (index: number, value: string) => {
 		if (!/^\d?$/.test(value)) return;
@@ -16,11 +21,6 @@ export default function OTPInput({ length = 6, onComplete }: { length?: number; 
 
 		if (value && index < length - 1) {
 			inputsRef.current[index + 1]?.focus();
-		}
-
-		const otpValue = newOtp.join("");
-		if (otpValue.length === length && onComplete) {
-			onComplete(otpValue);
 		}
 	};
 
@@ -46,7 +46,6 @@ export default function OTPInput({ length = 6, onComplete }: { length?: number; 
 				if (inputsRef.current[i]) inputsRef.current[i].value = digit;
 			});
 			inputsRef.current[length - 1]?.focus();
-			if (onComplete) onComplete(pasteData.join(""));
 		}
 	};
 
@@ -70,3 +69,5 @@ export default function OTPInput({ length = 6, onComplete }: { length?: number; 
 		</div>
 	);
 }
+
+export default OTPInput

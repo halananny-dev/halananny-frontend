@@ -5,10 +5,9 @@ import { useState } from "react";
 import Img from "../sections/Img";
 import ImageUploaderModal from "./ImgUploaderModal";
 
-export default function FileUpload({ onComplete }) {
+export default function FileUpload({ setImg, image }) {
 	const { t } = useI18n();
 	const [modalOpen, setModalOpen] = useState(false);
-	const [image, setImage] = useState<any>(null);
 
 	return (
 		<>
@@ -35,12 +34,8 @@ export default function FileUpload({ onComplete }) {
 			</div>
 			}
 			<ImageUploaderModal
-				onComplete={img => {
-					setImage(img)
-					setModalOpen(false)
-					onComplete(img)
-				}}
 				open={modalOpen}
+				setImg={setImg}
 				onClose={() => setModalOpen(false)}
 			/>
 		</>

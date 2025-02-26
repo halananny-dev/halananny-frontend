@@ -3,7 +3,7 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { COUNTRIES, MARTIAL_STATUS, RELIGION, screenVariants } from "../constants";
+import { MARTIAL_STATUS, NATIONALITIES, RELIGION, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import Counter from "../sections/Counter";
 import { CustomSelect } from "../sections/CustomSelect";
@@ -27,13 +27,15 @@ const Profile = ({ setActiveTab }) => {
 
 	return (
 		<motion.div key="profile" variants={screenVariants} initial="initial" animate="animate" exit="exit">
-			<div className="flex lg:items-start flex-col items-center lg:flex-row lg:gap-32 sm:px-20 px-4 py-16 bg-white rounded-md border border-gray-200">
+			<div className="flex lg:items-start flex-col items-center lg:flex-row lg:gap-32 md:px-20 px-4 py-16 bg-white rounded-md border border-gray-200">
 				<Title className="lg:max-w-48">{t.profile.title}</Title>
 				<form onSubmit={handleSubmit} className="grow text-gray-900">
 					<h4 className="font-bold">{t.profile.profile_picture}</h4>
 					<p className="text-sm mt-1">{t.profile.profile_picture_desc}</p>
-					<FileUpload onComplete={(img) => setImg(img)} />
-
+					<FileUpload
+						image={img}
+						setImg={setImg}
+					/>
 					<h4 className="font-bold mt-8">{t.profile.video_upload}</h4>
 					<p className="text-sm mt-1">{t.profile.video_upload_desc}</p>
 					<p className="mt-4 text-teal-500 font-semibold text-xs">{t.profile.video_guidelines}</p>
@@ -74,7 +76,7 @@ const Profile = ({ setActiveTab }) => {
 					<div className="mt-5 font-semibold flex flex-col gap-5 max-w-96">
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.nationality}</label>
-							<CustomSelect options={COUNTRIES.map((c) => c.nationality)} placeholder={t.profile.nationality} />
+							<CustomSelect options={NATIONALITIES} placeholder={t.profile.nationality} />
 						</div>
 
 						<div className="flex flex-col gap-2 font-semibold">

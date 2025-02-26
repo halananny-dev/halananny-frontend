@@ -62,6 +62,7 @@ export default {
           "800": "#F8F8F8",
           850: "#9C9C9C",
           "900": "#385469",
+          950:"#E8E8E8",
         },
         red: {
           500: "#F05E5E",
@@ -77,6 +78,7 @@ export default {
         green: {
           500: "#16BB52",
           600: "#2DC690",
+          700:"#01C248"
         },
       },
       borderRadius: {

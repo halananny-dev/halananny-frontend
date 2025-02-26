@@ -15,10 +15,10 @@ import Img from "../sections/Img";
 interface ModalProps {
 	open: boolean;
 	onClose: any;
-	onComplete: any;
+	setImg: any
 }
 
-const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, onComplete }) => {
+const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, setImg }) => {
 	const [image, setImage] = useState<string | null>(null);
 	const [crop, setCrop] = useState({ x: 0, y: 0 });
 	const [zoom, setZoom] = useState(1);
@@ -117,7 +117,12 @@ const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, onComplete })
 								{t.imageUploader.cancel}
 							</Button>
 							<Btn
-								onClick={() => onComplete(cropper.current?.props)}
+								onClick={() => {
+									const img = cropper.current.props
+									setImage(img)
+									setImg(img)
+									onClose()
+								}}
 								size="xl"
 								disabled={!image}
 								variant="primary"

@@ -296,5 +296,12 @@
     "cancel": "إلغاء",
     "attach": "إرفاق الصورة",
     "sizeLimit": "250x250 كحد أدنى / 5 ميغابايت كحد أقصى"
+  },
+  "upload_video": {
+    "choose_video": "اختر فيديو",
+    "uploading": "جارٍ الرفع",
+    "uploaded": "تم الرفع",
+    "remove_video": "إزالة الفيديو",
+    "video_not_supported": "متصفحك لا يدعم علامة الفيديو."
   }
 }

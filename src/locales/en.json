@@ -296,5 +296,12 @@
     "cancel": "Cancel",
     "attach": "Attach photo",
     "sizeLimit": "250x250 Min / 5 MB Max"
+  },
+  "upload_video": {
+    "choose_video": "Choose a video",
+    "uploading": "Uploading",
+    "uploaded": "Uploaded",
+    "remove_video": "Remove video",
+    "video_not_supported": "Your browser does not support the video tag."
   }
 }

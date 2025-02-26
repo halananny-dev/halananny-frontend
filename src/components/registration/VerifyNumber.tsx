@@ -12,7 +12,7 @@ interface LoginProps {
 
 const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const [otp, setOtp] = useState()
+	const [otp, setOtp] = useState(Array(6).fill(''))
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -49,10 +49,13 @@ const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
 						<p className="mt-10 text-sm text-center">
 							{t.otp_expiry} <span className="text-teal-500">{t.otp_expiry_time}</span>
 						</p>
-						<OTPInput onComplete={(otp: any) => setOtp(otp)} />
+						<OTPInput
+							setOtp={setOtp}
+							otp={otp}
+						/>
 						<Btn
 							type="submit"
-							disabled={!otp}
+							disabled={otp.join('').length !== 6}
 							size="lg"
 							variant="primary"
 							className="mt-11">
