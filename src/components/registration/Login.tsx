@@ -5,6 +5,7 @@ import React, { useRef, useState } from "react";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import { Input } from "../ui/input";
+import CheckBox from "../sections/Checkbox";
 
 interface LoginProps {
 	setScreen: any
@@ -21,7 +22,7 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 
 	const handleChange = () => {
 		const form: any = new FormData(formRef?.current)
-		
+
 		const email = form.get('email').trim()
 		const password = form.get('password').trim()
 
@@ -45,7 +46,7 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 				</div>
 				<div className="mt-5 text-sm font-semibold flex justify-between items-center">
 					<div className="flex gap-2">
-						<input type="checkbox" name="remember" id="remember" />
+						<CheckBox name="remember" />
 						<label htmlFor="remember">{t.Login.remember}</label>
 					</div>
 					<button className="text-teal-500 font-semibold" onClick={() => setScreen("forgot")}>
