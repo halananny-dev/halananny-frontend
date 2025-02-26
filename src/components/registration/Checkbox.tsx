@@ -26,7 +26,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className }) => {
 			{data.map((item, index) => (
 				<label
 					htmlFor={item.title}
-					className={`border py-2 cursor-pointer select-none h-14 px-3.5 rounded-lg ${selected.includes(item.title) ? "border-teal-500" : "border-gray-150"}`}
+					className={`border py-2 cursor-pointer select-none h-14 px-3.5 rounded-lg ${selected.includes(item.title) ? "border-teal-500 shadow-lg" : "border-gray-150"}`}
 					key={index}
 				>
 					{variant === "variant1" && (
