@@ -17,14 +17,16 @@ const ForgotPassword: React.FC<LoginProps> = ({ setScreen }) => {
 
 	const forgotPassword = (e) => {
 		e.preventDefault()
-		setScreen("reset")
+		if (!disabled) {
+			setScreen("reset")
+		}
 	}
 
 	return (
 		<motion.div key="forgot" variants={screenVariants} initial="initial" animate="animate" exit="exit">
 			<form onSubmit={forgotPassword}>
 				<div className="flex items-center gap-4">
-					<Button variant="ghost" className="w-5" onClick={() => setScreen("login")}>
+					<Button type="button" variant="ghost" className="w-5" onClick={() => setScreen("login")}>
 						<IoIosArrowBack className="text-xl" />
 					</Button>
 					<h2 className="text-3xl font-bold">{t.Login.forgot_password_title}</h2>

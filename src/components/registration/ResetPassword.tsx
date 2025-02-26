@@ -32,7 +32,7 @@ const ResetPassword: React.FC<LoginProps> = ({ setScreen }) => {
 		<motion.div key="reset" variants={screenVariants} initial="initial" animate="animate" exit="exit">
 			<form ref={formRef} onSubmit={resetPassword} onChange={handleChange}>
 				<div className="flex items-center gap-4">
-					<Button variant="ghost" className="w-5" onClick={() => setScreen("forgot")}>
+					<Button type="button" variant="ghost" className="w-5" onClick={() => setScreen("forgot")}>
 						<IoIosArrowBack className="text-xl" />
 					</Button>
 					<h2 className="text-3xl font-bold">{t.Login.reset_password_title}</h2>

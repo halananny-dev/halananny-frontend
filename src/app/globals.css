@@ -147,8 +147,6 @@ html[dir="rtl"] .swiper-wrapper {
   scrollbar-width: none;
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;

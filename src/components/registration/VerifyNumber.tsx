@@ -1,5 +1,6 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import Img from "../sections/Img";
@@ -11,10 +12,13 @@ interface LoginProps {
 
 const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const [otp, setOtp] = useState()
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setActiveTab(2)
+		if (otp) {
+			setActiveTab(2)
+		}
 	};
 
 	return (
@@ -45,13 +49,19 @@ const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
 						<p className="mt-10 text-sm text-center">
 							{t.otp_expiry} <span className="text-teal-500">{t.otp_expiry_time}</span>
 						</p>
-						<OTPInput />
-						<Btn size="lg" variant="primary" className="mt-11">
+						<OTPInput onComplete={(otp: any) => setOtp(otp)} />
+						<Btn
+							type="submit"
+							disabled={!otp}
+							size="lg"
+							variant="primary"
+							className="mt-11">
 							{t.verify_otp}
 						</Btn>
 						<p className="mt-5 text-center">
 							{t.didnt_receive_otp} {" "}
-							<button className="font-semibold underline text-teal-500">
+							<button
+								className="font-semibold underline text-teal-500">
 								{t.resend_otp}
 							</button>
 						</p>

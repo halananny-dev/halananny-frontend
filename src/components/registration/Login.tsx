@@ -21,6 +21,7 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 
 	const handleChange = () => {
 		const form: any = new FormData(formRef?.current)
+		
 		const email = form.get('email').trim()
 		const password = form.get('password').trim()
 
