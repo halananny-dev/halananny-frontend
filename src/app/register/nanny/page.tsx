@@ -1,15 +1,17 @@
 "use client";
 
+import Profile from "@/components/registration/Profile";
 import SignUp from "@/components/registration/SignUp";
 import Img from "@/components/sections/Img";
 import Navbar from "@/components/sections/Navbar";
 import { useI18n } from "@/i18/i18Context";
+import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function NannyRegistration() {
 	const { t } = useI18n();
 	const tabs = t.tabs;
-	const [activeTab, setActiveTab] = useState(1);
+	const [activeTab, setActiveTab] = useState(2);
 
 	return (
 		<>
@@ -29,7 +31,7 @@ export default function NannyRegistration() {
 							<div className="relative flex items-center">
 								<Img src={active ? "/step-active.svg" : "/step-disabled.svg"} />
 								{index !== tabs.length - 1 && (
-									<div className="bg-gray-700 lg:w-48 w-40 h-px absolute ltr:left-7 rtl:right-7"></div>
+									<div className={"lg:w-48 w-40 h-px absolute ltr:left-7 rtl:right-7 " + (active ? "bg-teal-500" : "bg-gray-700")}></div>
 								)}
 							</div>
 							<p
@@ -46,7 +48,10 @@ export default function NannyRegistration() {
 			</div>
 
 			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8">
-				{activeTab === 1 && <SignUp />}
+				<AnimatePresence mode="wait">
+					{activeTab === 1 && <SignUp setActiveTab={setActiveTab} />}
+					{activeTab === 2 && <Profile setActiveTab={setActiveTab} />}
+				</AnimatePresence>
 			</div>
 		</>
 	);

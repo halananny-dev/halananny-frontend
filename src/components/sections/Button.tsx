@@ -7,12 +7,14 @@ interface ButtonProps {
     size: 'lg' | 'md' | 'xl',
     className?: string,
     onClick?: () => void,
+    disabled?: boolean
+    type?: 'button' | 'submit'
 }
 
 
-const Btn: React.FC<ButtonProps> = ({ children, className, size, variant, onClick }) => {
+const Btn: React.FC<ButtonProps> = ({ children, className, size, variant, onClick, disabled, type = 'button' }) => {
     const btnClass = classnames({
-        "bg-teal-500 text-white": variant === 'primary',
+        "bg-teal-500 text-white disabled:bg-[#DCDCDC]": variant === 'primary',
         "text-teal-500 border border-teal-500 hover:text-teal-500": variant === 'primary-outlined'
     })
 
@@ -24,6 +26,8 @@ const Btn: React.FC<ButtonProps> = ({ children, className, size, variant, onClic
 
     return (
         <Button
+            disabled={disabled}
+            type={type}
             onClick={onClick}
             variant='outline'
             className={`w-full h-auto !rounded-18 ${sizeClass} ${btnClass} ${className}`}

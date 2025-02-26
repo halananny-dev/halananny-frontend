@@ -1,5 +1,5 @@
 import Flag from "react-world-flags";
-import { countries } from "../constants";
+import { COUNTRIES } from "../constants";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 export default function CountryCodeSelect() {
@@ -15,7 +15,7 @@ export default function CountryCodeSelect() {
 			</SelectTrigger>
 			<SelectContent>
 				<SelectGroup>
-					{countries.map(({ code, flag }, index) => (
+					{COUNTRIES.map(({ code, flag }, index) => (
 						<SelectItem key={index} value={code}>
 							<div className="flex items-center gap-2.5">
 								<Flag code={flag} className="h-4" />

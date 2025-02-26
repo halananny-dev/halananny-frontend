@@ -6,15 +6,15 @@ import Img from "../sections/Img";
 import OTPInput from "./OTPInput";
 
 interface LoginProps {
-	setScreen: any;
+	setActiveTab: any
 }
 
-const VerifyNumber: React.FC<LoginProps> = ({ setScreen }) => {
+const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
 	const { t } = useI18n();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setScreen("signup");
+		setActiveTab(2)
 	};
 
 	return (
@@ -26,7 +26,7 @@ const VerifyNumber: React.FC<LoginProps> = ({ setScreen }) => {
 			exit="exit"
 		>
 			<div className="flex rounded-2xl border border-gray-200">
-				<Img  src="/verify.svg"  className="hidden lg:block" />
+				<Img src="/verify.svg" className="hidden lg:block" />
 				<form
 					onSubmit={handleSubmit}
 					className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow"

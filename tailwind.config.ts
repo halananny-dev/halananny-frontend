@@ -56,7 +56,9 @@ export default {
           "400": "#A6B1B7",
           "500": "#8A97A1",
           600: "#858A9B",
+          650: "#F6FFFF",
           700: "#E0E0E0",
+          750: "#FBFBFB",
           "800": "#F8F8F8",
           "900": "#385469",
         },
@@ -80,6 +82,7 @@ export default {
       },
       maxWidth: {
         max: "1320px",
+        540: "540px",
         390: "390px",
       },
       fontSize: {
