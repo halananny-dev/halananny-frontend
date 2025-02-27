@@ -387,5 +387,18 @@
   "job_requirements": "متطلبات الوظيفة",
   "availability_booking": "التوافر وتفضيلات الحجز",
   "payment_setup": "إعداد الدفع (اختياري)",
-  "final_confirmation": "التأكيد النهائي"
+  "final_confirmation": "التأكيد النهائي",
+  "family": {
+    "title": "أخبرنا عن عائلتك",
+    "family_size": "حجم العائلة",
+    "family_members": "عدد أفراد العائلة",
+    "children_ages": "أعمار الأطفال",
+    "kid": "الطفل",
+    "add_kid": "إضافة طفل",
+    "address": "العنوان",
+    "your_address": "عنوانك",
+    "year": "سنة",
+    "years": "سنوات"
+  },
+  "age": "العمر"
 }

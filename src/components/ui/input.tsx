@@ -10,7 +10,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
     const [t, setType] = React.useState(type)
 
     return (
-      <div className="relative flex items-center">
+      <div className="relative flex items-center w-full">
         <input
           type={t}
           className={cn(

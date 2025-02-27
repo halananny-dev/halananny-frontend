@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useI18n } from "@/i18/i18Context";
 import { useState } from "react";
@@ -6,12 +6,19 @@ import Img from "../sections/Img";
 
 export default function CertificationUpload() {
 	const { t } = useI18n();
-	const [certifications, setCertifications] = useState([
-		{ name: "", file: "" }
-	]);
+	const [certifications, setCertifications] = useState([{ name: "", file: null }]);
 
 	const addRow = () => {
-		setCertifications([...certifications, { name: "", file: "" }]);
+		setCertifications([...certifications, { name: "", file: null }]);
+	};
+
+	const onFileChange = (index, event) => {
+		const file = event.target.files[0];
+		if (file) {
+			const updatedCertifications = [...certifications];
+			updatedCertifications[index].file = file.name;
+			setCertifications(updatedCertifications);
+		}
 	};
 
 	return (
@@ -31,8 +38,14 @@ export default function CertificationUpload() {
 							className="grow h-8 px-3 text-sm font-semibold outline-none"
 						/>
 						<div className="relative w-40 flex items-center justify-center border-l text-sm border-gray-40">
-							<button className="w-auto">{t.registration.upload}</button>
-							<input type="file" className="absolute w-full h-full top-0 opacity-0" />
+							<button className="w-auto">
+								{certificate.file || t.registration.upload}
+							</button>
+							<input
+								type="file"
+								className="absolute w-full h-full top-0 opacity-0"
+								onChange={(e) => onFileChange(index, e)}
+							/>
 						</div>
 					</div>
 				))}

@@ -1,5 +1,6 @@
 "use client";
 
+import FamilyProfile from "@/components/registration/FamilyProfile";
 import SignUp from "@/components/registration/SignUp";
 import Img from "@/components/sections/Img";
 import Navbar from "@/components/sections/Navbar";
@@ -18,7 +19,7 @@ export default function ParentRegistration() {
 		"final_confirmation"
 	];
 
-	const [activeTab, setActiveTab] = useState(1);
+	const [activeTab, setActiveTab] = useState(2);
 
 	return (
 		<>
@@ -55,6 +56,7 @@ export default function ParentRegistration() {
 			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8">
 				<AnimatePresence mode="wait">
 					{activeTab === 1 && <SignUp img="/parent-sign-up.svg" setActiveTab={setActiveTab} />}
+					{activeTab === 2 && <FamilyProfile setActiveTab={setActiveTab} />}
 				</AnimatePresence>
 			</div>
 		</>

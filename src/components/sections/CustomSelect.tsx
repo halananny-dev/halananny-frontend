@@ -46,7 +46,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, placeholder = "Sel
 				{options.map((option, index) => (
 					<SelectItem key={index} value={option}>
 						<span className="flex items-center gap-2">
-							{t[option]}
+							{t[option] || option}
 						</span>
 					</SelectItem>
 				))}

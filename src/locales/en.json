@@ -387,5 +387,18 @@
   "job_requirements": "Job Requirements",
   "availability_booking": "Availability and Booking Preferences",
   "payment_setup": "Payment Setup (Optional)",
-  "final_confirmation": "Final Confirmation"
+  "final_confirmation": "Final Confirmation",
+  "family": {
+    "title": "Tell Us About Your Family",
+    "family_size": "Family Size",
+    "family_members": "Number of family members",
+    "children_ages": "Children’s Ages",
+    "kid": "Kid",
+    "add_kid": "Add Kid",
+    "address": "Address",
+    "your_address": "Your Address",
+    "year": "year",
+    "years": "years"
+  },
+  "age": "Age"
 }
