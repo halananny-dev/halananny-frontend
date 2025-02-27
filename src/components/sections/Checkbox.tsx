@@ -6,7 +6,7 @@ import { FaCheck } from "react-icons/fa"
 interface CheckboxProps {
 	name: string
 	onChange?: any
-	className: string
+	className?: string
 }
 
 const CheckBox: React.FC<CheckboxProps> = ({ name, onChange, className }) => {

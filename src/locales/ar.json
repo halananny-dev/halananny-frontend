@@ -380,5 +380,12 @@
     "item_name": "اسم العنصر",
     "upload": "تحميل"
   },
-  "success": "لقد أكملت ملفك الشخصي! سيقوم فريقنا بمراجعته قريبًا."
+  "success": "لقد أكملت ملفك الشخصي! سيقوم فريقنا بمراجعته قريبًا.",
+  "parent_registration": "تسجيل الوالدين",
+  "sign_up": "التسجيل",
+  "family_profile_setup": "إعداد ملف العائلة",
+  "job_requirements": "متطلبات الوظيفة",
+  "availability_booking": "التوافر وتفضيلات الحجز",
+  "payment_setup": "إعداد الدفع (اختياري)",
+  "final_confirmation": "التأكيد النهائي"
 }

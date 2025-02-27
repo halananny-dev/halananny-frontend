@@ -10,9 +10,10 @@ import { Input } from "../ui/input";
 
 interface Props {
 	setScreen: any;
+	img: string
 }
 
-const Welcome: React.FC<Props> = ({ setScreen }) => {
+const Welcome: React.FC<Props> = ({ setScreen, img }) => {
 	const { t } = useI18n();
 	const formRef = useRef<any>(null)
 	const [disabled, setDisabled] = useState(true)
@@ -36,7 +37,7 @@ const Welcome: React.FC<Props> = ({ setScreen }) => {
 	return (
 		<motion.div key="login" variants={screenVariants} initial="initial" animate="animate" exit="exit">
 			<div className="flex rounded-2xl border border-gray-200">
-				<Img src="/sign-up.svg" className="hidden lg:block" />
+				<Img src={img} className="hidden lg:block" />
 				<form
 					ref={formRef}
 					onChange={handleChange}

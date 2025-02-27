@@ -380,5 +380,12 @@
     "item_name": "Item name",
     "upload": "Upload"
   },
-  "success": "You’ve completed your profile! Our team will review it shortly."
+  "success": "You’ve completed your profile! Our team will review it shortly.",
+  "parent_registration": "Parent Registration",
+  "sign_up": "Sign up",
+  "family_profile_setup": "Family Profile Setup",
+  "job_requirements": "Job Requirements",
+  "availability_booking": "Availability and Booking Preferences",
+  "payment_setup": "Payment Setup (Optional)",
+  "final_confirmation": "Final Confirmation"
 }

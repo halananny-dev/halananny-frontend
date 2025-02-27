@@ -53,7 +53,7 @@ export default function NannyRegistration() {
 
 			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8">
 				<AnimatePresence mode="wait">
-					{activeTab === 1 && <SignUp setActiveTab={setActiveTab} />}
+					{activeTab === 1 && <SignUp img="/sign-up.svg" setActiveTab={setActiveTab} />}
 					{activeTab === 2 && <Profile setActiveTab={setActiveTab} />}
 					{activeTab === 3 && <Experience setActiveTab={setActiveTab} />}
 					{activeTab === 4 && <JobPreference setActiveTab={setActiveTab} />}

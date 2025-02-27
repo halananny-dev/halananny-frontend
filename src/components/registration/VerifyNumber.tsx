@@ -8,9 +8,10 @@ import OTPInput from "./OTPInput";
 
 interface LoginProps {
 	setActiveTab: any
+	img: string
 }
 
-const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
+const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab, img }) => {
 	const { t } = useI18n();
 	const [otp, setOtp] = useState(Array(6).fill(''))
 
@@ -30,7 +31,7 @@ const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab }) => {
 			exit="exit"
 		>
 			<div className="flex rounded-2xl border border-gray-200">
-				<Img src="/verify.svg" className="hidden lg:block" />
+				<Img src={img || "/verify.svg"} className="hidden lg:block" />
 				<form
 					onSubmit={handleSubmit}
 					className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow"
