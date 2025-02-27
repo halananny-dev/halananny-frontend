@@ -400,5 +400,17 @@
     "year": "year",
     "years": "years"
   },
-  "age": "Age"
+  "age": "Age",
+  "jobRequirements": {
+    "title": "What Kind of Nanny Are You Looking For?",
+    "experience": "Preferred Experience:",
+    "newborn": "Newborn experience",
+    "preschool": "Pre-school kids",
+    "older": "Older kids",
+    "language": "Language Preference:",
+    "skills": "Additional Skills Required:",
+    "religion": "Cultural/Religious Preferences:",
+    "muslim": "Muslim-friendly",
+    "dietary": "Dietary restrictions"
+  }
 }

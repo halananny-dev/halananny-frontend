@@ -14,7 +14,7 @@ interface ButtonProps {
 
 const Btn: React.FC<ButtonProps> = ({ children, className, size, variant, onClick, disabled, type = 'button' }) => {
     const btnClass = classnames({
-        "bg-teal-500 text-white disabled:bg-[#DCDCDC]": variant === 'primary',
+        "bg-teal-500 text-white disabled:bg-[#D1D1D1]": variant === 'primary',
         "text-teal-500 border border-teal-500 hover:text-teal-500": variant === 'primary-outlined'
     })
 

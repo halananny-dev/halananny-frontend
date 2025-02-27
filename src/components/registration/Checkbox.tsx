@@ -9,16 +9,17 @@ interface CheckboxProps {
 	variant: "variant1" | 'variant2';
 	data: any[];
 	className?: string;
+	onChange?: any
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className, onChange }) => {
 	const [selected, setSelected] = useState<string[]>([]);
 	const { t } = useI18n()
 
 	const handleChange = (title: string) => {
-		setSelected((prev) =>
-			prev.includes(title) ? prev.filter((item) => item !== title) : [...prev, title]
-		);
+		const newItems = selected.includes(title) ? selected.filter((item) => item !== title) : [...selected, title]
+		setSelected(newItems);
+		onChange && onChange(newItems)
 	};
 
 	return (
