@@ -329,5 +329,29 @@
   "Pre-school kids_desc": "(4-5 years)",
   "Older kids": "Older kids",
   "Older kids_desc": "(6+ years)",
-  "Newborn": "Newborn"
+  "Newborn": "Newborn",
+  "full_time": "Full time",
+  "part_time": "Part time",
+  "live_in": "Live-in",
+  "USD": "USD",
+  "AED": "AED",
+  "1000 to 2000": "1000 to 2000",
+  "2000 to 4000": "2000 to 4000",
+  "UAE": "UAE",
+  "Country": "Country",
+  "Cities": "Cities",
+  "Dubai": "Dubai",
+  "jobPreference": {
+    "title": "Match Your Perfect Job",
+    "desired_jobs": "Desired Jobs",
+    "job_list_placeholder": "Job list",
+    "desired_salary": "Desired Monthly Salary",
+    "currency_placeholder": "AED",
+    "salary_range_placeholder": "2000 to 4000",
+    "available_country": "Available Country",
+    "country_placeholder": "Country",
+    "available_cities": "Available Cities",
+    "cities_placeholder": "Cities",
+    "available_from": "Available From"
+  }
 }

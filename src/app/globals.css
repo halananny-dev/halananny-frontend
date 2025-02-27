@@ -7,6 +7,11 @@ body {
   background-color: #fafafa;
 }
 
+.popover-content {
+  width: var(--radix-popover-trigger-width) !important;
+  max-height: var(--radix-popover-content-available-height) !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -147,11 +152,17 @@ html[dir="rtl"] .swiper-wrapper {
   scrollbar-width: none;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+.rdp-weekdays {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rdp-weekday {
+  width: 32px;
+  text-align: center;
+}
+
+.rdp-month_caption {
+  width: fit-content;
+  margin: -24px auto 0 auto;
 }

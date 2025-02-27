@@ -330,5 +330,29 @@
   "Cooking": "الطبخ",
   "Driving": "القيادة",
   "Petcare": "رعاية الحيوانات الأليفة",
-  "Gardening": "البستنة"
+  "Gardening": "البستنة",
+  "full_time": "دوام كامل",
+  "part_time": "دوام جزئي",
+  "live_in": "إقامة مع العمل",
+  "USD": "دولار أمريكي",
+  "AED": "درهم إماراتي",
+  "1000 to 2000": "1000 إلى 2000",
+  "2000 to 4000": "2000 إلى 4000",
+  "UAE": "الإمارات العربية المتحدة",
+  "Country": "الدولة",
+  "Cities": "المدن",
+  "Dubai": "دبي",
+  "jobPreference": {
+    "title": "اعثر على وظيفتك المثالية",
+    "desired_jobs": "الوظائف المطلوبة",
+    "job_list_placeholder": "قائمة الوظائف",
+    "desired_salary": "الراتب الشهري المطلوب",
+    "currency_placeholder": "درهم إماراتي",
+    "salary_range_placeholder": "2000 إلى 4000",
+    "available_country": "الدولة المتاحة",
+    "country_placeholder": "الدولة",
+    "available_cities": "المدن المتاحة",
+    "cities_placeholder": "المدن",
+    "available_from": "متاح من"
+  }
 }

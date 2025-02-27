@@ -7,7 +7,7 @@ import { MARTIAL_STATUS, NATIONALITIES, RELIGION, screenVariants } from "../cons
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
-import { CustomSelect } from "../sections/CustomSelect";
+import CustomSelect from "../sections/CustomSelect";
 import Img from "../sections/Img";
 import Title from "../sections/Title";
 import { DatePicker } from "../ui/datepicker";
