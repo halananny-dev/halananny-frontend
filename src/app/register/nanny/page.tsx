@@ -4,6 +4,8 @@ import Experience from "@/components/registration/Experience";
 import JobPreference from "@/components/registration/JobPreference";
 import Profile from "@/components/registration/Profile";
 import SignUp from "@/components/registration/SignUp";
+import Success from "@/components/registration/Success";
+import Verification from "@/components/registration/Verification";
 import Img from "@/components/sections/Img";
 import Navbar from "@/components/sections/Navbar";
 import { useI18n } from "@/i18/i18Context";
@@ -13,7 +15,7 @@ import { useState } from "react";
 export default function NannyRegistration() {
 	const { t } = useI18n();
 	const tabs = t.tabs;
-	const [activeTab, setActiveTab] = useState(4);
+	const [activeTab, setActiveTab] = useState(1);
 
 	return (
 		<>
@@ -55,6 +57,8 @@ export default function NannyRegistration() {
 					{activeTab === 2 && <Profile setActiveTab={setActiveTab} />}
 					{activeTab === 3 && <Experience setActiveTab={setActiveTab} />}
 					{activeTab === 4 && <JobPreference setActiveTab={setActiveTab} />}
+					{activeTab === 5 && <Verification setActiveTab={setActiveTab} />}
+					{activeTab === 6 && <Success />}
 				</AnimatePresence>
 			</div>
 		</>

@@ -11,8 +11,8 @@ import CustomSelect from "../sections/CustomSelect";
 import Img from "../sections/Img";
 import Title from "../sections/Title";
 import { DatePicker } from "../ui/datepicker";
-import FileUpload from "./FileUpload";
-import VideoUpload from "./VideoUpload";
+import ImgUpload from "./ImgUpload";
+import VideoUpload from "./FileUpload";
 
 const Profile = ({ setActiveTab }) => {
 	const { t } = useI18n();
@@ -34,7 +34,7 @@ const Profile = ({ setActiveTab }) => {
 				<form onSubmit={handleSubmit} className="grow text-gray-900">
 					<h4 className="font-bold">{t.profile.profile_picture}</h4>
 					<p className="text-sm mt-1">{t.profile.profile_picture_desc}</p>
-					<FileUpload
+					<ImgUpload
 						image={img}
 						setImg={setImg}
 					/>
@@ -69,7 +69,7 @@ const Profile = ({ setActiveTab }) => {
 					<div className="mt-8 flex flex-col gap-2 font-semibold">
 						<label htmlFor="about">{t.profile.about_me}</label>
 						<textarea
-							className="border font-medium outline-none border-gray-10 max-w-540 p-6 rounded-xl text-sm"
+							className="textarea"
 							placeholder={t.profile.about_me_placeholder}
 							id="about"
 							name="about"></textarea>

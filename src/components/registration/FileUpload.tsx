@@ -1,43 +1,160 @@
-"use client"
+"use client";
 
 import { useI18n } from "@/i18/i18Context";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
+import { FaPause, FaPlay } from "react-icons/fa";
 import Img from "../sections/Img";
-import ImageUploaderModal from "./ImgUploaderModal";
 
-export default function FileUpload({ setImg, image }) {
+interface VideoProps {
+	text?: string;
+	img?: any
+	accept?: string
+}
+
+const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 	const { t } = useI18n();
-	const [modalOpen, setModalOpen] = useState(false);
+	const [file, setFile] = useState<File | null>(null);
+	const [uploadProgress, setUploadProgress] = useState<number>(0);
+	const [isUploading, setIsUploading] = useState<boolean>(false);
+	const videoRef = useRef<HTMLVideoElement | null>(null);
+	const [isPlaying, setIsPlaying] = useState(false);
+	const [error, setError] = useState<any>()
+
+	const togglePlayPause = () => {
+		if (!videoRef.current) return;
+
+		if (videoRef.current.paused) {
+			videoRef.current.play();
+			setIsPlaying(true);
+		} else {
+			videoRef.current.pause();
+			setIsPlaying(false);
+		}
+	};
+
+	const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files?.[0];
+		setError(null);
+
+		if (file) {
+			if (!accept) {
+				const videoElement = document.createElement("video");
+				videoElement.preload = "metadata";
+				videoElement.src = URL.createObjectURL(file);
+
+				videoElement.onloadedmetadata = () => {
+					window.URL.revokeObjectURL(videoElement.src);
+
+					if (videoElement.duration > 60) {
+						setError("Video must be under 1 minute.");
+						return;
+					}
+
+					setIsUploading(true);
+					simulateUpload(file);
+				};
+			}
+			setFile(file);
+		}
+	};
+	const simulateUpload = (file: File) => {
+		const totalSize = file.size;
+		let uploaded = 0;
+
+		const interval = setInterval(() => {
+			uploaded += totalSize / 20;
+			setUploadProgress(Math.min((uploaded / totalSize) * 100, 100));
+
+			if (uploaded >= totalSize) {
+				clearInterval(interval);
+				setIsUploading(false);
+			}
+		}, 200);
+	};
+
+	const handleRemoveVideo = () => {
+		setFile(null);
+		setUploadProgress(0);
+		setIsUploading(false);
+		setError('');
+	};
 
 	return (
 		<>
-			{!image ? <div
-				onClick={() => setModalOpen(true)}
-				className="p-4 mt-4 cursor-pointer select-none bg-gray-750 relative flex-col flex items-center justify-center w-32 h-32 border border-gray-900 border-dashed rounded-xl">
-				<Img src="/upload.svg" />
-				<p className="mt-3 text-sm font-semibold text-center">
-					<span className="text-teal-500">{t.upload.drop} </span>
-					{t.upload.or_take_picture}
-				</p>
-			</div> : <div
-				onClick={() => setModalOpen(true)}
-				className="h-32 w-32 cursor-pointer relative rounded-xl overflow-hidden"
-			>
-				<Img src={image.image}
-					style={{
-						transform: `scale(${image.zoom}) translate(${image.crop.x}px, ${image.crop.y}px)`,
-						transformOrigin: 'center',
-					}}
-				/>
-				<Img src="/edit.svg"
-					className="absolute text-xs top-3 right-3" />
+			<div className="p-4 mt-4 gap-5 md:max-w-540 w-full cursor-pointer select-none bg-gray-750 relative flex flex-col items-center border border-gray-900 border-dashed rounded-xl">
+				{file ? (
+					<div className="w-full gap-6 flex items-center text-gray-900">
+						<div className="hidden md:flex flex-col gap-1 items-center">
+							<Img src={isUploading ? "/upload-video.svg" : "/uploaded.svg"} />
+							<p className="text-xs font-semibold">
+								{isUploading ? t.upload_video.uploading : t.upload_video.uploaded}
+							</p>
+						</div>
+						<div className="flex items-center flex-col md:flex-row gap-4 md:gap-0 grow">
+							{!accept ? <div className="relative">
+								<button
+									onClick={togglePlayPause}
+									className="absolute z-40 text-white text-xs w-full h-full top-0 left-0 flex items-center justify-center">
+									{!isPlaying ? <FaPlay /> : <FaPause />}
+								</button>
+								<video ref={videoRef} className="md:h-9 w-full md:w-auto rounded-lg">
+									<source src={URL.createObjectURL(file)} type={file.type} />
+									{t.upload_video.video_not_supported}
+								</video>
+							</div> :
+								<div className="border-l border-l-gray-10 hidden md:block pl-6">
+									<Img src={img} />
+								</div>
+							}
+							<div className="md:ltr:ml-3 md:rtl:mr-3 w-64 mr-auto md:mr-0">
+								<div className="text-sm">
+									<p className="truncate overflow-hidden w-full">File :
+										<span className="font-semibold">{" "}{file.name}</span>
+									</p>
+									{isUploading ? (
+										<div className="w-full bg-gray-950 mt-3 rounded-full h-1">
+											<div
+												className="bg-green-700 h-1 rounded-full transition-all"
+												style={{ width: `${uploadProgress}%` }}
+											></div>
+										</div>
+									) :
+										<p className="font-light">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+									}
+								</div>
+							</div>
+							{isUploading ? <div className="ml-1.5 text-xs gap-1.5 -mb-2 flex md:flex-col items-end">
+								<p className="font-light">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+								<p className="font-medium">{uploadProgress.toFixed(0)} %</p>
+							</div> :
+								<div className="flex items-center justify-between w-full md:w-auto md:rtl:mr-auto md:ltr:ml-auto">
+									<div className="flex md:hidden gap-1 items-center">
+										<Img src={isUploading ? "/upload-video.svg" : "/uploaded.svg"} />
+										<p className="text-xs font-semibold">
+											{isUploading ? t.upload_video.uploading : t.upload_video.uploaded}
+										</p>
+									</div>
+									<button onClick={handleRemoveVideo}>
+										<Img src="/remove-video.svg" />
+									</button>
+								</div>
+							}
+						</div>
+					</div>
+				) : (
+					<label className="w-full flex gap-4 items-center justify-center cursor-pointer">
+						<Img src={img || "/video-upload.svg"} />
+						<p className="text-sm font-medium">{text || t.upload_video.choose_video}</p>
+						<input type="file" accept={accept || "video/*"} className="hidden" onChange={handleVideoUpload} />
+					</label>
+				)}
+
 			</div>
-			}
-			<ImageUploaderModal
-				open={modalOpen}
-				setImg={setImg}
-				onClose={() => setModalOpen(false)}
-			/>
+			{error && (
+				<p className="mt-2 text-red-500 text-sm font-semibold">{error}</p>
+			)}
 		</>
 	);
 }
+
+export default VideoUpload;

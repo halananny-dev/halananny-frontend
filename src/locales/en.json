@@ -353,5 +353,32 @@
     "available_cities": "Available Cities",
     "cities_placeholder": "Cities",
     "available_from": "Available From"
-  }
+  },
+  "registration": {
+    "title": "Ready for the Final Step!",
+    "passport": "Passport & Visa",
+    "passport_desc": "Please upload your passport and visa documents.",
+    "upload_passport": "Upload Passport & Visa",
+    "upload_visa": "Upload Visa",
+    "references": "References",
+    "references_question": "Can you provide a reference from a family you've worked with? *",
+    "yes": "Yes",
+
+    "no": "No",
+    "reference_details": "Tell us about your reference",
+    "reference_placeholder": "Briefly describe the family: nationality, number of children, and how long you worked with them. Start with: I can provide a reference from...",
+    "reference_tip": "Sharing a reference increases your chances of being contacted by families.",
+    "reference_confirmation": "By selecting 'Yes,' you confirm you can provide the family's contact details during the interview.",
+    "terms_agreement": "I agree with the",
+    "terms": "terms and conditions",
+    "privacy_policy": "privacy policy",
+    "back": "Back",
+    "complete_registration": "Complete Registration",
+    "reference_tip2": "Please don't share any contact information in this",
+    "and_the": "and the",
+    "upload_other": "Upload other documents/Certification",
+    "item_name": "Item name",
+    "upload": "Upload"
+  },
+  "success": "You’ve completed your profile! Our team will review it shortly."
 }

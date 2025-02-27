@@ -114,6 +114,10 @@ body {
 
     --chart-5: 340 75% 55%;
   }
+
+  .textarea {
+    @apply border font-medium outline-none border-gray-10 max-w-540 p-6 w-full min-h-28 rounded-xl text-sm
+  }
 }
 
 html {
