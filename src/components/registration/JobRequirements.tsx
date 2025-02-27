@@ -52,7 +52,7 @@ const JobRequirements = ({ setActiveTab }) => {
 	return (
 		<motion.div key="profile" variants={screenVariants} initial="initial" animate="animate" exit="exit">
 			<div className="flex lg:items-start flex-col items-center lg:flex-row lg:gap-32 md:px-20 p-4 md:py-16 bg-white rounded-md border border-gray-200">
-				<Title className="lg:max-w-52 !items-start" typographyClass="md:text-3xl">
+				<Title className="lg:max-w-60 !items-start" typographyClass="md:!text-3xl">
 					{t.jobRequirements.title}
 				</Title>
 				<form

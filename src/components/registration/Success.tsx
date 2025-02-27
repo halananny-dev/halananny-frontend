@@ -18,8 +18,8 @@ const Success = () => {
 				<h4 className="mt-6 text-gray-900 font-bold text-2xl md:text-4xl mx-auto max-w-540">
 					{t.success}
 				</h4>
-				<Link href="/login">
-					<Btn className="mt-12 w-72" size="lg" variant="primary">
+				<Link href="/login" className="mt-12">
+					<Btn className="w-72" size="lg" variant="primary">
 						{t.login}
 					</Btn>
 				</Link>

@@ -423,5 +423,11 @@
   "live_out": "Live-out",
   "part_time": "Part-time",
   "live_in": "Live-in",
-  "on_demand": "On-demand"
+  "on_demand": "On-demand",
+  "skip": "Skip for Now",
+  "plans": "Plans & Pricing",
+  "confirmation": {
+    "title": "You’re All Set!",
+    "description": "Your profile is complete, and you’re ready to start finding the perfect nanny for your family. Let’s get started!"
+  }
 }

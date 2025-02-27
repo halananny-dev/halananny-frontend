@@ -1,8 +1,10 @@
 "use client";
 
 import Availability from "@/components/registration/Availability";
+import Confirmation from "@/components/registration/Confirmation";
 import FamilyProfile from "@/components/registration/FamilyProfile";
 import JobRequirements from "@/components/registration/JobRequirements";
+import Pricing from "@/components/registration/Pricing";
 import SignUp from "@/components/registration/SignUp";
 import Img from "@/components/sections/Img";
 import Navbar from "@/components/sections/Navbar";
@@ -21,7 +23,7 @@ export default function ParentRegistration() {
 		"final_confirmation"
 	];
 
-	const [activeTab, setActiveTab] = useState(4);
+	const [activeTab, setActiveTab] = useState(1);
 
 	return (
 		<>
@@ -61,6 +63,8 @@ export default function ParentRegistration() {
 					{activeTab === 2 && <FamilyProfile setActiveTab={setActiveTab} />}
 					{activeTab === 3 && <JobRequirements setActiveTab={setActiveTab} />}
 					{activeTab === 4 && <Availability setActiveTab={setActiveTab} />}
+					{activeTab === 5 && <Pricing setActiveTab={setActiveTab} />}
+					{activeTab === 6 && <Confirmation />}
 				</AnimatePresence>
 			</div>
 		</>
