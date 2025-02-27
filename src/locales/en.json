@@ -330,9 +330,6 @@
   "Older kids": "Older kids",
   "Older kids_desc": "(6+ years)",
   "Newborn": "Newborn",
-  "full_time": "Full time",
-  "part_time": "Part time",
-  "live_in": "Live-in",
   "USD": "USD",
   "AED": "AED",
   "1000 to 2000": "1000 to 2000",
@@ -412,5 +409,19 @@
     "religion": "Cultural/Religious Preferences:",
     "muslim": "Muslim-friendly",
     "dietary": "Dietary restrictions"
-  }
+  },
+  "availability": {
+    "title": "When & How Do You Need Help?",
+    "preferred_start_date": "Preferred Start Date:",
+    "frequency_of_service": "Frequency of Service:",
+    "booking_duration": "Booking Duration:",
+    "limited_period": "Limited period",
+    "unlimited_period": "Unlimited period",
+    "ready": "Ready to Book"
+  },
+  "full_time": "Full-time",
+  "live_out": "Live-out",
+  "part_time": "Part-time",
+  "live_in": "Live-in",
+  "on_demand": "On-demand"
 }

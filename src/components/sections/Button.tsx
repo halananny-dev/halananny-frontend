@@ -20,7 +20,7 @@ const Btn: React.FC<ButtonProps> = ({ children, className, size, variant, onClic
 
     const sizeClass = classnames({
         "md:py-4 py-2 md:text-xl font-semibold": size === 'lg',
-        "py-4 font-semibold": size === 'md',
+        "md:py-4 py-2 font-semibold": size === 'md',
         "md:py-6 font-semibold text-lg py-4": size === 'xl'
     })
 

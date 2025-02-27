@@ -19,14 +19,14 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
-        months: "",
+        root: "max-w-[340px] p-3 rounded-md border-[0.7px] border-gray-10 pt-4",
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
-        nav: "justify-between flex items-center",
+        nav: "justify-between px-2.5 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          "h-[30px] w-[30px] bg-transparent p-0 rounded-full border border-[#e4e3e3] flex justify-center items-center opacity-50 hover:opacity-100"
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
@@ -46,15 +46,15 @@ function Calendar({
         ),
         day_range_start: "day-range-start",
         day_range_end: "day-range-end",
-        day_selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "bg-accent text-accent-foreground",
-        day_outside:
-          "day-outside text-muted-foreground aria-selected:bg-accent/50 aria-selected:text-muted-foreground",
-        day_disabled: "text-muted-foreground opacity-50",
-        day_range_middle:
-          "aria-selected:bg-accent aria-selected:text-accent-foreground",
+        day_selected: "rdp-day_selected",
+        day_outside: "hidden",
         day_hidden: "invisible",
+        week: "flex justify-between",
+        month_grid: "w-full",
+        weekday: "text-center w-8 h-8 text-xs font-semibold text-sm text-gray-900",
+        weekdays: "flex justify-between",
+        month_caption: "w-fit mx-auto -mt-6 font-bold",
+        chevron: "w-3.5",
         ...classNames,
       }}
       {...props}

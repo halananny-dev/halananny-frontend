@@ -50,6 +50,8 @@ export default {
           "30": "#8EA6B9",
           40:"#CFCFCF",
           "50": "#EEFFFE",
+          60:"#F7F7F7",
+          70:"#C2C2C2",
           "80": "#E2E3E5",
           "100": "#F1F1F1",
           150:"#B2B2B2",
@@ -72,6 +74,7 @@ export default {
         teal: {
           100: "#F1FFF6",
           200:"#F1FFFE",
+          400:"#CAFFEA",
           "300": "#E8F8F7",
           "500": "#64CDC7",
         },

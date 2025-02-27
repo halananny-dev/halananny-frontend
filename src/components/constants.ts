@@ -207,3 +207,8 @@ export const CAPABILITIES = [
   { title: "Petcare", img: "/capability5.svg" },
   { title: "Gardening", img: "/capability6.svg" },
 ];
+
+
+export const AVAILABILITY = [
+  "full_time",'live_out','part_time','live_in','on_demand'
+]

@@ -116,7 +116,7 @@ body {
   }
 
   .textarea {
-    @apply border font-medium outline-none border-gray-10 max-w-540 p-6 w-full min-h-28 rounded-xl text-sm
+    @apply border font-medium outline-none border-gray-10 max-w-540 p-6 w-full min-h-28 rounded-xl text-sm;
   }
 }
 
@@ -156,17 +156,18 @@ html[dir="rtl"] .swiper-wrapper {
   scrollbar-width: none;
 }
 
-.rdp-weekdays {
-  display: flex;
-  justify-content: space-between;
+.rdp-months table thead th {
+  color: #8a8a8c;
+  font-size: 11px;
+  font-weight: 600;
 }
 
-.rdp-weekday {
-  width: 32px;
-  text-align: center;
+[aria-selected="true"] {
+  background-color: #14b8a6 !important;
+  color: white !important;
+  border-radius: 6px;
 }
 
-.rdp-month_caption {
-  width: fit-content;
-  margin: -24px auto 0 auto;
+[aria-selected="true"]:hover {
+  background-color: #0d9488 !important; /* Slightly darker teal */
 }

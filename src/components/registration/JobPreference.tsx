@@ -3,7 +3,7 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { screenVariants } from "../constants";
+import { AVAILABILITY, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CustomSelect from "../sections/CustomSelect";
 import MultiSelect from "../sections/MultiSelect";
@@ -31,7 +31,7 @@ const JobPreference = ({ setActiveTab }) => {
 						<h4 className="font-bold">{t.jobPreference.desired_jobs}</h4>
 						<MultiSelect
 							onChange={(e) => setJobs(e as string[])}
-							options={['full_time', 'part_time', 'live_in']}
+							options={AVAILABILITY}
 							placeholder={t.jobPreference.job_list_placeholder}
 							className="mt-2"
 						/>
