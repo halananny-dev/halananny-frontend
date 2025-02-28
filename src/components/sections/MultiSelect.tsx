@@ -14,9 +14,16 @@ interface CustomMultiSelectProps {
 	placeholder?: string;
 	className?: string;
 	onChange?: (value: string[]) => void;
+	groupName?: string
 }
 
-const MultiSelect = ({ options, placeholder = "Select options", className, onChange }: CustomMultiSelectProps) => {
+const MultiSelect = ({
+	options,
+	placeholder = "Select options",
+	className,
+	onChange,
+	groupName
+}: CustomMultiSelectProps) => {
 	const { t } = useI18n();
 	const [selected, setSelected] = React.useState<string[]>([]);
 	const [open, setOpen] = React.useState(false);
@@ -52,7 +59,7 @@ const MultiSelect = ({ options, placeholder = "Select options", className, onCha
 						<div className="flex items-center gap-2">
 							{selected.map((s, index) => (
 								<div key={index} className="bg-teal-500 text-sm rounded-full py-1 px-3.5 text-white flex items-center gap-2">
-									{t[s]}
+									{(groupName ? t[groupName] : t)[s]}
 									<div
 										onClick={(e) => handleRemove(e, s)}
 										className="ml-2 focus:outline-none"
@@ -78,7 +85,7 @@ const MultiSelect = ({ options, placeholder = "Select options", className, onCha
 								onSelect={() => handleSelect(option)}
 								className="cursor-pointer flex justify-between"
 							>
-								{t[option]}
+								{(groupName ? t[groupName] : t)[option]}
 							</CommandItem>
 						))}
 					</CommandGroup>

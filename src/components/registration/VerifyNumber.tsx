@@ -31,7 +31,7 @@ const VerifyNumber: React.FC<LoginProps> = ({ setActiveTab, img }) => {
 			exit="exit"
 		>
 			<div className="flex rounded-2xl border border-gray-200">
-				<Img src={img || "/verify.svg"} className="hidden lg:block" />
+				<Img src={img === '/parent-sign-up.svg' ? img : "/verify.svg"} className="hidden lg:block" />
 				<form
 					onSubmit={handleSubmit}
 					className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow"

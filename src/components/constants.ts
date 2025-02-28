@@ -148,6 +148,7 @@ export const COUNTRIES = [
   {
     code: "+971",
     flag: "AE",
+    name: "UAE",
   },
 ];
 
@@ -177,25 +178,27 @@ export const NATIONALITIES = [
   "Ukrainian",
 ];
 
-export const RELIGION = ["Christianity", "Islam", "Atheism"];
+export const RELIGIONS = ["Christianity", "Islam", "Atheism"];
+export const VISA_STATUS = ["none"];
+
 export const MARTIAL_STATUS = ["Single", "Married", "Divorced", "Widowed"];
 
 export const EXPERIENCE_WITH_KIDS = [
   {
     title: "Newborn",
-    description: "Newborn_desc",
+    description: "(below 1 year old)",
   },
   {
     title: "Toddler",
-    description: "Toddler_desc",
+    description: "(1-3 years)",
   },
   {
     title: "Pre-school kids",
-    description: "Pre-school kids_desc",
+    description: "(4-5 years)",
   },
   {
     title: "Older kids",
-    description: "Older kids_desc",
+    description: "(6+ years)",
   },
 ];
 
@@ -208,7 +211,27 @@ export const CAPABILITIES = [
   { title: "Gardening", img: "/capability6.svg" },
 ];
 
-
 export const AVAILABILITY = [
-  "full_time",'live_out','part_time','live_in','on_demand'
-]
+  "Full-time",
+  "Live-out",
+  "Part-time",
+  "Live-in",
+  "On-demand",
+];
+
+export const LANGUAGES = [
+  { code: "en", name: "English" },
+  { code: "ar", name: "Arabic" },
+];
+
+export const CURRENCIES = ["AED", "USD"];
+export const PRICE_RANGE = ["1000 to 2000", "2000 to 4000"];
+export const CITIES = ["Dubai"];
+export const PREFERRED_EXPERIENCE = [
+  "Newborn experience",
+  "Pre-school kids",
+  "Older kids",
+];
+
+export const CULTURAL_PREFERENCE = ["Muslim-friendly", "Dietary restrictions"];
+export const BOOKING_DURATIONS = ["Limited period", "Unlimited period"];

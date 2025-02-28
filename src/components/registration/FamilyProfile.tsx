@@ -16,7 +16,7 @@ const FamilyProfile = ({ setActiveTab }) => {
 	const [familySize, setFamilySize] = useState(0);
 	const [kids, setKids] = useState([{ id: Date.now(), age: "" }]);
 
-	const ages = Array.from({ length: 20 }, (_, i) => `${i + 1} ${i > 1 ? t.family.years : t.family.year}`);
+	const ages = Array.from({ length: 20 }, (_, i) => `${i + 1} ${i > 1 ? t.years : t.year}`);
 
 	const addKid = () => {
 		setKids((prevKids) => [...prevKids, { id: Date.now(), age: "" }]);
@@ -48,7 +48,11 @@ const FamilyProfile = ({ setActiveTab }) => {
 								<p className="mr-7 min-w-8 text-sm font-semibold">
 									{t.family.kid} {index + 1}
 								</p>
-								<CustomSelect placeholder={t.age} options={ages} />
+								<CustomSelect
+									preventOptionTranslation
+									placeholder={t.age}
+									options={ages}
+								/>
 								{index > 0 && (
 									<button
 										type="button"

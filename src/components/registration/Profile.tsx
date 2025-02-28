@@ -3,7 +3,7 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { MARTIAL_STATUS, NATIONALITIES, RELIGION, screenVariants } from "../constants";
+import { MARTIAL_STATUS, NATIONALITIES, RELIGIONS, screenVariants, VISA_STATUS } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
@@ -11,8 +11,8 @@ import CustomSelect from "../sections/CustomSelect";
 import Img from "../sections/Img";
 import Title from "../sections/Title";
 import { DatePicker } from "../ui/datepicker";
-import ImgUpload from "./ImgUpload";
 import VideoUpload from "./FileUpload";
+import ImgUpload from "./ImgUpload";
 
 const Profile = ({ setActiveTab }) => {
 	const { t } = useI18n();
@@ -78,17 +78,28 @@ const Profile = ({ setActiveTab }) => {
 					<div className="mt-5 font-semibold flex flex-col gap-5 max-w-96">
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.nationality}</label>
-							<CustomSelect options={NATIONALITIES} placeholder={t.profile.nationality} />
+							<CustomSelect
+								options={NATIONALITIES}
+								groupName="nationalities"
+								placeholder={t.profile.nationality}
+							/>
 						</div>
 
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.religion}</label>
-							<CustomSelect options={RELIGION} placeholder={t.profile.religion} />
+							<CustomSelect
+								options={RELIGIONS}
+								groupName="religions"
+								placeholder={t.profile.religion}
+							/>
 						</div>
 
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.visa_status}</label>
-							<CustomSelect options={["v"]} placeholder={t.profile.visa_status} />
+							<CustomSelect
+								groupName="visa-status"
+								options={VISA_STATUS}
+								placeholder={t.profile.visa_status} />
 						</div>
 
 						<div className="flex flex-col gap-2 font-semibold">
@@ -98,7 +109,11 @@ const Profile = ({ setActiveTab }) => {
 
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.marital_status}</label>
-							<CustomSelect options={MARTIAL_STATUS} placeholder={t.profile.marital_status} />
+							<CustomSelect
+								groupName="marital-status"
+								options={MARTIAL_STATUS}
+								placeholder={t.profile.marital_status}
+							/>
 						</div>
 
 						<div className="flex flex-col gap-2 font-semibold">

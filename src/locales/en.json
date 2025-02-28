@@ -1,4 +1,6 @@
 {
+  "title": "Hala Nanny",
+  "description": "Find the perfect nanny for your family",
   "step": "Steps",
   "our_nannies": "Our Nannies",
   "Plan": "Plans",
@@ -231,36 +233,116 @@
     "choose_video": "Choose Video",
     "or_take_picture": "or take a picture."
   },
-  "Australian": "Australian",
-  "American": "American",
-  "British": "British",
-  "French": "French",
-  "German": "German",
-  "Indian": "Indian",
-  "Japanese": "Japanese",
-  "Chinese": "Chinese",
-  "Russian": "Russian",
-  "Brazilian": "Brazilian",
-  "Spanish": "Spanish",
-  "Italian": "Italian",
-  "South African": "South African",
-  "South Korean": "South Korean",
-  "Indonesian": "Indonesian",
-  "Dutch": "Dutch",
-  "Swedish": "Swedish",
-  "Swiss": "Swiss",
-  "Mexican": "Mexican",
-  "Turkish": "Turkish",
-  "Egyptian": "Egyptian",
-  "Portuguese": "Portuguese",
-  "Ukrainian": "Ukrainian",
-  "Christianity": "Christianity",
-  "Islam": "Islam",
-  "Atheism": "Atheism",
-  "Single": "Single",
-  "Married": "Married",
-  "Divorced": "Divorced",
-  "Widowed": "Widowed",
+
+  "nationalities": {
+    "Australian": "Australian",
+    "American": "American",
+    "British": "British",
+    "French": "French",
+    "German": "German",
+    "Indian": "Indian",
+    "Japanese": "Japanese",
+    "Chinese": "Chinese",
+    "Russian": "Russian",
+    "Brazilian": "Brazilian",
+    "Spanish": "Spanish",
+    "Italian": "Italian",
+    "South African": "South African",
+    "South Korean": "South Korean",
+    "Indonesian": "Indonesian",
+    "Dutch": "Dutch",
+    "Swedish": "Swedish",
+    "Swiss": "Swiss",
+    "Mexican": "Mexican",
+    "Turkish": "Turkish",
+    "Egyptian": "Egyptian",
+    "Portuguese": "Portuguese",
+    "Ukrainian": "Ukrainian"
+  },
+  "religions": {
+    "Christianity": "Christianity",
+    "Islam": "Islam",
+    "Atheism": "Atheism"
+  },
+
+  "visa-status": {
+    "none": "1"
+  },
+
+  "marital-status": {
+    "Single": "Single",
+    "Married": "Married",
+    "Divorced": "Divorced",
+    "Widowed": "Widowed"
+  },
+
+  "experience-with-kids": {
+    "(below 1 year old)": "(below 1 year old)",
+    "Toddler": "Toddler",
+    "(1-3 years)": "(1-3 years)",
+    "Pre-school kids": "Pre-school kids",
+    "(4-5 years)": "(4-5 years)",
+    "Older kids": "Older kids",
+    "(6+ years)": "(6+ years)",
+    "Newborn": "Newborn"
+  },
+
+  "capabilities": {
+    "Babycare": "Babycare",
+    "Housecleaning": "Housecleaning",
+    "Cooking": "Cooking",
+    "Driving": "Driving",
+    "Petcare": "Petcare",
+    "Gardening": "Gardening"
+  },
+
+  "languages": {
+    "English": "English",
+    "Arabic": "Arabic"
+  },
+
+  "availability": {
+    "Full-time": "Full-time",
+    "Live-out": "Live-out",
+    "Part-time": "Part-time",
+    "Live-in": "Live-in",
+    "On-demand": "On-demand"
+  },
+
+  "currencies": {
+    "USD": "USD",
+    "AED": "AED"
+  },
+
+  "price-range": {
+    "1000 to 2000": "1000 to 2000",
+    "2000 to 4000": "2000 to 4000"
+  },
+
+  "countries": {
+    "UAE": "UAE"
+  },
+
+  "cities": {
+    "Dubai": "Dubai"
+  },
+
+  "preferred-experience": {
+    "Newborn experience": "Newborn experience",
+    "Pre-school kids": "Pre-school kids",
+    "Older kids": "Older kids"
+  },
+
+  "cultural-preference": {
+    "Muslim-friendly": "Muslim-friendly",
+    "Dietary restrictions": "Dietary restrictions"
+  },
+
+  "booking-duration": {
+    "Limited period": "Limited period",
+    "Unlimited period": "Unlimited period"
+  },
+
   "pickDate": "Pick a date",
   "imageUploader": {
     "title": "Your photo",
@@ -312,32 +394,10 @@
     "language_preference": "Language Preference",
     "check_all_apply": "Check all that apply to earn more stars!",
     "next_step": "Next Step",
-    "back": "Back",
-    "english": "English",
-    "arabic": "Arabic"
+    "back": "Back"
   },
-  "Newborn_desc": "(below 1 year old)",
-  "Babycare": "Babycare",
-  "Housecleaning": "Housecleaning",
-  "Cooking": "Cooking",
-  "Driving": "Driving",
-  "Petcare": "Petcare",
-  "Gardening": "Gardening",
-  "Toddler": "Toddler",
-  "Toddler_desc": "(1-3 years)",
-  "Pre-school kids": "Pre-school kids",
-  "Pre-school kids_desc": "(4-5 years)",
-  "Older kids": "Older kids",
-  "Older kids_desc": "(6+ years)",
-  "Newborn": "Newborn",
-  "USD": "USD",
-  "AED": "AED",
-  "1000 to 2000": "1000 to 2000",
-  "2000 to 4000": "2000 to 4000",
-  "UAE": "UAE",
   "Country": "Country",
   "Cities": "Cities",
-  "Dubai": "Dubai",
   "jobPreference": {
     "title": "Match Your Perfect Job",
     "desired_jobs": "Desired Jobs",
@@ -393,37 +453,26 @@
     "kid": "Kid",
     "add_kid": "Add Kid",
     "address": "Address",
-    "your_address": "Your Address",
-    "year": "year",
-    "years": "years"
+    "your_address": "Your Address"
   },
+  "year": "year",
+  "years": "years",
   "age": "Age",
   "jobRequirements": {
     "title": "What Kind of Nanny Are You Looking For?",
     "experience": "Preferred Experience:",
-    "newborn": "Newborn experience",
-    "preschool": "Pre-school kids",
-    "older": "Older kids",
     "language": "Language Preference:",
     "skills": "Additional Skills Required:",
-    "religion": "Cultural/Religious Preferences:",
-    "muslim": "Muslim-friendly",
-    "dietary": "Dietary restrictions"
+    "religion": "Cultural/Religious Preferences:"
   },
-  "availability": {
+  "desired_job": {
     "title": "When & How Do You Need Help?",
     "preferred_start_date": "Preferred Start Date:",
     "frequency_of_service": "Frequency of Service:",
     "booking_duration": "Booking Duration:",
-    "limited_period": "Limited period",
-    "unlimited_period": "Unlimited period",
     "ready": "Ready to Book"
   },
-  "full_time": "Full-time",
-  "live_out": "Live-out",
-  "part_time": "Part-time",
-  "live_in": "Live-in",
-  "on_demand": "On-demand",
+
   "skip": "Skip for Now",
   "plans": "Plans & Pricing",
   "confirmation": {

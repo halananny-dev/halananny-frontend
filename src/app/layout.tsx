@@ -1,13 +1,9 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import { I18nProvider } from "../i18/i18Context";
-import "./globals.css";
 import "./font.css";
-
-export const metadata = {
-  title: "Hala Nanny",
-  description: "Find the perfect nanny for your family",
-};
+import "./globals.css";
+import Metadata from "./metadata";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -16,11 +12,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
-      <head>
-        <title>{metadata.title}</title>
-      </head>
+      <Metadata />
       <body className="pb-4">
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

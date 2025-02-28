@@ -18,7 +18,6 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const [isPlaying, setIsPlaying] = useState(false);
-	const [error, setError] = useState<any>()
 
 	const togglePlayPause = () => {
 		if (!videoRef.current) return;
@@ -34,7 +33,6 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 
 	const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
-		setError(null);
 
 		if (file) {
 			if (!accept) {
@@ -46,7 +44,6 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 					window.URL.revokeObjectURL(videoElement.src);
 
 					if (videoElement.duration > 60) {
-						setError("Video must be under 1 minute.");
 						return;
 					}
 
@@ -76,7 +73,6 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 		setFile(null);
 		setUploadProgress(0);
 		setIsUploading(false);
-		setError('');
 	};
 
 	return (
@@ -150,9 +146,6 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 				)}
 
 			</div>
-			{error && (
-				<p className="mt-2 text-red-500 text-sm font-semibold">{error}</p>
-			)}
 		</>
 	);
 }

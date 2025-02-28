@@ -3,7 +3,7 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { AVAILABILITY, screenVariants } from "../constants";
+import { AVAILABILITY, CITIES, COUNTRIES, CURRENCIES, PRICE_RANGE, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CustomSelect from "../sections/CustomSelect";
 import MultiSelect from "../sections/MultiSelect";
@@ -30,6 +30,7 @@ const JobPreference = ({ setActiveTab }) => {
 					<div className="max-w-390 mx-auto lg:mx-0">
 						<h4 className="font-bold">{t.jobPreference.desired_jobs}</h4>
 						<MultiSelect
+							groupName="availability"
 							onChange={(e) => setJobs(e as string[])}
 							options={AVAILABILITY}
 							placeholder={t.jobPreference.job_list_placeholder}
@@ -39,12 +40,14 @@ const JobPreference = ({ setActiveTab }) => {
 						<h4 className="font-bold mt-6">{t.jobPreference.desired_salary}</h4>
 						<div className="flex gap gap-3 mt-3">
 							<CustomSelect
-								options={['AED', 'USD']}
+								options={CURRENCIES}
+								groupName="currencies"
 								placeholder={t.jobPreference.currency_placeholder}
 								className="w-24 text-sm"
 							/>
 							<CustomSelect
-								options={['1000 to 2000', '2000 to 4000']}
+								groupName="price-range"
+								options={PRICE_RANGE}
 								placeholder={t.jobPreference.salary_range_placeholder}
 							/>
 						</div>
@@ -52,7 +55,8 @@ const JobPreference = ({ setActiveTab }) => {
 						<h4 className="font-bold mt-8">{t.jobPreference.available_country}</h4>
 						<MultiSelect
 							onChange={(e) => setCountry((e as string[])[0])}
-							options={['UAE']}
+							groupName="countries"
+							options={COUNTRIES.map(e => e.name)}
 							placeholder={t.jobPreference.country_placeholder}
 							className="mt-2"
 						/>
@@ -61,8 +65,8 @@ const JobPreference = ({ setActiveTab }) => {
 							<>
 								<h4 className="font-bold mt-6">{t.jobPreference.available_cities}</h4>
 								<MultiSelect
-									onChange={(e) => setCountry((e as string[])[0])}
-									options={['Dubai']}
+									groupName="cities"
+									options={CITIES}
 									placeholder={t.jobPreference.cities_placeholder}
 									className="mt-2"
 								/>

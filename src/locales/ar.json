@@ -1,4 +1,6 @@
 {
+  "title": "هلا ناني",
+  "description": "ابحث عن المربية المثالية لعائلتك",
   "step": "الخطوات",
   "our_nannies": "مربياتنا",
   "Plan": "الخطط",
@@ -231,36 +233,114 @@
     "or_take_picture": "أو التقط صورة.",
     "choose_video": "اختر فيديو"
   },
-  "Australian": "أسترالي",
-  "American": "أمريكي",
-  "British": "بريطاني",
-  "French": "فرنسي",
-  "German": "ألماني",
-  "Indian": "هندي",
-  "Japanese": "ياباني",
-  "Chinese": "صيني",
-  "Russian": "روسي",
-  "Brazilian": "برازيلي",
-  "Spanish": "إسباني",
-  "Italian": "إيطالي",
-  "South African": "جنوب أفريقي",
-  "South Korean": "كوري جنوبي",
-  "Indonesian": "إندونيسي",
-  "Dutch": "هولندي",
-  "Swedish": "سويدي",
-  "Swiss": "سويسري",
-  "Mexican": "مكسيكي",
-  "Turkish": "تركي",
-  "Egyptian": "مصري",
-  "Portuguese": "برتغالي",
-  "Ukrainian": "أوكراني",
-  "Christianity": "المسيحية",
-  "Islam": "الإسلام",
-  "Atheism": "الإلحاد",
-  "Single": "أعزب",
-  "Married": "متزوج",
-  "Divorced": "مطلق",
-  "Widowed": "أرمل",
+  "nationalities": {
+    "Australian": "أسترالي",
+    "American": "أمريكي",
+    "British": "بريطاني",
+    "French": "فرنسي",
+    "German": "ألماني",
+    "Indian": "هندي",
+    "Japanese": "ياباني",
+    "Chinese": "صيني",
+    "Russian": "روسي",
+    "Brazilian": "برازيلي",
+    "Spanish": "إسباني",
+    "Italian": "إيطالي",
+    "South African": "جنوب أفريقي",
+    "South Korean": "كوري جنوبي",
+    "Indonesian": "إندونيسي",
+    "Dutch": "هولندي",
+    "Swedish": "سويدي",
+    "Swiss": "سويسري",
+    "Mexican": "مكسيكي",
+    "Turkish": "تركي",
+    "Egyptian": "مصري",
+    "Portuguese": "برتغالي",
+    "Ukrainian": "أوكراني"
+  },
+  "religions": {
+    "Christianity": "المسيحية",
+    "Islam": "الإسلام",
+    "Atheism": "الإلحاد"
+  },
+  "visa-status": {
+    "none": "1"
+  },
+
+  "marital-status": {
+    "Single": "أعزب",
+    "Married": "متزوج",
+    "Divorced": "مطلق",
+    "Widowed": "أرمل"
+  },
+
+  "experience-with-kids": {
+    "Newborn": "حديثي الولادة",
+    "(below 1 year old)": "(أقل من سنة واحدة)",
+    "Toddler": "الرضع",
+    "(1-3 years)": "(1-3 سنوات)",
+    "Pre-school kids": "أطفال ما قبل المدرسة",
+    "(4-5 years)": "(4-5 سنوات)",
+    "Older kids": "الأطفال الأكبر سنًا",
+    "(6+ years)": "(6+ سنوات)"
+  },
+
+  "capabilities": {
+    "Babycare": "رعاية الأطفال",
+    "Housecleaning": "تنظيف المنزل",
+    "Cooking": "الطبخ",
+    "Driving": "القيادة",
+    "Petcare": "رعاية الحيوانات الأليفة",
+    "Gardening": "البستنة"
+  },
+
+  "languages": {
+    "English": "الإنجليزية",
+    "Arabic": "العربية"
+  },
+
+  "availability": {
+    "Full-time": "دوام كامل",
+    "Live-out": "إقامة خارجية",
+    "Part-time": "دوام جزئي",
+    "Live-in": "إقامة داخلية",
+    "On-demand": "حسب الطلب"
+  },
+
+  "currencies": {
+    "USD": "دولار أمريكي",
+    "AED": "درهم إماراتي"
+  },
+
+  "price-range": {
+    "1000 to 2000": "1000 إلى 2000",
+    "2000 to 4000": "2000 إلى 4000"
+  },
+
+  "countries": {
+    "UAE": "الإمارات العربية المتحدة"
+  },
+
+  "cities": {
+    "Dubai": "دبي"
+  },
+
+  "preferred-experience": {
+    "Newborn experience": "خبرة حديثي الولادة",
+    "Pre-school kids": "أطفال ما قبل المدرسة",
+    "Older kids": "الأطفال الأكبر سناً"
+  },
+
+  "cultural-preference": {
+    "Muslim-friendly": "صديقة للمسلمين",
+    "Dietary restrictions": "قيود غذائية"
+  },
+
+  "booking-duration": {
+    "Limited_ period": "فترة محدودة",
+    "Unlimited period": "فترة غير محدودة"
+  },
+
   "pickDate": "اختر تاريخًا",
   "imageUploader": {
     "title": "صورتك",
@@ -312,33 +392,10 @@
     "language_preference": "تفضيل اللغة",
     "check_all_apply": "حدد كل ما ينطبق لكسب المزيد من النجوم!",
     "next_step": "الخطوة التالية",
-    "back": "رجوع",
-    "english": "الإنجليزية",
-    "arabic": "العربية"
+    "back": "رجوع"
   },
-
-  "Newborn": "حديثي الولادة",
-  "Newborn_desc": "(أقل من سنة واحدة)",
-  "Toddler": "الرضع",
-  "Toddler_desc": "(1-3 سنوات)",
-  "Pre-school kids": "أطفال ما قبل المدرسة",
-  "Pre-school kids_desc": "(4-5 سنوات)",
-  "Older kids": "الأطفال الأكبر سنًا",
-  "Older kids_desc": "(6+ سنوات)",
-  "Babycare": "رعاية الأطفال",
-  "Housecleaning": "تنظيف المنزل",
-  "Cooking": "الطبخ",
-  "Driving": "القيادة",
-  "Petcare": "رعاية الحيوانات الأليفة",
-  "Gardening": "البستنة",
-  "USD": "دولار أمريكي",
-  "AED": "درهم إماراتي",
-  "1000 to 2000": "1000 إلى 2000",
-  "2000 to 4000": "2000 إلى 4000",
-  "UAE": "الإمارات العربية المتحدة",
   "Country": "الدولة",
   "Cities": "المدن",
-  "Dubai": "دبي",
   "jobPreference": {
     "title": "اعثر على وظيفتك المثالية",
     "desired_jobs": "الوظائف المطلوبة",
@@ -393,37 +450,26 @@
     "kid": "الطفل",
     "add_kid": "إضافة طفل",
     "address": "العنوان",
-    "your_address": "عنوانك",
-    "year": "سنة",
-    "years": "سنوات"
+    "your_address": "عنوانك"
   },
+  "year": "سنة",
+  "years": "سنوات",
   "age": "العمر",
   "jobRequirements": {
     "title": "ما نوع المربية التي تبحث عنها؟",
     "experience": "الخبرة المفضلة:",
-    "newborn": "خبرة حديثي الولادة",
-    "preschool": "أطفال ما قبل المدرسة",
-    "older": "الأطفال الأكبر سناً",
     "language": "تفضيل اللغة:",
     "skills": "المهارات الإضافية المطلوبة:",
-    "religion": "التفضيلات الثقافية / الدينية:",
-    "muslim": "صديقة للمسلمين",
-    "dietary": "قيود غذائية"
+    "religion": "التفضيلات الثقافية / الدينية:"
   },
-  "availability": {
+  "desired_job": {
     "title": "متى وكيف تحتاج إلى المساعدة؟",
     "preferred_start_date": "تاريخ البدء المفضل:",
     "frequency_of_service": "تكرار الخدمة:",
     "booking_duration": "مدة الحجز:",
-    "limited_period": "فترة محدودة",
-    "unlimited_period": "فترة غير محدودة",
+
     "ready": "جاهز للحجز"
   },
-  "full_time": "دوام كامل",
-  "live_out": "إقامة خارجية",
-  "part_time": "دوام جزئي",
-  "live_in": "إقامة داخلية",
-  "on_demand": "حسب الطلب",
   "skip": "تخطي الآن",
   "plans": "الخطط والتسعير",
   "confirmation": {

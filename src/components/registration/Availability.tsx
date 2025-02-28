@@ -4,7 +4,7 @@ import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { AVAILABILITY, screenVariants } from "../constants";
+import { AVAILABILITY, BOOKING_DURATIONS, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import Title from "../sections/Title";
 import { Calendar } from "../ui/calendar";
@@ -25,34 +25,32 @@ const Availability = ({ setActiveTab }) => {
 		<motion.div key="profile" variants={screenVariants} initial="initial" animate="animate" exit="exit">
 			<div className="flex lg:items-start flex-col items-center lg:flex-row lg:gap-32 md:px-20 p-4 md:py-16 bg-white rounded-md border border-gray-200">
 				<Title className="lg:max-w-52 !items-start" typographyClass="md:!text-3xl">
-					{t.availability.title}
+					{t.desired_job.title}
 				</Title>
 				<form onSubmit={handleSubmit} className="grow text-gray-900">
-					<h4 className="font-bold mb-5">{t.availability.preferred_start_date}</h4>
+					<h4 className="font-bold mb-5">{t.desired_job.preferred_start_date}</h4>
 					<Calendar mode="single" selected={date} onSelect={(e) => {
 						setDate(e)
 					}} className="mt-5" />
 
-					<h4 className="mt-12 font-bold">{t.availability.frequency_of_service}</h4>
+					<h4 className="mt-12 font-bold">{t.desired_job.frequency_of_service}</h4>
 					<div className="mt-7 flex flex-wrap gap-4">
 						{AVAILABILITY.map((e, i) => (
 							<label key={i} htmlFor={e} className="flex items-center gap-2">
 								<Radio id={e} name="frequency" checked={i === 0} value={e} />
-								<span className="font-medium">{t[e]}</span>
+								<span className="font-medium">{t.availability[e]}</span>
 							</label>
 						))}
 					</div>
 
-					<h4 className="mt-10 font-bold">{t.availability.booking_duration}</h4>
+					<h4 className="mt-10 font-bold">{t.desired_job.booking_duration}</h4>
 					<div className="mt-5 flex flex-col gap-3">
-						<div className="flex items-center font-medium gap-2">
-							<CustomRadio name="religion" id="muslim" checked value="muslim" />
-							<label htmlFor="muslim">{t.availability.limited_period}</label>
-						</div>
-						<div className="flex items-center font-medium gap-2">
-							<CustomRadio name="religion" id="dietary" value="dietary" />
-							<label htmlFor="dietary">{t.availability.unlimited_period}</label>
-						</div>
+						{BOOKING_DURATIONS.map((b, i) => (
+							<div key={i} className="flex items-center font-medium gap-2">
+								<CustomRadio name="booking" id={b} checked value={b} />
+								<label htmlFor={b}>{t['booking-duration'][b]}</label>
+							</div>
+						))}
 					</div>
 
 					<div className="md:max-w-md">
@@ -77,7 +75,7 @@ const Availability = ({ setActiveTab }) => {
 							size="md"
 							disabled={!date}
 						>
-							<span>{t.availability.ready}</span>
+							<span>{t.desired_job.ready}</span>
 							<FaCheckCircle />
 						</Btn>
 					</div>

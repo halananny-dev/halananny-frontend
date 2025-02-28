@@ -16,10 +16,19 @@ interface CustomSelectProps {
 	placeholder?: string
 	className?: string
 	onChange?: (value: string | string[]) => void
+	groupName?: any,
+	preventOptionTranslation?: boolean
 }
 
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ options, placeholder = "Select an option", className, onChange }) => {
+const CustomSelect: React.FC<CustomSelectProps> = ({
+	options,
+	placeholder = "Select an option",
+	className,
+	onChange,
+	groupName,
+	preventOptionTranslation
+}) => {
 	const { t } = useI18n()
 	const [selected, setSelected] = React.useState<string>()
 
@@ -46,7 +55,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, placeholder = "Sel
 				{options.map((option, index) => (
 					<SelectItem key={index} value={option}>
 						<span className="flex items-center gap-2">
-							{t[option] || option}
+							{groupName ? t[groupName][option] :
+								preventOptionTranslation ? option :
+									t[option]}
 						</span>
 					</SelectItem>
 				))}
