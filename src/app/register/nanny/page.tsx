@@ -51,7 +51,7 @@ export default function NannyRegistration() {
 				})}
 			</div>
 
-			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8">
+			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8 pb-4">
 				<AnimatePresence mode="wait">
 					{activeTab === 1 && <SignUp img="/sign-up.svg" setActiveTab={setActiveTab} />}
 					{activeTab === 2 && <Profile setActiveTab={setActiveTab} />}

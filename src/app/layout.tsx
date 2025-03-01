@@ -13,7 +13,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
       <Metadata />
-      <body className="pb-4">
+      <body>
         <I18nProvider>
           {children}
         </I18nProvider>

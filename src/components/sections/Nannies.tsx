@@ -3,8 +3,6 @@
 import { useI18n } from "@/i18/i18Context";
 import { useEffect, useState } from "react";
 import { AiFillThunderbolt } from "react-icons/ai";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { IoLocationOutline } from "react-icons/io5";
 import { LuVideo } from "react-icons/lu";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -112,11 +110,11 @@ export default function Nannies() {
                             <h3 className="text-gray-900">{country}</h3>
                           </div>
                           <div className="flex items-center gap-2">
-                            <FaRegCalendarAlt className="text-teal-500 text-xl" />
+                            <Img src="/calendar.svg" />
                             <h3 className="text-gray-900">{age}</h3>
                           </div>
                           <div className="flex items-center gap-2">
-                            <IoLocationOutline className="text-teal-500 text-xl" />
+                          <Img src="/map.svg" />
                             <h3 className="text-gray-900">{location}</h3>
                           </div>
                         </div>

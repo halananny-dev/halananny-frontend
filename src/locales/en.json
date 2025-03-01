@@ -478,5 +478,30 @@
   "confirmation": {
     "title": "You’re All Set!",
     "description": "Your profile is complete, and you’re ready to start finding the perfect nanny for your family. Let’s get started!"
+  },
+  "dashboard": {
+    "welcome": "Welcome 👋,",
+    "find": "Let’s find the perfect nanny for your family.",
+    "meet": "Meet Some of Our Nannies",
+    "assistant": "HalaNanny’s AI-Assistant",
+    "profile": "My profile",
+    "upgrade": "Upgrade -15% off",
+    "Search for Nannies": "Search for Nannies",
+    "Saved Nannies": "Saved Nannies",
+    "Bookings & Interviews": "Bookings & Interviews",
+    "Account & Settings": "Account & Settings",
+    "My Plan": "My Plan",
+    "logout": "Logout",
+    "Location": "Location",
+    "Experience": "Experience",
+    "Skill": "Skill",
+    "Language": "Language",
+    "Availability": "Availability",
+    "all": "All",
+    "match": "Match Score :",
+    "availability": "Availability",
+    "See my profile": "See my profile",
+    "Contact via WhatsApp": "Contact via WhatsApp",
+    "Schedule Interview": "Schedule Interview"
   }
 }
