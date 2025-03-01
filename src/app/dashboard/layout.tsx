@@ -1,10 +1,16 @@
 "use client"
 
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Layout({ children }) {
-	const [isCollapsed, setIsCollapsed] = useState(false)
+	const [isCollapsed, setIsCollapsed] = useState(true)
+
+	useEffect(() => {
+		if (typeof window !== undefined) {
+			setIsCollapsed(window.innerWidth < 1024)
+		}
+	}, [])
 
 	return (
 		<div className="flex">

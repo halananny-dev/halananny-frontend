@@ -13,7 +13,6 @@ export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
   const pathname = usePathname()
   const { t } = useI18n()
 
-
   return (
     <div className={"drop-shadow-sidebar z-20 bg-white text-gray-900 h-screen"}>
       <button
@@ -36,7 +35,7 @@ export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
             href="/dashboard/profile"
             className={cn(
               'flex gap-3 items-center rounded-xl py-4',
-              isCollapsed ? "" : "bg-gray-750 px-2 gap-3",
+              isCollapsed ? "!bg-white" : "bg-gray-750 px-2 gap-3",
               pathname === '/dashboard/profile' ? "bg-teal-500 text-white " : ""
             )}>
             <Img src="/english.svg" className='!w-10 !h-10 rounded-full' />

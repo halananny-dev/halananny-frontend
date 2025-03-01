@@ -1,11 +1,19 @@
 "use client"
 
 import { useI18n } from "@/i18/i18Context";
-import { useState } from "react";
+import { cn } from "@/lib/utils";
+import React, { useState } from "react";
 import Img from "../sections/Img";
 import ImageUploaderModal from "./ImgUploaderModal";
 
-export default function ImgUpload({ setImg, image }) {
+interface Props {
+	setImg: any;
+	image: any;
+	className?: string
+	imgClass?: string
+}
+
+const ImgUpload: React.FC<Props> = ({ setImg, image, className, imgClass }) => {
 	const { t } = useI18n();
 	const [modalOpen, setModalOpen] = useState(false);
 
@@ -21,11 +29,12 @@ export default function ImgUpload({ setImg, image }) {
 				</p>
 			</div> : <div
 				onClick={() => setModalOpen(true)}
-				className="h-32 w-32 cursor-pointer relative rounded-xl overflow-hidden"
+				className={cn("h-32 w-32 cursor-pointer relative rounded-xl overflow-hidden", className)}
 			>
 				<Img src={image.image}
+					className={imgClass}
 					style={{
-						transform: `scale(${image.zoom}) translate(${image.crop.x}px, ${image.crop.y}px)`,
+						transform: `scale(${image?.zoom}) translate(${image?.crop?.x}px, ${image?.crop?.y}px)`,
 						transformOrigin: 'center',
 					}}
 				/>
@@ -41,3 +50,5 @@ export default function ImgUpload({ setImg, image }) {
 		</>
 	);
 }
+
+export default ImgUpload

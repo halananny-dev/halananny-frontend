@@ -118,6 +118,10 @@ body {
   .textarea {
     @apply border font-medium outline-none border-gray-10 max-w-540 p-6 w-full min-h-28 rounded-xl text-sm;
   }
+
+  .card {
+    @apply bg-white rounded-lg border border-gray-200 px-8 py-5
+  }
 }
 
 html {
