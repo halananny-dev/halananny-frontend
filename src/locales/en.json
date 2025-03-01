@@ -162,8 +162,27 @@
     "reset_password_title": "Reset Password",
     "new_password": "New Password",
     "confirm_password": "Confirm Password",
+    "Confirm New Password": "Confirm New Password",
+    "current_password": "Current Password",
     "resend_code": "Resend Code",
-    "reset_button": "Reset"
+    "reset_button": "Reset",
+    "Updated successfully!": "Updated successfully!",
+    "Change Password": "Change Password",
+    "Passwords don't match!": "Passwords don't match!"
+  },
+  "settings": {
+    "Change my password": "Change my password",
+    "Change Phone Number": "Change Phone Number",
+    "Change Email": "Change Email",
+    "Notifications": "Notifications",
+    "New Phone Number": "New Phone Number",
+    "Changes Saved": "Changes Saved",
+    "Enable Notifications": "Enable Notifications",
+    "Save Changes": "Save Changes",
+    "New Email": "New Email",
+    "Send Code": "Send Code",
+    "Enter Verification Code": "Enter Verification Code",
+    "Verify & Change Email": "Verify & Change Email"
   },
   "Register": {
     "title": "Registration",
@@ -502,6 +521,8 @@
     "availability": "Availability",
     "See my profile": "See my profile",
     "Contact via WhatsApp": "Contact via WhatsApp",
-    "Schedule Interview": "Schedule Interview"
+    "Schedule Interview": "Schedule Interview",
+    "current_plan": "You are currently on the Free Plan.",
+    "settings": "Account & Settings"
   }
 }

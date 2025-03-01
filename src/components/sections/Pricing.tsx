@@ -50,7 +50,7 @@ export const Plans: React.FC<Props> = ({ sm }) => {
                   {t.pricing.plans[plan.name.toLowerCase()].price}
                 </h5>
                 {plan.discount && (
-                  <h5 className="mt-6 font-semibold text-center drop-shadow-md ml-3 border border-teal-500 rounded-full text-10 px-2.5 py-1 text-teal-500">
+                  <h5 className="mt-6 font-semibold text-center drop-shadow-md ltr:ml-3 rtl:mr-3 border border-teal-500 rounded-full text-10 px-2.5 py-1 text-teal-500">
                     {t.pricing.plans['premium plan'].discount}
                   </h5>
                 )}

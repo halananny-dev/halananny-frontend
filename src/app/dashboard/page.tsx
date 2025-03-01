@@ -1,6 +1,7 @@
 "use client"
 
 import { nannies } from "@/components/constants";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import Filter from "@/components/dashboard/Filter";
 import Nanny from "@/components/dashboard/Nanny";
 import Title from "@/components/sections/Title";
@@ -12,10 +13,9 @@ export default function Dashboard() {
 
 	return (
 		<>
-			<div className="h-60 px-4 flex items-center justify-center bg-cover bg-mask bg-no-repeat w-full bg-center">
-				<h3 className="font-bold text-center md:text-3xl text-2xl text-white">{t.dashboard.welcome} Fatima ! <br />
-					{t.dashboard.find}</h3>
-			</div>
+			<DashboardHeader title={<>{t.dashboard.welcome} Fatima ! <br />
+				{t.dashboard.find}
+			</>} />
 			<div className="lg:p-18 py-10 px-4 sm:p-10">
 				<Title typographyClass="md:!text-3xl">
 					{t.dashboard.meet}

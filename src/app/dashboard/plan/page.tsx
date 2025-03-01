@@ -1,7 +1,20 @@
-import React from 'react'
+"use client"
 
-export default function page() {
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import Card from "@/components/sections/Card";
+import { Plans } from "@/components/sections/Pricing";
+import { useI18n } from "@/i18/i18Context";
+
+export default function Plan() {
+  const { t } = useI18n()
+
   return (
-	<div>page</div>
+    <>
+      <DashboardHeader title={t.pricing.title} />
+      <Card>
+        <h4 className="md:text-2xl text-xl font-semibold text-center">{t.dashboard.current_plan}</h4>
+        <Plans />
+      </Card>
+    </>
   )
 }

@@ -163,7 +163,26 @@
     "new_password": "كلمة مرور جديدة",
     "confirm_password": "تأكيد كلمة المرور",
     "resend_code": "إعادة إرسال الرمز",
-    "reset_button": "إعادة تعيين"
+    "reset_button": "إعادة تعيين",
+    "Confirm New Password": "تأكيد كلمة المرور الجديدة",
+    "current_password": "كلمة المرور الحالية",
+    "Updated successfully!": "تم التحديث بنجاح!",
+    "Change Password": "تغيير كلمة المرور",
+    "Passwords don't match!": "كلمات المرور غير متطابقة!"
+  },
+  "settings": {
+    "Change my password": "تغيير كلمة المرور الخاصة بي",
+    "Change Phone Number": "تغيير رقم الهاتف",
+    "Change Email": "تغيير البريد الإلكتروني",
+    "Notifications": "الإشعارات",
+    "New Phone Number": "رقم الهاتف الجديد",
+    "Changes Saved": "تم حفظ التغييرات",
+    "Enable Notifications": "تفعيل الإشعارات",
+    "Save Changes": "حفظ التغييرات",
+    "New Email": "البريد الإلكتروني الجديد",
+    "Send Code": "إرسال الرمز",
+    "Enter Verification Code": "أدخل رمز التحقق",
+    "Verify & Change Email": "التحقق وتغيير البريد الإلكتروني"
   },
   "Register": {
     "title": "التسجيل",
@@ -499,6 +518,8 @@
     "availability": "التوفر",
     "See my profile": "عرض ملفي الشخصي",
     "Contact via WhatsApp": "التواصل عبر واتساب",
-    "Schedule Interview": "جدولة مقابلة"
+    "Schedule Interview": "جدولة مقابلة",
+    "current_plan": "أنت حاليًا على الخطة المجانية.",
+    "settings": "الحساب والإعدادات"
   }
 }
