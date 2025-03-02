@@ -30,7 +30,6 @@ export default function Testimonials() {
             slidesPerView: 1,
           }
         }}
-        loop
       >
         {testimonials.map(({ image, content, name, role }, index) => (
           <SwiperSlide key={index} className="py-1">

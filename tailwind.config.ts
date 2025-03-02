@@ -37,13 +37,6 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
         gray: {
           1: "#DDDDDD",
           5: "#E2E2E2",
@@ -59,7 +52,7 @@ module.exports = {
           150: "#B2B2B2",
           "200": "#E3E3E3",
           "300": "#8EA6B8",
-          "ea":"#EAEAEA",
+          ea: "#EAEAEA",
           "400": "#A6B1B7",
           "500": "#8A97A1",
           600: "#858A9B",
@@ -84,7 +77,7 @@ module.exports = {
         },
         yellow: {
           "500": "#FABB3B",
-          600:"#FFAC46"
+          600: "#FFAC46",
         },
         green: {
           10: "#F4FFF9",
