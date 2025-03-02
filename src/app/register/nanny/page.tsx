@@ -1,8 +1,11 @@
 "use client";
 
 import Experience from "@/components/registration/Experience";
+import JobPreference from "@/components/registration/JobPreference";
 import Profile from "@/components/registration/Profile";
 import SignUp from "@/components/registration/SignUp";
+import Success from "@/components/registration/Success";
+import Verification from "@/components/registration/Verification";
 import Img from "@/components/sections/Img";
 import Navbar from "@/components/sections/Navbar";
 import { useI18n } from "@/i18/i18Context";
@@ -48,11 +51,14 @@ export default function NannyRegistration() {
 				})}
 			</div>
 
-			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8">
+			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8 pb-4">
 				<AnimatePresence mode="wait">
-					{activeTab === 1 && <SignUp setActiveTab={setActiveTab} />}
+					{activeTab === 1 && <SignUp img="/sign-up.svg" setActiveTab={setActiveTab} />}
 					{activeTab === 2 && <Profile setActiveTab={setActiveTab} />}
 					{activeTab === 3 && <Experience setActiveTab={setActiveTab} />}
+					{activeTab === 4 && <JobPreference setActiveTab={setActiveTab} />}
+					{activeTab === 5 && <Verification setActiveTab={setActiveTab} />}
+					{activeTab === 6 && <Success />}
 				</AnimatePresence>
 			</div>
 		</>

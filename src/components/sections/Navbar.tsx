@@ -52,7 +52,7 @@ export default function Navbar() {
               <button
                 onClick={() => router.push('/' + href)}
                 key={index}
-                className={`text-gray-600 hover:text-gray-900 transition duration-300 ${activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
+                className={`text-gray-900 ${activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
                   }`}
               >
                 {t[name]}
@@ -62,7 +62,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <Link href="/login">
-              <Button variant="ghost" className="text-gray-600 font-bold text-sm hover:bg-gray-100">
+              <Button variant="ghost" className="text-gray-900 font-bold text-sm hover:bg-gray-100">
                 {t.login}
               </Button>
             </Link>

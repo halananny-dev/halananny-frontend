@@ -1,4 +1,6 @@
 {
+  "title": "Hala Nanny",
+  "description": "Find the perfect nanny for your family",
   "step": "Steps",
   "our_nannies": "Our Nannies",
   "Plan": "Plans",
@@ -160,8 +162,27 @@
     "reset_password_title": "Reset Password",
     "new_password": "New Password",
     "confirm_password": "Confirm Password",
+    "Confirm New Password": "Confirm New Password",
+    "current_password": "Current Password",
     "resend_code": "Resend Code",
-    "reset_button": "Reset"
+    "reset_button": "Reset",
+    "Updated successfully!": "Updated successfully!",
+    "Change Password": "Change Password",
+    "Passwords don't match!": "Passwords don't match!"
+  },
+  "settings": {
+    "Change my password": "Change my password",
+    "Change Phone Number": "Change Phone Number",
+    "Change Email": "Change Email",
+    "Notifications": "Notifications",
+    "New Phone Number": "New Phone Number",
+    "Changes Saved": "Changes Saved",
+    "Enable Notifications": "Enable Notifications",
+    "Save Changes": "Save Changes",
+    "New Email": "New Email",
+    "Send Code": "Send Code",
+    "Enter Verification Code": "Enter Verification Code",
+    "Verify & Change Email": "Verify & Change Email"
   },
   "Register": {
     "title": "Registration",
@@ -231,36 +252,116 @@
     "choose_video": "Choose Video",
     "or_take_picture": "or take a picture."
   },
-  "Australian": "Australian",
-  "American": "American",
-  "British": "British",
-  "French": "French",
-  "German": "German",
-  "Indian": "Indian",
-  "Japanese": "Japanese",
-  "Chinese": "Chinese",
-  "Russian": "Russian",
-  "Brazilian": "Brazilian",
-  "Spanish": "Spanish",
-  "Italian": "Italian",
-  "South African": "South African",
-  "South Korean": "South Korean",
-  "Indonesian": "Indonesian",
-  "Dutch": "Dutch",
-  "Swedish": "Swedish",
-  "Swiss": "Swiss",
-  "Mexican": "Mexican",
-  "Turkish": "Turkish",
-  "Egyptian": "Egyptian",
-  "Portuguese": "Portuguese",
-  "Ukrainian": "Ukrainian",
-  "Christianity": "Christianity",
-  "Islam": "Islam",
-  "Atheism": "Atheism",
-  "Single": "Single",
-  "Married": "Married",
-  "Divorced": "Divorced",
-  "Widowed": "Widowed",
+
+  "nationalities": {
+    "Australian": "Australian",
+    "American": "American",
+    "British": "British",
+    "French": "French",
+    "German": "German",
+    "Indian": "Indian",
+    "Japanese": "Japanese",
+    "Chinese": "Chinese",
+    "Russian": "Russian",
+    "Brazilian": "Brazilian",
+    "Spanish": "Spanish",
+    "Italian": "Italian",
+    "South African": "South African",
+    "South Korean": "South Korean",
+    "Indonesian": "Indonesian",
+    "Dutch": "Dutch",
+    "Swedish": "Swedish",
+    "Swiss": "Swiss",
+    "Mexican": "Mexican",
+    "Turkish": "Turkish",
+    "Egyptian": "Egyptian",
+    "Portuguese": "Portuguese",
+    "Ukrainian": "Ukrainian"
+  },
+  "religions": {
+    "Christianity": "Christianity",
+    "Islam": "Islam",
+    "Atheism": "Atheism"
+  },
+
+  "visa-status": {
+    "none": "1"
+  },
+
+  "marital-status": {
+    "Single": "Single",
+    "Married": "Married",
+    "Divorced": "Divorced",
+    "Widowed": "Widowed"
+  },
+
+  "experience-with-kids": {
+    "(below 1 year old)": "(below 1 year old)",
+    "Toddler": "Toddler",
+    "(1-3 years)": "(1-3 years)",
+    "Pre-school kids": "Pre-school kids",
+    "(4-5 years)": "(4-5 years)",
+    "Older kids": "Older kids",
+    "(6+ years)": "(6+ years)",
+    "Newborn": "Newborn"
+  },
+
+  "capabilities": {
+    "Babycare": "Babycare",
+    "Housecleaning": "Housecleaning",
+    "Cooking": "Cooking",
+    "Driving": "Driving",
+    "Petcare": "Petcare",
+    "Gardening": "Gardening"
+  },
+
+  "languages": {
+    "English": "English",
+    "Arabic": "Arabic"
+  },
+
+  "availability": {
+    "Full-time": "Full-time",
+    "Live-out": "Live-out",
+    "Part-time": "Part-time",
+    "Live-in": "Live-in",
+    "On-demand": "On-demand"
+  },
+
+  "currencies": {
+    "USD": "USD",
+    "AED": "AED"
+  },
+
+  "price-range": {
+    "1000 to 2000": "1000 to 2000",
+    "2000 to 4000": "2000 to 4000"
+  },
+
+  "countries": {
+    "UAE": "UAE"
+  },
+
+  "cities": {
+    "Dubai": "Dubai"
+  },
+
+  "preferred-experience": {
+    "Newborn experience": "Newborn experience",
+    "Pre-school kids": "Pre-school kids",
+    "Older kids": "Older kids"
+  },
+
+  "cultural-preference": {
+    "Muslim-friendly": "Muslim-friendly",
+    "Dietary restrictions": "Dietary restrictions"
+  },
+
+  "booking-duration": {
+    "Limited period": "Limited period",
+    "Unlimited period": "Unlimited period"
+  },
+
   "pickDate": "Pick a date",
   "imageUploader": {
     "title": "Your photo",
@@ -312,22 +413,165 @@
     "language_preference": "Language Preference",
     "check_all_apply": "Check all that apply to earn more stars!",
     "next_step": "Next Step",
-    "back": "Back",
-    "english": "English",
-    "arabic": "Arabic"
+    "back": "Back"
   },
-  "Newborn_desc": "(below 1 year old)",
-  "Babycare": "Babycare",
-  "Housecleaning": "Housecleaning",
-  "Cooking": "Cooking",
-  "Driving": "Driving",
-  "Petcare": "Petcare",
-  "Gardening": "Gardening",
-  "Toddler": "Toddler",
-  "Toddler_desc": "(1-3 years)",
-  "Pre-school kids": "Pre-school kids",
-  "Pre-school kids_desc": "(4-5 years)",
-  "Older kids": "Older kids",
-  "Older kids_desc": "(6+ years)",
-  "Newborn": "Newborn"
+  "Country": "Country",
+  "Cities": "Cities",
+  "jobPreference": {
+    "title": "Match Your Perfect Job",
+    "desired_jobs": "Desired Jobs",
+    "job_list_placeholder": "Job list",
+    "desired_salary": "Desired Monthly Salary",
+    "currency_placeholder": "AED",
+    "salary_range_placeholder": "2000 to 4000",
+    "available_country": "Available Country",
+    "country_placeholder": "Country",
+    "available_cities": "Available Cities",
+    "cities_placeholder": "Cities",
+    "available_from": "Available From"
+  },
+  "registration": {
+    "title": "Ready for the Final Step!",
+    "passport": "Passport & Visa",
+    "passport_desc": "Please upload your passport and visa documents.",
+    "upload_passport": "Upload Passport & Visa",
+    "upload_visa": "Upload Visa",
+    "references": "References",
+    "references_question": "Can you provide a reference from a family you've worked with? *",
+    "yes": "Yes",
+
+    "no": "No",
+    "reference_details": "Tell us about your reference",
+    "reference_placeholder": "Briefly describe the family: nationality, number of children, and how long you worked with them. Start with: I can provide a reference from...",
+    "reference_tip": "Sharing a reference increases your chances of being contacted by families.",
+    "reference_confirmation": "By selecting 'Yes,' you confirm you can provide the family's contact details during the interview.",
+    "terms_agreement": "I agree with the",
+    "terms": "terms and conditions",
+    "privacy_policy": "privacy policy",
+    "back": "Back",
+    "complete_registration": "Complete Registration",
+    "reference_tip2": "Please don't share any contact information in this",
+    "and_the": "and the",
+    "upload_other": "Upload other documents/Certification",
+    "item_name": "Item name",
+    "upload": "Upload"
+  },
+  "success": "You’ve completed your profile! Our team will review it shortly.",
+  "parent_registration": "Parent Registration",
+  "sign_up": "Sign up",
+  "family_profile_setup": "Family Profile Setup",
+  "job_requirements": "Job Requirements",
+  "availability_booking": "Availability and Booking Preferences",
+  "payment_setup": "Payment Setup (Optional)",
+  "final_confirmation": "Final Confirmation",
+  "family": {
+    "title": "Tell Us About Your Family",
+    "family_size": "Family Size",
+    "family_members": "Number of family members",
+    "children_ages": "Children’s Ages",
+    "kid": "Kid",
+    "add_kid": "Add Kid",
+    "address": "Address",
+    "your_address": "Your Address"
+  },
+  "year": "year",
+  "years": "years",
+  "age": "Age",
+  "jobRequirements": {
+    "title": "What Kind of Nanny Are You Looking For?",
+    "experience": "Preferred Experience:",
+    "language": "Language Preference:",
+    "skills": "Additional Skills Required:",
+    "religion": "Cultural/Religious Preferences:"
+  },
+  "desired_job": {
+    "title": "When & How Do You Need Help?",
+    "preferred_start_date": "Preferred Start Date:",
+    "frequency_of_service": "Frequency of Service:",
+    "booking_duration": "Booking Duration:",
+    "ready": "Ready to Book"
+  },
+
+  "skip": "Skip for Now",
+  "plans": "Plans & Pricing",
+  "confirmation": {
+    "title": "You’re All Set!",
+    "description": "Your profile is complete, and you’re ready to start finding the perfect nanny for your family. Let’s get started!"
+  },
+  "dashboard": {
+    "welcome": "Welcome 👋,",
+    "find": "Let’s find the perfect nanny for your family.",
+    "meet": "Meet Some of Our Nannies",
+    "assistant": "HalaNanny’s AI-Assistant",
+    "profile": "My profile",
+    "upgrade": "Upgrade -15% off",
+    "Search for Nannies": "Search for Nannies",
+    "Saved Nannies": "Saved Nannies",
+    "Bookings & Interviews": "Bookings & Interviews",
+    "Account & Settings": "Account & Settings",
+    "My Plan": "My Plan",
+    "logout": "Logout",
+    "Location": "Location",
+    "Experience": "Experience",
+    "Skill": "Skill",
+    "Language": "Language",
+    "Availability": "Availability",
+    "all": "All",
+    "match": "Match Score :",
+    "availability": "Availability",
+    "See my profile": "See my profile",
+    "Contact via WhatsApp": "Contact via WhatsApp",
+    "Schedule Interview": "Schedule Interview",
+    "current_plan": "You are currently on the Free Plan.",
+    "settings": "Account & Settings",
+    "Verified": "Verified",
+    "register": "Registered on :",
+    "contact": "Contact via WhatsApp",
+    "badge": "Top-Rated Nanny",
+    "Profile completion": "Profile completion",
+    "Complete": "Complete",
+    "Earning": "Earning",
+    "point": "points",
+    "award": "Awards By HalaNanny",
+    "skill": "Skill Master",
+    "identity": "My Identity",
+    "edit_identity": "Edit My Identity",
+    "nationality": "Nationality",
+    "age": "Age",
+    "number_of_kids": "Number Of Kids",
+    "marital_status": "Marital Status",
+    "religion": "Religion",
+    "cancel": "Cancel",
+    "save": "Save",
+    "details": "My details",
+    "add": "Add Task",
+    "My Tasks": "My Tasks",
+    "Video presentation": "Video presentation",
+    "My Reviews & Rating": "My Reviews & Rating",
+    "Ratings": "Ratings"
+  },
+  "details": {
+    "City availble to work": "City available to work",
+    "Desired monthly salary(AED)": "Desired monthly salary (AED)",
+    "Languages": "Languages",
+    "Desired job": "Desired job",
+    "Visa status": "Visa status",
+    "Available from": "Available from",
+    "Year of experience": "Year of experience",
+    "Experience with kids": "Experience with kids",
+    "Newborn (below 1 year old)": "Newborn (below 1 year old)",
+    "Toddler (1-3 years)": "Toddler (1-3 years)",
+    "Pre-school kids (4-5 years)": "Pre-school kids (4-5 years)",
+    "Older kids 6 (+ years)": "Older kids 6+ years",
+    "Add": "Add",
+    "Dubai": "Dubai",
+    "Live-in": "Live-in"
+  },
+  "documents": {
+    "My Documents": "My Documents",
+    "Add Document": "Add Document",
+    "ID": "ID",
+    "Driving Licence": "Driving Licence",
+    "Exam Certificate": "Exam Certificate"
+  }
 }

@@ -15,39 +15,55 @@ interface CustomSelectProps {
 	options: string[]
 	placeholder?: string
 	className?: string
-	onChange?: (value: string) => void
+	onChange?: (value: string | string[]) => void
+	groupName?: any,
+	preventOptionTranslation?: boolean
 }
 
-const CustomSelect = React.forwardRef<HTMLButtonElement, CustomSelectProps>(
-	({ options, placeholder = "Select an option", className, onChange }, ref) => {
-		const { t } = useI18n()
 
-		return (
-			<Select onValueChange={onChange}>
-				<SelectTrigger
-					ref={ref}
-					className={cn(
-						"rounded-xl !bg-white border border-gray-10 flex w-full px-6 h-11 font-semibold text-sm outline-none",
-						"focus:ring-2 focus:ring-gray-20 transition-all",
-						"flex items-center justify-between",
-						className
-					)}
-				>
-					<SelectValue placeholder={placeholder} />
-				</SelectTrigger>
-				<SelectContent className="rounded-xl border border-gray-10 !bg-white shadow-lg">
-					{options.map((option, index) => (
-						<SelectItem key={index} value={option}>
-							{t[option]}
-						</SelectItem>
-					))}
-				</SelectContent>
-			</Select>
-		)
+const CustomSelect: React.FC<CustomSelectProps> = ({
+	options,
+	placeholder = "Select an option",
+	className,
+	onChange,
+	groupName,
+	preventOptionTranslation
+}) => {
+	const { t } = useI18n()
+	const [selected, setSelected] = React.useState<string>()
+
+	const handleSelect = (value: string) => {
+		setSelected(value)
+		onChange?.(value)
 	}
-)
 
-CustomSelect.displayName = "CustomSelect"
+	return (
+		<Select onValueChange={handleSelect}>
+			<SelectTrigger
+				className={cn(
+					"rounded-xl !bg-white border border-gray-10 flex w-full px-4 h-11 font-semibold text-sm outline-none",
+					"focus:ring-2 focus:ring-gray-20 transition-all",
+					"flex items-center justify-between",
+					className
+				)}
+			>
+				<SelectValue placeholder={placeholder}>
+					{selected || placeholder}
+				</SelectValue>
+			</SelectTrigger>
+			<SelectContent className="rounded-xl border border-gray-10 !bg-white shadow-lg">
+				{options.map((option, index) => (
+					<SelectItem key={index} value={option}>
+						<span className="flex items-center gap-2">
+							{groupName ? t[groupName][option] :
+								preventOptionTranslation ? option :
+									t[option]}
+						</span>
+					</SelectItem>
+				))}
+			</SelectContent>
+		</Select >
+	)
+}
 
-export { CustomSelect }
-
+export default CustomSelect 

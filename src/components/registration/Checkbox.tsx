@@ -9,16 +9,18 @@ interface CheckboxProps {
 	variant: "variant1" | 'variant2';
 	data: any[];
 	className?: string;
+	onChange?: any
+	groupName?: any
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className, onChange, groupName }) => {
 	const [selected, setSelected] = useState<string[]>([]);
 	const { t } = useI18n()
 
 	const handleChange = (title: string) => {
-		setSelected((prev) =>
-			prev.includes(title) ? prev.filter((item) => item !== title) : [...prev, title]
-		);
+		const newItems = selected.includes(title) ? selected.filter((item) => item !== title) : [...selected, title]
+		setSelected(newItems);
+		onChange && onChange(newItems)
 	};
 
 	return (
@@ -32,8 +34,8 @@ const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className }) => {
 					{variant === "variant1" && (
 						<div className="flex text-sm items-start h-full justify-between gap-3">
 							<div>
-								<h6 className="font-semibold -mb-0.5">{t[item.title]}</h6>
-								<p>{t[item.description]}</p>
+								<h6 className="font-semibold -mb-0.5">{(groupName ? t[groupName] : t)[item.title]}</h6>
+								<p>{(groupName ? t[groupName] : t)[item.description]}</p>
 							</div>
 							<CheckBox name={item.title} onChange={() => handleChange(item.title)} />
 						</div>
@@ -41,7 +43,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className }) => {
 					{variant === "variant2" && (
 						<div className="flex text-sm h-full font-semibold items-center">
 							<CheckBox name={item.title} onChange={() => handleChange(item.title)} />
-							<h6 className="ml-3 mr-4">{t[item.title]}</h6>
+							<h6 className="ml-3 mr-4">{(groupName ? t[groupName] : t)[item.title]}</h6>
 							<Img src={item.img} />
 						</div>
 					)}

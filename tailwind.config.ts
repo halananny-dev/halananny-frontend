@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -45,15 +45,21 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
         gray: {
+          1: "#DDDDDD",
+          5: "#E2E2E2",
           10: "#DADADA",
           20: "#C3C3C3",
           "30": "#8EA6B9",
+          40: "#CFCFCF",
           "50": "#EEFFFE",
+          60: "#F7F7F7",
+          70: "#C2C2C2",
           "80": "#E2E3E5",
           "100": "#F1F1F1",
-          150:"#B2B2B2",
+          150: "#B2B2B2",
           "200": "#E3E3E3",
           "300": "#8EA6B8",
+          "ea":"#EAEAEA",
           "400": "#A6B1B7",
           "500": "#8A97A1",
           600: "#858A9B",
@@ -63,23 +69,36 @@ export default {
           "800": "#F8F8F8",
           850: "#9C9C9C",
           "900": "#385469",
-          950:"#E8E8E8",
+          950: "#E8E8E8",
+          990: "#AEBDC9",
         },
         red: {
           500: "#F05E5E",
         },
         teal: {
           100: "#F1FFF6",
+          200: "#F1FFFE",
+          400: "#CAFFEA",
           "300": "#E8F8F7",
           "500": "#64CDC7",
         },
         yellow: {
           "500": "#FABB3B",
+          600:"#FFAC46"
         },
         green: {
+          10: "#F4FFF9",
+          100: "#DAFFF4",
+          300: "#00BD87",
+          400: "#14D27F",
           500: "#16BB52",
           600: "#2DC690",
-          700:"#01C248"
+          700: "#01C248",
+          800: "#00BD55",
+          900: "#33D592",
+        },
+        purple: {
+          500: "#6973FF",
         },
       },
       borderRadius: {
@@ -94,6 +113,7 @@ export default {
         390: "390px",
       },
       spacing: {
+        4.5: "18px",
         18: "72px",
       },
       fontSize: {
@@ -102,7 +122,12 @@ export default {
         "40": "40px",
       },
       dropShadow: {
-        md: "0 4px 4px 0 rgba(0,0,0,0.25)",
+        md: "0px 4px 4px rgba(0,0,0,0.25)",
+        sidebar: "-1px -3px 30px rgba(0,0,0,0.08)",
+        assistant: "0px 15px 32px #C1C5FF",
+        filter: "0px 12px 38px rgba(0,0,0,0.04)",
+        avatar: "0px 5px 13px rgba(0,0,0,0.12)",
+        btn: "0px 4px 8px #97F1D6C9",
       },
       boxShadow: {
         navbar: "0 4px 12px 0 rgba(0,0,0,0.06)",
@@ -112,6 +137,7 @@ export default {
         hero: "url('/hero.svg')",
         register: "url('/register.svg')",
         "nanny-register": "url('/nanny-register.svg')",
+        mask: 'url("/mask.svg")',
       },
       keyframes: {
         "accordion-down": {

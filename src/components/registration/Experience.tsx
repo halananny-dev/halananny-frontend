@@ -3,7 +3,7 @@
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CAPABILITIES, EXPERIENCE_WITH_KIDS, screenVariants } from "../constants";
+import { CAPABILITIES, EXPERIENCE_WITH_KIDS, LANGUAGES, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
@@ -31,21 +31,28 @@ const Experience = ({ setActiveTab }) => {
 
 					<h4 className="font-bold mt-10">{t.experience.experience_with_kids}</h4>
 					<p className="mt-0.5 text-sm">{t.experience.check_all_apply}</p>
-					<Checkbox variant="variant1" className="mt-5 " data={EXPERIENCE_WITH_KIDS} />
+					<Checkbox
+						variant="variant1"
+						groupName="experience-with-kids"
+						className="mt-5"
+						data={EXPERIENCE_WITH_KIDS} />
 
 					<h4 className="mt-10 font-bold">{t.experience.tasks_you_can_perform}</h4>
-					<Checkbox variant="variant2" className="mt-5" data={CAPABILITIES} />
+					<Checkbox
+						groupName="capabilities"
+						variant="variant2"
+						className="mt-5"
+						data={CAPABILITIES} />
 
 					<h4 className="mt-8 font-bold">{t.experience.language_preference}</h4>
 					<div className="mt-5 flex gap-5">
-						<label htmlFor="en" className="flex items-center gap-2.5">
-							<CheckBox name="en" />
-							<span className="font-medium">{t.experience.english}</span>
-						</label>
-						<label htmlFor="ar" className="flex items-center gap-2.5">
-							<CheckBox name="ar" />
-							<span className="font-medium">{t.experience.arabic}</span>
-						</label>
+
+						{LANGUAGES.map((lang, index) => (
+							<label key={index} htmlFor={lang.code} className="flex items-center gap-2.5">
+								<CheckBox name={lang.code} />
+								<span className="font-medium">{t.languages[lang.name]}</span>
+							</label>
+						))}
 					</div>
 
 					<div className="mt-14 flex gap-6">

@@ -6,12 +6,13 @@ import { FaCheck } from "react-icons/fa"
 interface CheckboxProps {
 	name: string
 	onChange?: any
+	className?: string
 }
 
-const CheckBox: React.FC<CheckboxProps> = ({ name, onChange }) => {
+const CheckBox: React.FC<CheckboxProps> = ({ name, onChange, className }) => {
 	const [checked, setChecked] = useState(false)
 
-	return <label htmlFor={name}>
+	return <label htmlFor={name} className={className}>
 		<input
 			type="checkbox"
 			id={name}
