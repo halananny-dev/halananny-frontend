@@ -7,17 +7,18 @@ import Img from "../sections/Img";
 
 interface VideoProps {
 	text?: string;
-	img?: any
-	accept?: string
+	img?: any;
+	accept?: string;
+	value?: File | null;
+	onChange?: (file: File | null) => void; // ✅ Controlled via react-hook-form
 }
 
-const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
+const VideoUpload: React.FC<VideoProps> = ({ text, img, accept, value, onChange }) => {
 	const { t } = useI18n();
-	const [file, setFile] = useState<File | null>(null);
-	const [uploadProgress, setUploadProgress] = useState<number>(0);
-	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const [isPlaying, setIsPlaying] = useState(false);
+	const [uploadProgress, setUploadProgress] = useState<number>(0);
+	const [isUploading, setIsUploading] = useState<boolean>(false);
 
 	const togglePlayPause = () => {
 		if (!videoRef.current) return;
@@ -32,13 +33,13 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 	};
 
 	const handleVideoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const file = event.target.files?.[0];
+		const selectedFile = event.target.files?.[0];
 
-		if (file) {
+		if (selectedFile) {
 			if (!accept) {
 				const videoElement = document.createElement("video");
 				videoElement.preload = "metadata";
-				videoElement.src = URL.createObjectURL(file);
+				videoElement.src = URL.createObjectURL(selectedFile);
 
 				videoElement.onloadedmetadata = () => {
 					window.URL.revokeObjectURL(videoElement.src);
@@ -48,14 +49,16 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 					}
 
 					setIsUploading(true);
-					simulateUpload(file);
+					simulateUpload(selectedFile);
 				};
 			}
-			setFile(file);
+
+			onChange?.(selectedFile);
 		}
 	};
-	const simulateUpload = (file: File) => {
-		const totalSize = file.size;
+
+	const simulateUpload = (selectedFile: File) => {
+		const totalSize = selectedFile.size;
 		let uploaded = 0;
 
 		const interval = setInterval(() => {
@@ -70,84 +73,70 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept }) => {
 	};
 
 	const handleRemoveVideo = () => {
-		setFile(null);
+		onChange?.(null);
 		setUploadProgress(0);
 		setIsUploading(false);
 	};
 
 	return (
-		<>
-			<div className="p-4 mt-4 gap-5 md:max-w-540 w-full cursor-pointer select-none bg-gray-750 relative flex flex-col items-center border border-gray-900 border-dashed rounded-xl">
-				{file ? (
-					<div className="w-full gap-6 flex items-center text-gray-900">
-						<div className="hidden md:flex flex-col gap-1 items-center">
-							<Img src={isUploading ? "/upload-video.svg" : "/uploaded.svg"} />
-							<p className="text-xs font-semibold">
-								{isUploading ? t.upload_video.uploading : t.upload_video.uploaded}
-							</p>
-						</div>
-						<div className="flex items-center flex-col md:flex-row gap-4 md:gap-0 grow">
-							{!accept ? <div className="relative">
+		<div className="p-4 mt-4 gap-5 md:max-w-540 w-full cursor-pointer select-none bg-gray-750 relative flex flex-col items-center border border-gray-900 border-dashed rounded-xl">
+			{value ? (
+				<div className="w-full gap-6 flex items-center text-gray-900">
+					<div className="hidden md:flex flex-col gap-1 items-center">
+						<Img src={isUploading ? "/upload-video.svg" : "/uploaded.svg"} />
+						<p className="text-xs font-semibold">
+							{isUploading ? t.upload_video.uploading : t.upload_video.uploaded}
+						</p>
+					</div>
+					<div className="flex items-center flex-col md:flex-row gap-4 md:gap-0 grow">
+						{!accept ? (
+							<div className="relative">
 								<button
 									onClick={togglePlayPause}
 									className="absolute z-40 text-white text-xs w-full h-full top-0 left-0 flex items-center justify-center">
 									{!isPlaying ? <FaPlay /> : <FaPause />}
 								</button>
 								<video ref={videoRef} className="md:h-9 w-full md:w-auto rounded-lg">
-									<source src={URL.createObjectURL(file)} type={file.type} />
+									<source src={URL.createObjectURL(value)} type={value.type} />
 									{t.upload_video.video_not_supported}
 								</video>
-							</div> :
-								<div className="border-l border-l-gray-10 hidden md:block pl-6">
-									<Img src={img} />
-								</div>
-							}
-							<div className="md:ltr:ml-3 md:rtl:mr-3 w-64 mr-auto md:mr-0">
-								<div className="text-sm">
-									<p className="truncate overflow-hidden w-full">File :
-										<span className="font-semibold">{" "}{file.name}</span>
-									</p>
-									{isUploading ? (
-										<div className="w-full bg-gray-950 mt-3 rounded-full h-1">
-											<div
-												className="bg-green-700 h-1 rounded-full transition-all"
-												style={{ width: `${uploadProgress}%` }}
-											></div>
-										</div>
-									) :
-										<p className="font-light">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-									}
-								</div>
 							</div>
-							{isUploading ? <div className="ml-1.5 text-xs gap-1.5 -mb-2 flex md:flex-col items-end">
-								<p className="font-light">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
-								<p className="font-medium">{uploadProgress.toFixed(0)} %</p>
-							</div> :
-								<div className="flex items-center justify-between w-full md:w-auto md:rtl:mr-auto md:ltr:ml-auto">
-									<div className="flex md:hidden gap-1 items-center">
-										<Img src={isUploading ? "/upload-video.svg" : "/uploaded.svg"} />
-										<p className="text-xs font-semibold">
-											{isUploading ? t.upload_video.uploading : t.upload_video.uploaded}
-										</p>
+						) : (
+							<div className="border-l border-l-gray-10 hidden md:block pl-6">
+								<Img src={img} />
+							</div>
+						)}
+						<div className="md:ltr:ml-3 md:rtl:mr-3 w-64 mr-auto md:mr-0">
+							<div className="text-sm">
+								<p className="truncate overflow-hidden w-full">
+									File: <span className="font-semibold">{" "}{value.name}</span>
+								</p>
+								{isUploading ? (
+									<div className="w-full bg-gray-950 mt-3 rounded-full h-1">
+										<div
+											className="bg-green-700 h-1 rounded-full transition-all"
+											style={{ width: `${uploadProgress}%` }}
+										></div>
 									</div>
-									<button onClick={handleRemoveVideo}>
-										<Img src="/remove-video.svg" />
-									</button>
-								</div>
-							}
+								) : (
+									<p className="font-light">{(value.size / 1024 / 1024).toFixed(2)} MB</p>
+								)}
+							</div>
 						</div>
+						<button onClick={handleRemoveVideo}>
+							<Img src="/remove-video.svg" />
+						</button>
 					</div>
-				) : (
-					<label className="w-full flex gap-4 items-center justify-center cursor-pointer">
-						<Img src={img || "/video-upload.svg"} />
-						<p className="text-sm font-medium">{text || t.upload_video.choose_video}</p>
-						<input type="file" accept={accept || "video/*"} className="hidden" onChange={handleVideoUpload} />
-					</label>
-				)}
-
-			</div>
-		</>
+				</div>
+			) : (
+				<label className="w-full flex gap-4 items-center justify-center cursor-pointer">
+					<Img src={img || "/video-upload.svg"} />
+					<p className="text-sm font-medium">{text || t.upload_video.choose_video}</p>
+					<input type="file" accept={accept || "video/*"} className="hidden" onChange={handleVideoUpload} />
+				</label>
+			)}
+		</div>
 	);
-}
+};
 
 export default VideoUpload;

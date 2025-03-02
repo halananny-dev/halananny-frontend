@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
 import { useI18n } from '@/i18/i18Context';
+import { cn } from "@/lib/utils";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
 import { IoCloseSharp, IoMenuOutline } from "react-icons/io5";
 import { navbarLinks } from '../constants';
+import Dropdown from '../shared/Dropdown';
 import { Button } from '../ui/button';
 import Img from './Img';
 
@@ -41,9 +37,12 @@ export default function Navbar() {
 
   return (
     <section className="flex justify-center">
-      <nav className="fixed top-4 w-full bg-white z-[60] border border-gray-100 shadow-navbar rounded-md px-6 sm:px-10 py-3 flex justify-between items-center max-w-[calc(100%-32px)] xl:max-w-max">
+      <nav className="navbar">
         <Link href="/">
-          <Img src="/logo.svg" alt="HalaNanny" className="sm:w-32 w-28" />
+          <Img
+            src="/logo.svg"
+            alt="HalaNanny"
+            className="sm:w-32 w-28" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
@@ -52,8 +51,10 @@ export default function Navbar() {
               <button
                 onClick={() => router.push('/' + href)}
                 key={index}
-                className={`text-gray-900 ${activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
-                  }`}
+                className={cn(
+                  "text-gray-900",
+                  activeSection === href.replace("#", "") ? "border-b-2 border-teal-500" : ""
+                )}
               >
                 {t[name]}
               </button>
@@ -62,12 +63,15 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <Link href="/login">
-              <Button variant="ghost" className="text-gray-900 font-bold text-sm hover:bg-gray-100">
+              <Button
+                variant="ghost"
+                className="text-gray-900 font-bold text-sm hover:bg-gray-100">
                 {t.login}
               </Button>
             </Link>
             <Link href="/register">
-              <Button className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
+              <Button
+                className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
                 {t.register}
               </Button>
             </Link>
@@ -75,8 +79,10 @@ export default function Navbar() {
               {['en', 'ar'].map(l => (
                 <button
                   key={l}
-                  className={`text-sm font-bold transition-colors duration-300 ${locale === l ? 'text-gray-900' : 'text-gray-400 hover:text-gray-600'
-                    }`}
+                  className={cn(
+                    "text-sm font-bold transition-colors duration-300",
+                    locale === l ? 'text-gray-900' : 'text-gray-400 hover:text-gray-600'
+                  )}
                   onClick={() => setLocale(l)}
                 >
                   {t[l.toUpperCase()]}
@@ -84,41 +90,47 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-          <Select>
-            <SelectTrigger className="w-20 h-10 text-base border rounded-full bg-white shadow">
-              <SelectValue placeholder={<Img src='/egypt.svg' className="w-5 h-5 rounded-full ltr:mr-3 rtl:ml-3" />} />
-            </SelectTrigger>
-            <SelectContent></SelectContent>
-          </Select>
+
+          <Dropdown />
         </div>
 
         <button
           className="lg:hidden p-2 focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <IoCloseSharp className="text-gray-900 text-3xl" /> : <IoMenuOutline className="text-gray-900 text-3xl" />}
+          {isMobileMenuOpen ?
+            <IoCloseSharp className="text-gray-900 text-3xl" /> :
+            <IoMenuOutline className="text-gray-900 text-3xl" />}
         </button>
       </nav>
 
       <div
-        className={`fixed top-0 px-4 left-0 w-full h-full bg-white z-[55] transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform justify-center duration-300 lg:hidden flex flex-col items-start gap-4 shadow-xl`}
+        className={cn(
+          "fixed top-0 px-4 left-0 w-full h-full bg-white z-[55] transform",
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
+          "transition-transform justify-between py-10 duration-300 lg:hidden flex flex-col items-start shadow-xl"
+        )}
       >
-        {navbarLinks.map(({ name, href }, index) => (
-          <Link
-            href={href}
-            key={index}
-            className="text-gray-600 hover:text-gray-900 text-lg font-semibold"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            {t[name]}
-          </Link>
-        ))}
+        <div className="flex flex-col pt-20 gap-4">
+          {navbarLinks.map(({ name, href }, index) => (
+            <Link
+              href={href}
+              key={index}
+              className="text-gray-600 hover:text-gray-900 text-lg font-semibold"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t[name]}
+            </Link>
+          ))}
+        </div>
         <div className="flex items-center gap-4 max-w-sm w-full">
-          <Button variant="outline" className="text-gray-600 w-full font-bold text-lg hover:bg-gray-100">
+          <Button
+            variant="outline"
+            className="text-gray-600 w-full font-bold text-lg hover:bg-gray-100">
             {t.login}
           </Button>
-          <Button className="bg-teal-500 hover:bg-teal-600 font-semibold w-full text-white px-5 py-2 text-lg">
+          <Button
+            className="bg-teal-500 hover:bg-teal-600 font-semibold w-full text-white px-5 py-2 text-lg">
             {t.register}
           </Button>
         </div>

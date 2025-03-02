@@ -14,7 +14,12 @@ import {
 import { useI18n } from "@/i18/i18Context"
 import { cn } from "@/lib/utils"
 
-export function DatePicker() {
+
+interface Props {
+  onChange?: any
+}
+
+export const DatePicker: React.FC<Props> = ({ onChange }) => {
   const [date, setDate] = React.useState<Date>()
   const { t } = useI18n()
 
@@ -36,7 +41,10 @@ export function DatePicker() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={(date) => {
+            setDate(date)
+            onChange && onChange(date)
+          }}
           initialFocus
         />
       </PopoverContent>

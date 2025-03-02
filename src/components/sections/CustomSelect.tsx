@@ -20,7 +20,6 @@ interface CustomSelectProps {
 	preventOptionTranslation?: boolean
 }
 
-
 const CustomSelect: React.FC<CustomSelectProps> = ({
 	options,
 	placeholder = "Select an option",
@@ -51,9 +50,12 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 					{selected || placeholder}
 				</SelectValue>
 			</SelectTrigger>
-			<SelectContent className="rounded-xl border border-gray-10 !bg-white shadow-lg">
+			<SelectContent
+				className="rounded-xl border border-gray-10 !bg-white shadow-lg">
 				{options.map((option, index) => (
-					<SelectItem key={index} value={option}>
+					<SelectItem
+						key={index}
+						value={option}>
 						<span className="flex items-center gap-2">
 							{groupName ? t[groupName][option] :
 								preventOptionTranslation ? option :

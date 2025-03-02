@@ -2,7 +2,8 @@
 
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { CAPABILITIES, CULTURAL_PREFERENCE, LANGUAGES, PREFERRED_EXPERIENCE, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
@@ -12,44 +13,28 @@ import CustomRadio from "./Radio";
 
 const JobRequirements = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const [disabled, setDisabled] = useState(true)
-	const formRef = useRef<any>(null)
-	const [skills, setSkills] = useState([])
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (!disabled) {
-			setActiveTab(4);
-		}
-	};
+	const { control, watch, handleSubmit, setValue, register } = useForm({
+		defaultValues: {
+			experience: [],
+			language: [],
+			religion: CULTURAL_PREFERENCE[0],
+			skills: [],
+		},
+	});
 
+	const watchedValues = watch();
+	const { experience, language, religion, skills } = watchedValues;
 
-	const handleChange = () => {
-		const form: any = new FormData(formRef.current);
-
-		const experience: any = []
-		const language: any = []
-		let religion: any = ''
-
-
-		for (let [key, value] of form.entries()) {
-			if (PREFERRED_EXPERIENCE.includes(key)) {
-				experience.push(key);
-			} else if (["en", "ar"].includes(key)) {
-				language.push(key);
-			} else {
-				religion = value;
-			}
-		}
-
-		console.log(skills, experience, religion, language)
-
-		setDisabled(experience.length === 0 || language.length === 0 || !religion || skills.length === 0);
-	};
-
+	const [disabled, setDisabled] = useState(true);
 	useEffect(() => {
-		handleChange();
-	}, [skills]);
+		setDisabled(experience.length === 0 || language.length === 0 || !religion || skills.length === 0);
+	}, [experience, language, religion, skills]);
+
+	const onSubmit = (data) => {
+		console.log("Form Data:", data);
+		setActiveTab(4);
+	};
 
 	return (
 		<motion.div key="profile" variants={screenVariants} initial="initial" animate="animate" exit="exit">
@@ -57,64 +42,68 @@ const JobRequirements = ({ setActiveTab }) => {
 				<Title className="lg:max-w-60 !items-start" typographyClass="md:!text-3xl">
 					{t.jobRequirements.title}
 				</Title>
-				<form
-					ref={formRef}
-					onChange={handleChange}
-					onSubmit={handleSubmit} className="grow text-gray-900">
+
+				<form onSubmit={handleSubmit(onSubmit)} className="grow text-gray-900">
 					<h4 className="font-bold mb-5">{t.jobRequirements.experience}</h4>
 					<div className="mt-4 flex flex-col gap-2">
 						{PREFERRED_EXPERIENCE.map((e, index) => (
 							<label key={index} htmlFor={e} className="flex items-center gap-2.5">
-								<CheckBox name={e} />
-								<span className="font-medium">{t['preferred-experience'][e]}</span>
+								<CheckBox
+									id={e}
+									value={e}
+									{...register("experience")} />
+								<span className="font-medium">{t["preferred-experience"][e]}</span>
 							</label>
 						))}
 					</div>
 
 					<h4 className="mt-11 font-bold">{t.jobRequirements.language}</h4>
 					<div className="mt-5 flex gap-5">
-						{LANGUAGES.map((l, i) => (
-							<label key={i} htmlFor={l.code} className="flex items-center gap-2.5">
-								<CheckBox name={l.code} />
-								<span className="font-medium">{t.languages[l.name]}</span>
+						{LANGUAGES.map((lang, index) => (
+							<label key={index} htmlFor={lang.code} className="flex items-center gap-2.5">
+								<CheckBox id={lang.code} {...register("language")} value={lang.code} />
+								<span className="font-medium">{t.languages[lang.name]}</span>
 							</label>
 						))}
 					</div>
 
 					<h4 className="mt-10 font-bold">{t.jobRequirements.skills}</h4>
 					<Checkbox
-						onChange={updatedSkills => setSkills(updatedSkills)}
+						name="skills"
+						control={control}
+						groupName="capabilities"
 						variant="variant2"
 						className="mt-5"
-						groupName="capabilities"
-						data={CAPABILITIES} />
+						data={CAPABILITIES}
+					/>
+
 					<h4 className="mt-10 font-bold">{t.jobRequirements.religion}</h4>
 					<div className="mt-5 flex flex-col gap-3">
 						{CULTURAL_PREFERENCE.map((c, i) => (
-							<div key={i} className="flex items-center font-medium gap-2">
-								<CustomRadio name="religion" id={c} checked={i == 0} value={c} />
-								<label htmlFor={c}>{t['cultural-preference'][c]}</label>
-							</div>
+							<label key={i} className="flex items-center gap-2.5">
+								<Controller
+									name="religion"
+									control={control}
+									render={({ field }) => (
+										<CustomRadio
+											{...field}
+											id={c}
+											value={c}
+											checked={field.value === c}
+											onChange={() => setValue("religion", c)}
+										/>
+									)}
+								/>
+								<span>{t["cultural-preference"][c]}</span>
+							</label>
 						))}
 					</div>
 
 					<div className="mt-14 flex gap-6">
-						<Btn
-							type="button"
-							onClick={() => setActiveTab(2)}
-							className="w-32"
-							variant="primary-outlined"
-							size="lg"
-						>
+						<Btn type="button" onClick={() => setActiveTab(2)} className="w-32" variant="primary-outlined" size="lg">
 							{t.experience.back}
 						</Btn>
-						<Btn
-							type="submit"
-							className="lg:max-w-80"
-							variant="primary"
-							size="lg"
-							disabled={disabled}
-						>
+						<Btn type="submit" className="lg:max-w-80" variant="primary" size="lg" disabled={disabled}>
 							{t.experience.next_step}
 						</Btn>
 					</div>

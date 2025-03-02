@@ -79,13 +79,13 @@ export default function Nanny({ nanny }) {
 						<span>{t.dashboard['Contact via WhatsApp']}</span>
 					</Button>
 				</div>
-				<Button
+				{/* <Button
 					variant="outline"
 					className="border-none text-gray-900 bg-gray-800 text-xs rounded-md hover:text-gray-900 mt-3 w-full"
 				>
 					<Img src="/camera.svg" />
 					<span>{t.dashboard['Schedule Interview']}</span>
-				</Button>
+				</Button> */}
 			</div>
 		</div>
 	)
