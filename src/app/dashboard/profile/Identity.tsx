@@ -27,7 +27,7 @@ export default function Identity() {
 
 	return (
 		<>
-			<Title title={t.dashboard.identity} onEdit={() => setOpen(true)} />
+			<Title title={t.dashboard.identity} />
 			<div className="mt-4 card py-6 px-10 flex gap-6 flex-col">
 				{identity.map((e, i) => (
 					<div className="flex items-center pb-3 border-b border-gray-ea justify-between" key={i}>
