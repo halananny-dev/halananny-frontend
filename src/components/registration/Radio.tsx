@@ -1,17 +1,19 @@
 interface RadioProps {
 	name: string;
-	id: string
+	id: string;
+	value: string;
 	checked?: boolean;
-	value: string
+	onChange?: (value: string) => void;
 }
 
-const CustomRadio: React.FC<RadioProps> = ({ name, id, checked = false, value }) => {
+const CustomRadio: React.FC<RadioProps> = ({ name, id, value, checked, onChange }) => {
 	return (
 		<label className="relative flex items-center cursor-pointer" htmlFor={id}>
 			<input
 				name={name}
 				value={value}
-				defaultChecked={checked}
+				checked={checked}
+				onChange={() => onChange?.(value)}
 				id={id}
 				type="radio"
 				className="peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-slate-300 checked:border-teal-500 transition-all"

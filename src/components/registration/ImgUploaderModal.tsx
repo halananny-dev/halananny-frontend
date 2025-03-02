@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
 import { useI18n } from "@/i18/i18Context";
-import React, { useRef, useState } from "react";
+import getCroppedImg from "@/lib/utils";
+import React, { useCallback, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { HiMiniMagnifyingGlassPlus } from "react-icons/hi2";
@@ -24,6 +25,15 @@ const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, setImg }) => 
 	const [zoom, setZoom] = useState(1);
 	const { t } = useI18n();
 	const cropper = useRef<any>(null);
+	const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+
+	const handleCrop = async () => {
+		if (!image || !croppedAreaPixels) return;
+
+		const croppedImage = await getCroppedImg(image, croppedAreaPixels);
+		setImg(croppedImage);
+		onClose();
+	};
 
 	const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
@@ -40,6 +50,12 @@ const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, setImg }) => 
 		setZoom(1);
 	};
 
+
+	const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+		setCroppedAreaPixels(croppedAreaPixels);
+	}, []);
+
+
 	return (
 		<Dialog open={open} onOpenChange={onClose}>
 			<DialogContent className="md:max-w-800 max-w-[calc(100%-32px)] z-[90] outline-none text-gray-900">
@@ -52,6 +68,7 @@ const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, setImg }) => 
 						<div className="w-48">
 							<div className="relative w-full overflow-hidden h-48 rounded-xl">
 								<Cropper
+									onCropComplete={onCropComplete}
 									ref={cropper}
 									image={image}
 									crop={crop}
@@ -117,12 +134,7 @@ const ImageUploaderModal: React.FC<ModalProps> = ({ open, onClose, setImg }) => 
 								{t.imageUploader.cancel}
 							</Button>
 							<Btn
-								onClick={() => {
-									const img = cropper.current.props
-									setImage(img)
-									setImg(img)
-									onClose()
-								}}
+								onClick={handleCrop}
 								size="xl"
 								disabled={!image}
 								variant="primary"

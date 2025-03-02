@@ -1,10 +1,9 @@
 "use client"
 
 import { useI18n } from "@/i18/i18Context"
-import { useState } from "react"
 import OTPInput from "../registration/OTPInput"
-import Img from "../sections/Img"
 import Btn from "../sections/Button"
+import Img from "../sections/Img"
 
 export default function VerifyOtp({ otp, setOtp }) {
 	const { t } = useI18n()

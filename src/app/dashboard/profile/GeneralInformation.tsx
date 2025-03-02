@@ -11,7 +11,7 @@ import { LuPen } from "react-icons/lu";
 import { MdStars } from "react-icons/md";
 
 export default function GeneralInformation() {
-	const [img, setImg] = useState({ image: '/nanny1.svg' })
+	const [img, setImg] = useState('/nanny1.svg')
 	const { t } = useI18n()
 
 	return (

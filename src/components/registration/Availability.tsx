@@ -2,23 +2,30 @@
 
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { Controller, useForm } from "react-hook-form"; // Import useForm
 import { FaCheckCircle } from "react-icons/fa";
 import { AVAILABILITY, BOOKING_DURATIONS, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import Title from "../sections/Title";
 import { Calendar } from "../ui/calendar";
-import { default as CustomRadio, default as Radio } from "./Radio";
+import { default as CustomRadio } from "./Radio";
 
 const Availability = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const [date, setDate] = useState<any>()
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (date) {
-			setActiveTab(5);
-		}
+	const { handleSubmit, setValue, watch, control } = useForm({
+		defaultValues: {
+			date: undefined,
+			frequency: AVAILABILITY[0],
+			booking: BOOKING_DURATIONS[0],
+		},
+	});
+
+	const date = watch("date");
+
+	const onSubmit = (data) => {
+		console.log("Form Data:", data);
+		setActiveTab(5);
 	};
 
 	return (
@@ -27,17 +34,33 @@ const Availability = ({ setActiveTab }) => {
 				<Title className="lg:max-w-52 !items-start" typographyClass="md:!text-3xl">
 					{t.desired_job.title}
 				</Title>
-				<form onSubmit={handleSubmit} className="grow text-gray-900">
+
+				<form onSubmit={handleSubmit(onSubmit)} className="grow text-gray-900">
 					<h4 className="font-bold mb-5">{t.desired_job.preferred_start_date}</h4>
-					<Calendar mode="single" selected={date} onSelect={(e) => {
-						setDate(e)
-					}} className="mt-5" />
+					<Calendar
+						mode="single"
+						selected={date}
+						onSelect={(e: any) => setValue("date", e)}
+						className="mt-5"
+					/>
 
 					<h4 className="mt-12 font-bold">{t.desired_job.frequency_of_service}</h4>
 					<div className="mt-7 flex flex-wrap gap-4">
 						{AVAILABILITY.map((e, i) => (
 							<label key={i} htmlFor={e} className="flex items-center gap-2">
-								<Radio id={e} name="frequency" checked={i === 0} value={e} />
+								<Controller
+									name="frequency"
+									control={control}
+									render={({ field }) => (
+										<CustomRadio
+											{...field}
+											id={e}
+											value={e}
+											checked={field.value === e}
+											onChange={() => setValue("frequency", e)}
+										/>
+									)}
+								/>
 								<span className="font-medium">{t.availability[e]}</span>
 							</label>
 						))}
@@ -47,8 +70,20 @@ const Availability = ({ setActiveTab }) => {
 					<div className="mt-5 flex flex-col gap-3">
 						{BOOKING_DURATIONS.map((b, i) => (
 							<div key={i} className="flex items-center font-medium gap-2">
-								<CustomRadio name="booking" id={b} checked value={b} />
-								<label htmlFor={b}>{t['booking-duration'][b]}</label>
+								<Controller
+									name="booking"
+									control={control}
+									render={({ field }) => (
+										<CustomRadio
+											{...field}
+											id={b}
+											value={b}
+											checked={field.value === b}
+											onChange={() => setValue("booking", b)}
+										/>
+									)}
+								/>
+								<label htmlFor={b}>{t["booking-duration"][b]}</label>
 							</div>
 						))}
 					</div>
@@ -64,7 +99,7 @@ const Availability = ({ setActiveTab }) => {
 							>
 								{t.experience.back}
 							</Btn>
-							<Btn type="submit" variant="primary" size="lg" disabled={!date}>
+							<Btn type="submit" variant="primary" size="lg">
 								{t.profile.next_step}
 							</Btn>
 						</div>
@@ -73,7 +108,6 @@ const Availability = ({ setActiveTab }) => {
 							className="mt-6 flex bg-teal-400 items-center gap-3 border-none text-gray-900 disabled:text-gray-70 disabled:bg-gray-60"
 							variant="primary"
 							size="md"
-							disabled={!date}
 						>
 							<span>{t.desired_job.ready}</span>
 							<FaCheckCircle />
