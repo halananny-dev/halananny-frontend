@@ -1,36 +1,26 @@
 "use client"
 
-import { useState } from "react"
+import { forwardRef } from "react"
 import { FaCheck } from "react-icons/fa"
 
-interface CheckboxProps {
-	name: string
-	onChange?: any
-	className?: string
-}
+const CheckBox = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
+	({ className, ...props }, ref) => (
+		<label
+			className={`cursor-pointer flex items-center ${className}`}>
+			<input
+				type="checkbox"
+				ref={ref}
+				className="hidden peer"
+				{...props} />
+			<div
+				className="w-4 h-4 border rounded-[2px] flex items-center justify-center 
+          border-gray-400 bg-white peer-checked:border-teal-500 peer-checked:bg-teal-500">
+				<FaCheck className="w-2.5 text-white block" />
+			</div>
+		</label>
+	)
+)
 
-const CheckBox: React.FC<CheckboxProps> = ({ name, onChange, className }) => {
-	const [checked, setChecked] = useState(false)
-
-	return <label htmlFor={name} className={className}>
-		<input
-			type="checkbox"
-			id={name}
-			name={name}
-			className="hidden"
-			onChange={(e) => {
-				setChecked(e.target.checked)
-				onChange && onChange(e)
-			}}
-		/>
-		<div
-			className={`w-4 h-4 border rounded-[2px] flex items-center justify-center ${checked ? "border-teal-500 bg-teal-500" : "border-gray-400 bg-white"}`}
-		>
-			{checked && (
-				<FaCheck className="w-2.5 text-white" />
-			)}
-		</div>
-	</label>
-}
+CheckBox.displayName = "CheckBox"
 
 export default CheckBox
