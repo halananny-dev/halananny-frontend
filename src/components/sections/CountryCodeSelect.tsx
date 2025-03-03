@@ -2,7 +2,7 @@ import Flag from "react-world-flags";
 import { COUNTRIES } from "../constants";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
-export default function CountryCodeSelect({ onChange }) {
+export default function CountryCodeSelect({ onChange }: { onChange?: any }) {
 	return (
 		<Select onValueChange={(value) => onChange?.(value)}>
 			<SelectTrigger className="w-32 font-semibold bg-white text-gray-900 focus:ring-0 h-12 outline-none border-0 border-r border-r-gray-10 rounded-none">
