@@ -2,38 +2,50 @@
 
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { AVAILABILITY, CURRENCIES, PRICE_RANGE, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CustomSelect from "../sections/CustomSelect";
+import Loader from "../sections/Loader";
 import MultiSelect from "../sections/MultiSelect";
 import Title from "../sections/Title";
 import { DatePicker } from "../ui/datepicker";
 
 const JobPreference = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const { countries, cities } = useAppContext()
+	const { countries, cities, userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const { control, handleSubmit, watch } = useForm({
 		defaultValues: {
-			jobs: [],
+			availability: [],
 			country: "",
 			city: [],
 			currency: "",
-			salary: "",
-			availableFrom: null,
+			desired_salary: "",
+			available_from: null,
 		},
 	});
 
-	const jobs = watch("jobs");
+	const availability = watch("availability");
 	const country = watch("country");
 
-	const onSubmit = (data) => {
-		if (data.jobs.length > 0) {
-			console.log("Form Data:", data);
-			setActiveTab(5);
+	const onSubmit = async (data) => {
+		setLoading(true)
+		const payload = {
+			country_id: countries.find(e => e.country_name === data.country)?.id || null,
+			available_city: data.city?.map(e => cities.find(f => f.name === e)?.id) || null,
+			availability: data.availability,
+			desired_salary: data.desired_salary,
+			available_from: data.available_from,
 		}
+
+		await updateUser(payload, userId)
+		setActiveTab(5);
+		setLoading(false)
 	};
 
 	return (
@@ -45,7 +57,7 @@ const JobPreference = ({ setActiveTab }) => {
 					<div className="max-w-390 mx-auto lg:mx-0">
 						<h4 className="font-bold">{t.jobPreference.desired_jobs}</h4>
 						<Controller
-							name="jobs"
+							name="availability"
 							control={control}
 							render={({ field }) => (
 								<MultiSelect
@@ -74,7 +86,7 @@ const JobPreference = ({ setActiveTab }) => {
 								)}
 							/>
 							<Controller
-								name="salary"
+								name="desired_salary"
 								control={control}
 								render={({ field }) => (
 									<CustomSelect
@@ -127,7 +139,7 @@ const JobPreference = ({ setActiveTab }) => {
 
 						<h4 className="font-bold mt-8 mb-4">{t.jobPreference.available_from}</h4>
 						<Controller
-							name="availableFrom"
+							name="available_from"
 							control={control}
 							render={({ field }) => <DatePicker {...field} />}
 						/>
@@ -148,9 +160,10 @@ const JobPreference = ({ setActiveTab }) => {
 							className="lg:max-w-80"
 							variant="primary"
 							size="lg"
-							disabled={jobs.length === 0}
+							disabled={availability.length === 0 || loading}
 						>
 							{t.experience.next_step}
+							{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 						</Btn>
 					</div>
 				</form>

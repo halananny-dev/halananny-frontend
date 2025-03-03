@@ -227,7 +227,7 @@
   "verify_your_details": "Verify Your Details",
   "otp_sent_message": "We’ve sent an OTP to your WhatsApp. Enter it below to move to the next level!",
   "otp_expiry": "Your OTP will expire in",
-  "otp_expiry_time": "15 min",
+  "min": "min",
   "verify_otp": "Verify OTP",
   "didnt_receive_otp": "Didn't Receive OTP?",
   "resend_otp": "Resend OTP",
@@ -606,5 +606,8 @@
     "ID": "ID",
     "Driving Licence": "Driving Licence",
     "Exam Certificate": "Exam Certificate"
+  },
+  "toast": {
+    "This Email is already registered": "This Email is already registered"
   }
 }

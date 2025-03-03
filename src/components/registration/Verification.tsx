@@ -1,12 +1,17 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { addDocument } from "@/service/file";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
+import Loader from "../sections/Loader";
 import Title from "../sections/Title";
 import CertificationUpload from "./CertificationUpload";
 import VideoUpload from "./FileUpload";
@@ -14,6 +19,8 @@ import CustomRadio from "./Radio";
 
 const Verification = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const methods = useForm({
 		defaultValues: {
@@ -22,16 +29,36 @@ const Verification = ({ setActiveTab }) => {
 			reference: "no",
 			referenceDetails: "",
 			termsAccepted: false,
-			certifications: [{ name: "", file: null }],
+			certifications: [],
 		},
 	});
 
 	const { control, handleSubmit, watch, register } = methods;
 	const referenceValue = watch("reference");
 
-	const onSubmit = (data) => {
-		console.log("Form Data Submitted:", data);
+	const onSubmit = async (data) => {
+		setLoading(true)
+		const payload = {
+			reference: data.referenceDetails,
+			consent_term_and_cond: data.termsAccepted
+		}
+
+		await updateUser(payload, userId)
+
+		if (data.passport) {
+			await addDocument(data.passport, 'ID', userId)
+		}
+
+		if (data.visa) {
+			await addDocument(data.visa, 'Visa', userId)
+		}
+
+		data.certifications.map(async c => {
+			await addDocument(c.file, c.name, userId)
+		})
+
 		setActiveTab(6);
+		setLoading(false)
 	};
 
 	return (
@@ -158,9 +185,11 @@ const Verification = ({ setActiveTab }) => {
 									type="submit"
 									className="w-full"
 									variant="primary"
+									disabled={loading}
 									size="lg"
 								>
 									{t.registration.complete_registration}
+									{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 								</Btn>
 							</div>
 						</div>

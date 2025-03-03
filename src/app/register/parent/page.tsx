@@ -59,7 +59,7 @@ export default function ParentRegistration() {
 
 			<div className="xl:max-w-6xl max-w-[calc(100%-32px)] mx-auto mt-8 pb-4">
 				<AnimatePresence mode="wait">
-					{activeTab === 1 && <SignUp img="/parent-sign-up.svg" setActiveTab={setActiveTab} />}
+					{activeTab === 1 && <SignUp userType="user" img="/parent-sign-up.svg" setActiveTab={setActiveTab} />}
 					{activeTab === 2 && <FamilyProfile setActiveTab={setActiveTab} />}
 					{activeTab === 3 && <JobRequirements setActiveTab={setActiveTab} />}
 					{activeTab === 4 && <Availability setActiveTab={setActiveTab} />}

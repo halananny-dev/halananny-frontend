@@ -1,5 +1,6 @@
 "use client";
 
+import { useAppContext } from '@/i18/AppContext';
 import { useI18n } from '@/i18/i18Context';
 import { cn } from "@/lib/utils";
 import Link from 'next/link';
@@ -15,6 +16,7 @@ export default function Navbar() {
   const { t, locale, setLocale } = useI18n();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const { user } = useAppContext()
   const router = useRouter()
 
   useEffect(() => {
@@ -62,19 +64,21 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/login">
-              <Button
-                variant="ghost"
-                className="text-gray-900 font-bold text-sm hover:bg-gray-100">
-                {t.login}
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button
-                className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
-                {t.register}
-              </Button>
-            </Link>
+            {!user && <>
+              <Link href="/login">
+                <Button
+                  variant="ghost"
+                  className="text-gray-900 font-bold text-sm hover:bg-gray-100">
+                  {t.login}
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button
+                  className="bg-teal-500 hover:bg-teal-600 font-semibold text-white px-4 py-2 leading-none rounded-full">
+                  {t.register}
+                </Button>
+              </Link>
+            </>}
             <div className="flex items-center gap-2 ml-2 text-sm font-bold">
               {['en', 'ar'].map(l => (
                 <button
@@ -91,7 +95,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Dropdown />
+          {user && <Dropdown />}
         </div>
 
         <button
@@ -123,7 +127,7 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="flex items-center gap-4 max-w-sm w-full">
+        {user ? <Dropdown /> : <div className="flex items-center gap-4 max-w-sm w-full">
           <Button
             variant="outline"
             className="text-gray-600 w-full font-bold text-lg hover:bg-gray-100">
@@ -133,8 +137,8 @@ export default function Navbar() {
             className="bg-teal-500 hover:bg-teal-600 font-semibold w-full text-white px-5 py-2 text-lg">
             {t.register}
           </Button>
-        </div>
+        </div>}
       </div>
-    </section>
+    </section >
   );
 }

@@ -227,7 +227,7 @@
   "verify_your_details": "تحقق من بياناتك",
   "otp_sent_message": "لقد أرسلنا رمز التحقق إلى واتساب الخاص بك. أدخله أدناه للانتقال إلى المستوى التالي!",
   "otp_expiry": "سينتهي صلاحية رمز التحقق خلال",
-  "otp_expiry_time": "١٥ دقيقة",
+  "min": "دقيقة",
   "verify_otp": "تحقق من الرمز",
   "didnt_receive_otp": "لم تستلم رمز التحقق؟",
   "resend_otp": "إعادة إرسال الرمز",
@@ -604,5 +604,8 @@
     "ID": "بطاقة الهوية",
     "Driving Licence": "رخصة القيادة",
     "Exam Certificate": "شهادة الامتحان"
+  },
+  "toast": {
+    "This Email is already registered": "هذا البريد الإلكتروني مسجل بالفعل"
   }
 }

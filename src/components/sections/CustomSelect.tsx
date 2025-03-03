@@ -48,22 +48,24 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 				)}
 			>
 				<SelectValue placeholder={placeholder}>
-					{selected || placeholder}
+					{groupName && selected ? t[groupName][selected] : placeholder}
 				</SelectValue>
 			</SelectTrigger>
 			<SelectContent
 				className="rounded-xl border border-gray-10 !bg-white shadow-lg">
-				{options.length === 0 ? <Loader /> : options.map((option, index) => (
-					<SelectItem
-						key={index}
-						value={option}>
-						<span className="flex items-center gap-2">
-							{groupName ? t[groupName][option] :
-								preventOptionTranslation ? option :
-									t[option]}
-						</span>
-					</SelectItem>
-				))}
+				{options.length === 0 ?
+					<Loader className="w-full py-3" />
+					: options.map((option, index) => (
+						<SelectItem
+							key={index}
+							value={option}>
+							<span className="flex items-center gap-2">
+								{groupName ? t[groupName][option] :
+									preventOptionTranslation ? option :
+										t[option]}
+							</span>
+						</SelectItem>
+					))}
 			</SelectContent>
 		</Select >
 	)

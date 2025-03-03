@@ -4,13 +4,14 @@ import { useI18n } from "@/i18/i18Context";
 import React, { useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 import Img from "../sections/Img";
+import { toast } from "react-toastify";
 
 interface VideoProps {
 	text?: string;
 	img?: any;
 	accept?: string;
 	value?: File | null;
-	onChange?: (file: File | null) => void; // ✅ Controlled via react-hook-form
+	onChange?: (file: File | null) => void;
 }
 
 const VideoUpload: React.FC<VideoProps> = ({ text, img, accept, value, onChange }) => {
@@ -36,6 +37,11 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept, value, onChange 
 		const selectedFile = event.target.files?.[0];
 
 		if (selectedFile) {
+			const maxSize = 10 * 1024 * 1024;
+			if (selectedFile.size > maxSize) {
+				return toast.error("File size exceeds 10MB. Please select a smaller file.");
+			}
+
 			if (!accept) {
 				const videoElement = document.createElement("video");
 				videoElement.preload = "metadata";

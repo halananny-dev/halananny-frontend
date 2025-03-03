@@ -2,6 +2,7 @@
 
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { LANGUAGES, screenVariants } from "../constants";
@@ -10,10 +11,13 @@ import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
 import Title from "../sections/Title";
 import Checkbox from "./Checkbox";
+import Loader from "../sections/Loader";
+import { useState } from "react";
 
 const Experience = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const { experienceWithKids, capabilities } = useAppContext()
+	const { experienceWithKids, capabilities, userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const {
 		register,
@@ -32,11 +36,19 @@ const Experience = ({ setActiveTab }) => {
 
 	const experience = watch("experience");
 
-	const onSubmit = (data) => {
-		if (data.experience > 0) {
-			console.log("Form Data:", data);
-			setActiveTab(4);
+	const onSubmit = async (data) => {
+		setLoading(true)
+		const payload = {
+			years_of_experience: data.experience,
+			experience_with_kids: data.experienceWithKids.map(e => experienceWithKids.find(c => c.title === e).id),
+			capabilities: data.capabilities.map(e => capabilities.find(c => c.name === e).id),
+			language: data.languages
 		}
+
+		await updateUser(payload, userId)
+
+		setActiveTab(4);
+		setLoading(false)
 	};
 
 	return (
@@ -101,9 +113,10 @@ const Experience = ({ setActiveTab }) => {
 							className="lg:max-w-80"
 							variant="primary"
 							size="lg"
-							disabled={experience === 0}
+							disabled={experience === 0 || loading}
 						>
 							{t.experience.next_step}
+							{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 						</Btn>
 					</div>
 				</form>

@@ -35,7 +35,7 @@ const Dropdown = () => {
 			</button>
 
 			{isOpen && (
-				<ul className="absolute overflow-hidden w-40 mt-3 bg-white border border-gray-950 right-0 rounded-xl shadow-lg z-10">
+				<ul className="absolute overflow-hidden w-40 mt-3 bg-white border border-gray-950 lg:right-0 left-0 lg:left-auto rounded-xl -top-[270%] shadow-lg z-10">
 					<li
 						onClick={() => router.push('/dashboard/profile')}
 						className="px-6 py-3 hover:bg-gray-100 cursor-pointer text-gray-900 font-semibold"
