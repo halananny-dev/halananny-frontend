@@ -1,31 +1,42 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
-import { Controller, useForm } from "react-hook-form"; // Import useForm
+import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { FaCheckCircle } from "react-icons/fa";
 import { AVAILABILITY, BOOKING_DURATIONS, screenVariants } from "../constants";
 import Btn from "../sections/Button";
+import Loader from "../sections/Loader";
 import Title from "../sections/Title";
 import { Calendar } from "../ui/calendar";
 import { default as CustomRadio } from "./Radio";
 
 const Availability = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const { handleSubmit, setValue, watch, control } = useForm({
 		defaultValues: {
-			date: undefined,
-			frequency: AVAILABILITY[0],
-			booking: BOOKING_DURATIONS[0],
+			preferred_start_date: undefined,
+			preferred_service_frequency: AVAILABILITY[0],
+			booking_duration: BOOKING_DURATIONS[0],
 		},
 	});
 
-	const date = watch("date");
+	const date = watch("preferred_start_date");
 
-	const onSubmit = (data) => {
-		console.log("Form Data:", data);
+	const onSubmit = async (data) => {
+		setLoading(true)
+
+		await updateUser(data, userId)
+
 		setActiveTab(5);
+
+		setLoading(false)
 	};
 
 	return (
@@ -40,7 +51,7 @@ const Availability = ({ setActiveTab }) => {
 					<Calendar
 						mode="single"
 						selected={date}
-						onSelect={(e: any) => setValue("date", e)}
+						onSelect={(e: any) => setValue("preferred_start_date", e)}
 						className="mt-5"
 					/>
 
@@ -49,7 +60,7 @@ const Availability = ({ setActiveTab }) => {
 						{AVAILABILITY.map((e, i) => (
 							<label key={i} htmlFor={e} className="flex items-center gap-2">
 								<Controller
-									name="frequency"
+									name="preferred_service_frequency"
 									control={control}
 									render={({ field }) => (
 										<CustomRadio
@@ -57,7 +68,7 @@ const Availability = ({ setActiveTab }) => {
 											id={e}
 											value={e}
 											checked={field.value === e}
-											onChange={() => setValue("frequency", e)}
+											onChange={() => setValue("preferred_service_frequency", e)}
 										/>
 									)}
 								/>
@@ -71,7 +82,7 @@ const Availability = ({ setActiveTab }) => {
 						{BOOKING_DURATIONS.map((b, i) => (
 							<div key={i} className="flex items-center font-medium gap-2">
 								<Controller
-									name="booking"
+									name="booking_duration"
 									control={control}
 									render={({ field }) => (
 										<CustomRadio
@@ -79,7 +90,7 @@ const Availability = ({ setActiveTab }) => {
 											id={b}
 											value={b}
 											checked={field.value === b}
-											onChange={() => setValue("booking", b)}
+											onChange={() => setValue("booking_duration", b)}
 										/>
 									)}
 								/>
@@ -99,8 +110,9 @@ const Availability = ({ setActiveTab }) => {
 							>
 								{t.experience.back}
 							</Btn>
-							<Btn type="submit" variant="primary" size="lg">
+							<Btn type="submit" disabled={loading} variant="primary" size="lg">
 								{t.profile.next_step}
+								{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 							</Btn>
 						</div>
 						<Btn

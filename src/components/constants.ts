@@ -212,5 +212,4 @@ export const VISA_STATUS = ["none"];
 export const MARTIAL_STATUS = ["Single", "Married", "Divorced", "Widowed"];
 export const CURRENCIES = ["AED"];
 export const PRICE_RANGE = ["1000 to 2000", "2000 to 4000"];
-export const CULTURAL_PREFERENCE = ["Muslim-friendly", "Dietary restrictions"];
 export const BOOKING_DURATIONS = ["Limited period", "Unlimited period"];

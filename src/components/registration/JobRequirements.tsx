@@ -2,25 +2,28 @@
 
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { CULTURAL_PREFERENCE, LANGUAGES, screenVariants } from "../constants";
+import { LANGUAGES, RELIGIONS, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
+import Loader from "../sections/Loader";
 import Title from "../sections/Title";
 import Checkbox from "./Checkbox";
 import CustomRadio from "./Radio";
 
 const JobRequirements = ({ setActiveTab }) => {
 	const { t } = useI18n();
-	const { experienceWithKids, capabilities } = useAppContext()
+	const { experienceWithKids, capabilities, userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const { control, watch, handleSubmit, setValue, register } = useForm({
 		defaultValues: {
 			experience: [],
 			language: [],
-			religion: CULTURAL_PREFERENCE[0],
+			religion: RELIGIONS[0],
 			skills: [],
 		},
 	});
@@ -33,9 +36,19 @@ const JobRequirements = ({ setActiveTab }) => {
 		setDisabled(experience.length === 0 || language.length === 0 || !religion || skills.length === 0);
 	}, [experience, language, religion, skills]);
 
-	const onSubmit = (data) => {
-		console.log("Form Data:", data);
+	const onSubmit = async (data) => {
+		setLoading(true)
+
+		const payload = {
+			preferred_experience: data.experience.map(e => experienceWithKids.map(f => f.title === e)?.id),
+			language: data.language,
+			preferred_skills: data.skills.map(e => capabilities.find(f => f.name === e)?.id),
+			preferred_religion: data.religion
+		}
+
+		await updateUser(payload, userId)
 		setActiveTab(4);
+		setLoading(false)
 	};
 
 	return (
@@ -81,7 +94,7 @@ const JobRequirements = ({ setActiveTab }) => {
 
 					<h4 className="mt-10 font-bold">{t.jobRequirements.religion}</h4>
 					<div className="mt-5 flex flex-col gap-3">
-						{CULTURAL_PREFERENCE.map((c, i) => (
+						{RELIGIONS.map((c, i) => (
 							<label key={i} className="flex items-center gap-2.5">
 								<Controller
 									name="religion"
@@ -96,7 +109,7 @@ const JobRequirements = ({ setActiveTab }) => {
 										/>
 									)}
 								/>
-								<span>{t["cultural-preference"][c]}</span>
+								<span>{t["religions"][c]}</span>
 							</label>
 						))}
 					</div>
@@ -105,8 +118,9 @@ const JobRequirements = ({ setActiveTab }) => {
 						<Btn type="button" onClick={() => setActiveTab(2)} className="w-32" variant="primary-outlined" size="lg">
 							{t.experience.back}
 						</Btn>
-						<Btn type="submit" className="lg:max-w-80" variant="primary" size="lg" disabled={disabled}>
+						<Btn type="submit" className="lg:max-w-80" variant="primary" size="lg" disabled={disabled || loading}>
 							{t.experience.next_step}
+							{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 						</Btn>
 					</div>
 				</form>

@@ -23,7 +23,7 @@ export default function ParentRegistration() {
 		"final_confirmation"
 	];
 
-	const [activeTab, setActiveTab] = useState(4);
+	const [activeTab, setActiveTab] = useState(1);
 
 	return (
 		<>

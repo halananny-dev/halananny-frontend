@@ -48,7 +48,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 				)}
 			>
 				<SelectValue placeholder={placeholder}>
-					{groupName && selected ? t[groupName][selected] : placeholder}
+					{selected ? groupName ? t[groupName][selected] : t[selected] : placeholder}
 				</SelectValue>
 			</SelectTrigger>
 			<SelectContent
