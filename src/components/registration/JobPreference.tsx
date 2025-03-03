@@ -1,9 +1,10 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { Controller, useForm } from "react-hook-form";
-import { AVAILABILITY, CITIES, COUNTRIES, CURRENCIES, PRICE_RANGE, screenVariants } from "../constants";
+import { AVAILABILITY, CURRENCIES, PRICE_RANGE, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CustomSelect from "../sections/CustomSelect";
 import MultiSelect from "../sections/MultiSelect";
@@ -12,6 +13,7 @@ import { DatePicker } from "../ui/datepicker";
 
 const JobPreference = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { countries, cities } = useAppContext()
 
 	const { control, handleSubmit, watch } = useForm({
 		defaultValues: {
@@ -90,10 +92,10 @@ const JobPreference = ({ setActiveTab }) => {
 							name="country"
 							control={control}
 							render={({ field }) => (
-								<MultiSelect
+								<CustomSelect
 									{...field}
 									groupName="countries"
-									options={COUNTRIES.map(e => e.name)}
+									options={countries.map(e => e.country_name)}
 									placeholder={t.jobPreference.country_placeholder}
 									className="mt-2"
 								/>
@@ -110,7 +112,11 @@ const JobPreference = ({ setActiveTab }) => {
 										<MultiSelect
 											{...field}
 											groupName="cities"
-											options={CITIES}
+											options={cities
+												.filter(e => e.country_id === countries
+													.find(f => f.country_name === country).id
+												)
+												.map(e => e.name)}
 											placeholder={t.jobPreference.cities_placeholder}
 											className="mt-2"
 										/>

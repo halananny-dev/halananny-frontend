@@ -1,8 +1,8 @@
 "use client"
 
-import { CAPABILITIES } from "@/components/constants"
 import DashboardHeader from "@/components/dashboard/DashboardHeader"
 import Img from "@/components/sections/Img"
+import { useAppContext } from "@/i18/AppContext"
 import { useI18n } from "@/i18/i18Context"
 import { FaPlay, FaPlus } from "react-icons/fa"
 import GeneralInformation from "./GeneralInformation"
@@ -13,6 +13,7 @@ import Title from "./Title"
 
 export default function Profile() {
 	const { t } = useI18n()
+	const { capabilities } = useAppContext()
 
 	const documents = [
 		{ img: "/id.svg", name: "ID" },
@@ -127,12 +128,12 @@ export default function Profile() {
 						<Title className="mt-6" title={t.dashboard["My Tasks"]} />
 						<div className="mt-4 px-6 card">
 							<div className="gap-2 flex flex-wrap">
-								{CAPABILITIES.slice(0, 4).map((e, i) => (
+								{capabilities.map((e, i) => (
 									<div className="flex flex-col w-16 gap-2 items-center" key={i}>
 										<div className="w-full h-16 flex items-center justify-center rounded-lg border border-gray-700">
-											<Img src={e.img} />
+											<div className="text-teal-500" dangerouslySetInnerHTML={{ __html: e.img }}></div>
 										</div>
-										<p className="font-bold text-xs text-center">{t.capabilities[e.title]}</p>
+										<p className="font-bold text-xs text-center">{t.capabilities[e.name]}</p>
 									</div>
 								))}
 							</div>

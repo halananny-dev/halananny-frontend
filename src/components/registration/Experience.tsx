@@ -1,9 +1,10 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { CAPABILITIES, EXPERIENCE_WITH_KIDS, LANGUAGES, screenVariants } from "../constants";
+import { LANGUAGES, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
@@ -12,6 +13,7 @@ import Checkbox from "./Checkbox";
 
 const Experience = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { experienceWithKids, capabilities } = useAppContext()
 
 	const {
 		register,
@@ -55,7 +57,7 @@ const Experience = ({ setActiveTab }) => {
 						variant="variant1"
 						groupName="experience-with-kids"
 						className="mt-5"
-						data={EXPERIENCE_WITH_KIDS}
+						data={experienceWithKids}
 						control={control}
 						name="experienceWithKids"
 					/>
@@ -67,19 +69,19 @@ const Experience = ({ setActiveTab }) => {
 						groupName="capabilities"
 						variant="variant2"
 						className="mt-5"
-						data={CAPABILITIES}
+						data={capabilities}
 					/>
 
 					<h4 className="mt-8 font-bold">{t.experience.language_preference}</h4>
 					<div className="mt-5 flex gap-5">
 						{LANGUAGES.map((lang, index) => (
-							<label key={index} htmlFor={lang.code} className="flex items-center gap-2.5">
+							<label key={index} htmlFor={lang} className="flex items-center gap-2.5">
 								<CheckBox
-									id={lang.code}
-									value={lang.code}
+									id={lang}
+									value={lang}
 									{...register("languages")}
 								/>
-								<span className="font-medium">{t.languages[lang.name]}</span>
+								<span className="font-medium">{t.languages[lang]}</span>
 							</label>
 						))}
 					</div>

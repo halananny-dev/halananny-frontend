@@ -10,6 +10,7 @@ import {
 import { useI18n } from "@/i18/i18Context"
 import { cn } from "@/lib/utils"
 import * as React from "react"
+import Loader from "./Loader"
 
 interface CustomSelectProps {
 	options: string[]
@@ -52,7 +53,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 			</SelectTrigger>
 			<SelectContent
 				className="rounded-xl border border-gray-10 !bg-white shadow-lg">
-				{options.map((option, index) => (
+				{options.length === 0 ? <Loader /> : options.map((option, index) => (
 					<SelectItem
 						key={index}
 						value={option}>

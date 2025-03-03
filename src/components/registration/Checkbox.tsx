@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { useController } from "react-hook-form";
 import CheckBox from "../sections/Checkbox";
-import Img from "../sections/Img";
 
 interface CheckboxProps {
 	variant: "variant1" | "variant2";
@@ -58,12 +57,12 @@ const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className, control, 
 					{variant === "variant2" && (
 						<div className="flex text-sm h-full font-semibold items-center">
 							<CheckBox
-								name={item.title}
-								checked={value.includes(item.title)}
-								onChange={() => handleChange(item.title)}
+								name={item.name}
+								checked={value.includes(item.name)}
+								onChange={() => handleChange(item.name)}
 							/>
-							<h6 className="ml-3 mr-4">{(groupName ? t[groupName] : t)[item.title]}</h6>
-							<Img src={item.img} />
+							<h6 className="ml-3 mr-4">{(groupName ? t[groupName] : t)[item.name]}</h6>
+							<div dangerouslySetInnerHTML={{ __html: item.img }}></div>
 						</div>
 					)}
 				</label>

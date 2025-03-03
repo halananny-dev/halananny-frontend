@@ -1,10 +1,11 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { CAPABILITIES, CULTURAL_PREFERENCE, LANGUAGES, PREFERRED_EXPERIENCE, screenVariants } from "../constants";
+import { CULTURAL_PREFERENCE, LANGUAGES, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Title from "../sections/Title";
@@ -13,6 +14,7 @@ import CustomRadio from "./Radio";
 
 const JobRequirements = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { experienceWithKids, capabilities } = useAppContext()
 
 	const { control, watch, handleSubmit, setValue, register } = useForm({
 		defaultValues: {
@@ -46,13 +48,13 @@ const JobRequirements = ({ setActiveTab }) => {
 				<form onSubmit={handleSubmit(onSubmit)} className="grow text-gray-900">
 					<h4 className="font-bold mb-5">{t.jobRequirements.experience}</h4>
 					<div className="mt-4 flex flex-col gap-2">
-						{PREFERRED_EXPERIENCE.map((e, index) => (
-							<label key={index} htmlFor={e} className="flex items-center gap-2.5">
+						{experienceWithKids.map((e, index) => (
+							<label key={index} htmlFor={e.title} className="flex items-center gap-2.5">
 								<CheckBox
-									id={e}
-									value={e}
+									id={e.title}
+									value={e.title}
 									{...register("experience")} />
-								<span className="font-medium">{t["preferred-experience"][e]}</span>
+								<span className="font-medium">{t["experience-with-kids"][e.title]}</span>
 							</label>
 						))}
 					</div>
@@ -60,9 +62,9 @@ const JobRequirements = ({ setActiveTab }) => {
 					<h4 className="mt-11 font-bold">{t.jobRequirements.language}</h4>
 					<div className="mt-5 flex gap-5">
 						{LANGUAGES.map((lang, index) => (
-							<label key={index} htmlFor={lang.code} className="flex items-center gap-2.5">
-								<CheckBox id={lang.code} {...register("language")} value={lang.code} />
-								<span className="font-medium">{t.languages[lang.name]}</span>
+							<label key={index} htmlFor={lang} className="flex items-center gap-2.5">
+								<CheckBox id={lang} {...register("language")} value={lang} />
+								<span className="font-medium">{t.languages[lang]}</span>
 							</label>
 						))}
 					</div>
@@ -74,7 +76,7 @@ const JobRequirements = ({ setActiveTab }) => {
 						groupName="capabilities"
 						variant="variant2"
 						className="mt-5"
-						data={CAPABILITIES}
+						data={capabilities}
 					/>
 
 					<h4 className="mt-10 font-bold">{t.jobRequirements.religion}</h4>

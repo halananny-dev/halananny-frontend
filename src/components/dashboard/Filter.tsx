@@ -1,19 +1,21 @@
 "use client"
 
+import { useAppContext } from "@/i18/AppContext"
 import { useI18n } from "@/i18/i18Context"
-import { AVAILABILITY, CAPABILITIES, COUNTRIES, EXPERIENCE_WITH_KIDS, LANGUAGES } from "../constants"
+import { AVAILABILITY, COUNTRIES, LANGUAGES } from "../constants"
 import Btn from "../sections/Button"
 import CustomSelect from "../sections/CustomSelect"
 import Img from "../sections/Img"
 
 export default function Filter() {
 	const { t } = useI18n()
+	const { capabilities, experienceWithKids } = useAppContext()
 
 	const fields = [
 		{ label: "Location", options: COUNTRIES.map(e => e.name), groupName: 'countries' },
-		{ label: "Experience", options: EXPERIENCE_WITH_KIDS.map(e => e.title), groupName: 'experience-with-kids' },
-		{ label: "Skill", options: CAPABILITIES.map(e => e.title), groupName: 'capabilities' },
-		{ label: "Language", options: LANGUAGES.map(e => e.name), groupName: 'languages' },
+		{ label: "Experience", options: experienceWithKids.map(e => e.title), groupName: 'experience-with-kids' },
+		{ label: "Skill", options: capabilities.map(e => e.name), groupName: 'capabilities' },
+		{ label: "Language", options: LANGUAGES, groupName: 'languages' },
 		{ label: "Availability", options: AVAILABILITY, groupName: 'availability' },
 	]
 

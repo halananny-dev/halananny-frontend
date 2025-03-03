@@ -281,8 +281,10 @@
     "Turkish": "تركي",
     "Egyptian": "مصري",
     "Portuguese": "برتغالي",
-    "Ukrainian": "أوكراني"
+    "Ukrainian": "أوكراني",
+    "Canadian": "كندي"
   },
+
   "religions": {
     "Christianity": "المسيحية",
     "Islam": "الإسلام",
@@ -343,17 +345,43 @@
   },
 
   "countries": {
-    "UAE": "الإمارات العربية المتحدة"
+    "Australia": "أستراليا",
+    "United States": "الولايات المتحدة",
+    "United Kingdom": "المملكة المتحدة",
+    "France": "فرنسا",
+    "Germany": "ألمانيا",
+    "India": "الهند",
+    "Japan": "اليابان",
+    "Canada": "كندا",
+    "China": "الصين",
+    "Russia": "روسيا",
+    "Brazil": "البرازيل",
+    "Spain": "إسبانيا",
+    "Italy": "إيطاليا",
+    "South Africa": "جنوب أفريقيا",
+    "South Korea": "كوريا الجنوبية",
+    "Indonesia": "إندونيسيا",
+    "Netherlands": "هولندا",
+    "Sweden": "السويد",
+    "Switzerland": "سويسرا",
+    "Mexico": "المكسيك",
+    "Turkey": "تركيا",
+    "Egypt": "مصر",
+    "Portugal": "البرتغال",
+    "Ukraine": "أوكرانيا"
   },
 
   "cities": {
-    "Dubai": "دبي"
-  },
-
-  "preferred-experience": {
-    "Newborn experience": "خبرة حديثي الولادة",
-    "Pre-school kids": "أطفال ما قبل المدرسة",
-    "Older kids": "الأطفال الأكبر سناً"
+    "Sydney": "سيدني",
+    "São Paulo": "ساو باولو",
+    "Mumbai": "مومباي",
+    "New York": "نيويورك",
+    "Paris": "باريس",
+    "Tokyo": "طوكيو",
+    "Berlin": "برلين",
+    "Toronto": "تورونتو",
+    "London": "لندن",
+    "Rome": "روما"
   },
 
   "cultural-preference": {

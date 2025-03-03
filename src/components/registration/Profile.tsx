@@ -1,10 +1,11 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { MARTIAL_STATUS, NATIONALITIES, RELIGIONS, screenVariants, VISA_STATUS } from "../constants";
+import { MARTIAL_STATUS, RELIGIONS, screenVariants, VISA_STATUS } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
@@ -29,6 +30,7 @@ interface FormData {
 
 const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 	const { t } = useI18n();
+	const { countries } = useAppContext()
 	const [img, setImg] = useState<File | null>(null);
 	const [kids, setKids] = useState(0);
 
@@ -97,7 +99,7 @@ const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.nationality}</label>
 							<CustomSelect
-								options={NATIONALITIES}
+								options={countries?.map(e => e.nationality)}
 								groupName="nationalities"
 								placeholder={t.profile.nationality}
 								onChange={(value: any) => setValue("nationality", value)}

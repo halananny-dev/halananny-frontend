@@ -282,7 +282,8 @@
     "Turkish": "Turkish",
     "Egyptian": "Egyptian",
     "Portuguese": "Portuguese",
-    "Ukrainian": "Ukrainian"
+    "Ukrainian": "Ukrainian",
+    "Canadian": "Canadian"
   },
   "religions": {
     "Christianity": "Christianity",
@@ -345,17 +346,43 @@
   },
 
   "countries": {
-    "UAE": "UAE"
+    "Australia": "Australia",
+    "United States": "United States",
+    "United Kingdom": "United Kingdom",
+    "Canada": "Canada",
+    "France": "France",
+    "Germany": "Germany",
+    "India": "India",
+    "Japan": "Japan",
+    "China": "China",
+    "Russia": "Russia",
+    "Brazil": "Brazil",
+    "Spain": "Spain",
+    "Italy": "Italy",
+    "South Africa": "South Africa",
+    "South Korea": "South Korea",
+    "Indonesia": "Indonesia",
+    "Netherlands": "Netherlands",
+    "Sweden": "Sweden",
+    "Switzerland": "Switzerland",
+    "Mexico": "Mexico",
+    "Turkey": "Turkey",
+    "Egypt": "Egypt",
+    "Portugal": "Portugal",
+    "Ukraine": "Ukraine"
   },
 
   "cities": {
-    "Dubai": "Dubai"
-  },
-
-  "preferred-experience": {
-    "Newborn experience": "Newborn experience",
-    "Pre-school kids": "Pre-school kids",
-    "Older kids": "Older kids"
+    "Sydney": "Sydney",
+    "São Paulo": "São Paulo",
+    "Mumbai": "Mumbai",
+    "New York": "New York",
+    "Paris": "Paris",
+    "Tokyo": "Tokyo",
+    "Berlin": "Berlin",
+    "Toronto": "Toronto",
+    "London": "London",
+    "Rome": "Rome"
   },
 
   "cultural-preference": {
