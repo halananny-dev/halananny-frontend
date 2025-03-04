@@ -10,10 +10,11 @@ interface Props {
 	setImg: any;
 	image: any;
 	className?: string
-	imgClass?: string
+	imgClass?: string,
+	editable?: boolean
 }
 
-const ImgUpload: React.FC<Props> = ({ setImg, image, className, imgClass }) => {
+const ImgUpload: React.FC<Props> = ({ setImg, image, className, imgClass, editable = true }) => {
 	const { t } = useI18n();
 	const [modalOpen, setModalOpen] = useState(false);
 
@@ -29,11 +30,11 @@ const ImgUpload: React.FC<Props> = ({ setImg, image, className, imgClass }) => {
 					{t.upload.or_take_picture}
 				</p>
 			</div> : <div
-				onClick={() => setModalOpen(true)}
+				onClick={() => setModalOpen(editable)}
 				className={cn("h-32 w-32 cursor-pointer relative rounded-xl overflow-hidden", className)}
 			>
-				<Img src={image.length ? image : URL.createObjectURL(image)} className={imgClass} />
-				<Img src="/edit.svg" className="absolute text-xs top-3 right-3" />
+				<img src={image.length ? image : URL.createObjectURL(image)} className={imgClass} />
+				{editable && <Img src="/edit.svg" className="absolute text-xs top-3 right-3" />}
 			</div>
 			}
 			<ImageUploaderModal

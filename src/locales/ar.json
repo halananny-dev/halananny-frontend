@@ -288,6 +288,7 @@
   "religions": {
     "Christianity": "المسيحية",
     "Islam": "الإسلام",
+    "Christian": "مسيحي",
     "Atheism": "الإلحاد"
   },
   "visa-status": {
@@ -607,5 +608,9 @@
   },
   "toast": {
     "This Email is already registered": "هذا البريد الإلكتروني مسجل بالفعل"
-  }
+  },
+  "There is no documents yet ):": "لا توجد مستندات حتى الآن ):",
+  "There is no task yet ):": "لا توجد مهام حتى الآن ):",
+  "Add your review": "أضف مراجعتك",
+  "No Nannies Found ):": "لم يتم العثور على مربيات ):"
 }

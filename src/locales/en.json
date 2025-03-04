@@ -287,6 +287,7 @@
   },
   "religions": {
     "Christianity": "Christianity",
+    "Christian": "Christian",
     "Islam": "Islam",
     "Atheism": "Atheism"
   },
@@ -609,5 +610,9 @@
   },
   "toast": {
     "This Email is already registered": "This Email is already registered"
-  }
+  },
+  "There is no documents yet ):": "There is no documents yet ):",
+  "There is no task yet ):": "There is no task yet ):",
+  "Add your review": "Add your review",
+  "No Nannies Found ):": "No Nannies Found ):"
 }

@@ -45,8 +45,12 @@ export default async function getCroppedImg(
 const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const img = new Image();
-    img.crossOrigin = "anonymous"; // Prevents CORS issues
+    img.crossOrigin = "anonymous";
     img.src = url;
     img.onload = () => resolve(img);
     img.onerror = (error) => reject(error);
   });
+
+export const getAge = (birtDate) => {
+  return new Date().getFullYear() - new Date(birtDate).getFullYear();
+};

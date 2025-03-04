@@ -2,8 +2,11 @@
 
 import DashboardHeader from "@/components/dashboard/DashboardHeader"
 import Img from "@/components/sections/Img"
+import Loader from "@/components/sections/Loader"
 import { useAppContext } from "@/i18/AppContext"
 import { useI18n } from "@/i18/i18Context"
+import { getProfile, getTable } from "@/service/user"
+import { useEffect, useState } from "react"
 import { FaPlay, FaPlus } from "react-icons/fa"
 import GeneralInformation from "./GeneralInformation"
 import Identity from "./Identity"
@@ -11,154 +14,180 @@ import Rating from "./Rating"
 import Title from "./Title"
 
 
-export default function Profile() {
+export default function Page() {
 	const { t } = useI18n()
-	const { capabilities } = useAppContext()
-
-	const documents = [
-		{ img: "/id.svg", name: "ID" },
-		{ img: "/id.svg", name: "Driving Licence" },
-		{ img: "/id.svg", name: "Exam Certificate" },
-	]
-
-	const details = [
-		{ name: "City availble to work", value: "Dubai" },
-		{ name: "Desired monthly salary(AED)", value: "More than 3200" },
-		{ name: "City availble to work", value: "Dubai" },
-		{ name: "Languages", value: "" },
-		{ name: "Desired job", value: "Live-in" },
-		{ name: "Visa status", value: "" },
-		{ name: "Available from", value: "26/01/2025" },
-		{ name: "Year of experience", value: "" },
-		{
-			name: "Experience with kids", value: [
-				"Newborn (below 1 year old)", "Toddler (1-3 years)",
-				"Pre-school kids (4-5 years)", "Older kids 6 (+ years)"
-			]
-		},
-	]
 
 	return (
 		<>
 			<DashboardHeader title={t.dashboard.profile} />
-			<div className="flex justify-center">
-				<div className="flex flex-wrap text-gray-900 items-start justify-start md:px-10 px-4 py-7 gap-4">
-					<div className="pb-7 card w-full lg:w-[309px] mt-9 px-2.5">
-						<GeneralInformation />
-						<div className="mt-7 card">
-							<p className="text-sm font-medium">{t.dashboard['Profile completion']}</p>
-							<div className="mt-1 text-xs font-medium flex justify-between">
-								<p><span className="text-2xl font-bold">65%</span> {t.dashboard['Complete']}</p>
-								<p className="mt-3">{t.dashboard.earning} 10/20 {t.dashboard.point}</p>
-							</div>
-							<div className="h-2 w-full bg-gray-ea rounded-full mt-1">
-								<div className="rounded-full w-1/2 bg-yellow-600 h-full"></div>
-							</div>
-						</div>
-						<div className="mt-4 card">
-							<p className="text-sm font-medium">{t.dashboard.award}</p>
-							<div className="mt-1 text-xs font-medium flex justify-between items-center">
-								<p className="text-lg font-bold">{t.dashboard.skill}</p>
-								<Img src="/badge.svg" />
-							</div>
-							<Img src="/stars.svg" className="mt-3" />
-						</div>
-						<Identity />
-						<Title title={t.documents["My Documents"]} />
-
-						<div className="mt-4 card pt-5 p-5 pb-3">
-							<div className="grid gap-5 grid-cols-3">
-								{documents.map((e, i) => (
-									<div className="flex flex-col max-w-16 gap-2 items-center" key={i}>
-										<div className="w-16 h-16 flex items-center justify-center rounded-lg border border-gray-700">
-											<Img src={e.img} />
-										</div>
-										<p className="font-bold text-xs text-center">{t.documents[e.name]}</p>
-									</div>
-								))}
-							</div>
-							<button className="w-full mt-4 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
-								<FaPlus />
-								<span className="text-sm font-semibold">
-									{t.documents["Add Document"]}
-									<span className="text-xs font-medium">{' '}(+5 {t.dashboard["point"]})</span>
-								</span>
-							</button>
-						</div>
-
-					</div>
-					<div className="md:w-[446px] w-full">
-						<Title className="m-0" title={t.profile.about_me} />
-						<div className="mt-2.5 card px-6 text-sm">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-								<br />
-								<br />
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo caliqua. Ut enim ad...
-								<button className="font-semibold">Plus</button>
-							</p>
-						</div>
-						<Title className="mt-6" title={t.dashboard.details} />
-						<div className="mt-2.5 card px-6 flex flex-col gap-2 text-sm">
-							{details.map((e, i) => (
-								<div className="flex items-center pb-2 border-b border-gray-ea justify-between" key={i}>
-									<p>{t.details[e.name]}</p>
-
-									{Array.isArray(e.value) ? (
-										<div>
-											{e.value.map((f) => (
-												<p className="font-semibold sm:text-base text-xs rtl:text-left ltr:text-right" key={f}>
-													{t.details[f]}
-												</p>
-											))}
-										</div>
-									) : e.value ? (
-										<p className="font-bold">{t.details[e.value] || e.value}</p>) : (
-										<button className="w-36 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
-											<Img src="/pen.svg" />
-											<span className="text-sm font-semibold">
-												{t.details["Add"]}
-												<span className="text-xs font-medium">{' '}(+2 {t.dashboard["point"]})</span>
-											</span>
-										</button>
-									)}
-								</div>
-							))}
-
-						</div>
-						<Title className="mt-6" title={t.dashboard["My Tasks"]} />
-						<div className="mt-4 px-6 card">
-							<div className="gap-2 flex flex-wrap">
-								{capabilities.map((e, i) => (
-									<div className="flex flex-col w-16 gap-2 items-center" key={i}>
-										<div className="w-full h-16 flex items-center justify-center rounded-lg border border-gray-700">
-											<div className="text-teal-500" dangerouslySetInnerHTML={{ __html: e.img }}></div>
-										</div>
-										<p className="font-bold text-xs text-center">{t.capabilities[e.name]}</p>
-									</div>
-								))}
-							</div>
-							<button className="w-full mt-4 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
-								<FaPlus />
-								<span className="text-sm font-semibold">{t.dashboard.add}
-									<span className="text-xs font-medium">{' '}(+5 ${t.dashboard.point})</span>
-								</span>
-							</button>
-
-						</div>
-					</div>
-					<div className="w-full sm:w-[292px]">
-						<Title className="m-0" title={t.dashboard["Video presentation"]} />
-						<div className="mt-2.5 card p-6 flex items-center justify-center relative">
-							<Img src="/nanny1.svg" className="w-full rounded-xl !h-40 object-cover" />
-							<button className="absolute text-white text-3xl">
-								<FaPlay />
-							</button>
-						</div>
-						<h3 className="font-bold mt-7 text-lg">{t.dashboard["My Reviews & Rating"]}</h3>
-						<Rating rating={3.5} reviewerCount={14} />
-					</div>
-				</div>
-			</div>
+			<Profile userId="e0ba6bc6-80c6-41ad-8615-046b2f4ee0f2" />
 		</>
 	)
+}
+
+export const Profile = ({ editable = true, userId }) => {
+	const { t } = useI18n()
+	const { user: admin } = useAppContext()
+	const [user, setUser] = useState<any>(null)
+	const [loading, setLoading] = useState(true)
+	const [documents, setDocuments] = useState<any>([])
+	const [details, setDetails] = useState<any>([])
+	const [reviews, setReviews] = useState<any>([])
+
+	useEffect(() => {
+		const init = async () => {
+			const user = await getProfile(userId)
+
+			setUser(user)
+
+			const documents = await getTable(userId, 'documents')
+
+			setDocuments(documents)
+
+			const reviews = await getTable(userId, 'ratings')
+
+			setReviews(reviews)
+
+
+			setDetails([
+				{ name: "City availble to work", value: user.available_city[0] || '-' },
+				{ name: "Desired monthly salary(AED)", value: user.desired_salary },
+				{ name: "Languages", value: user.language.join(', ') },
+				{ name: "Desired job", value: user.availability },
+				{ name: "Visa status", value: user.visa_status },
+				{ name: "Available from", value: new Date(user.available_from).toLocaleDateString() },
+				{ name: "Year of experience", value: user.years_of_experience },
+				{
+					name: "Experience with kids", value: user.experience_with_kids
+				},
+			])
+
+
+			setLoading(false)
+		}
+
+
+		init()
+	}, [])
+
+	return <div className="flex justify-center">
+		{loading ? <Loader className="py-20" /> :
+			<div className="flex flex-wrap text-gray-900 items-start justify-start md:px-10 px-4 py-7 gap-4">
+				<div className="pb-7 card w-full lg:w-[309px] mt-9 px-2.5">
+					<GeneralInformation user={user} editable={editable} />
+					<div className="mt-7 card">
+						<p className="text-sm font-medium">{t.dashboard['Profile completion']}</p>
+						<div className="mt-1 text-xs font-medium flex justify-between">
+							<p><span className="text-2xl font-bold">65%</span> {t.dashboard['Complete']}</p>
+							<p className="mt-3">{t.dashboard.earning} 10/20 {t.dashboard.point}</p>
+						</div>
+						<div className="h-2 w-full bg-gray-ea rounded-full mt-1">
+							<div className="rounded-full w-1/2 bg-yellow-600 h-full"></div>
+						</div>
+					</div>
+					<div className="mt-4 card">
+						<p className="text-sm font-medium">{t.dashboard.award}</p>
+						<div className="mt-1 text-xs font-medium flex justify-between items-center">
+							<p className="text-lg font-bold">{t.dashboard.skill}</p>
+							<Img src="/badge.svg" />
+						</div>
+						<Img src="/stars.svg" className="mt-3" />
+					</div>
+					<Identity user={user} />
+					<Title editable={editable} title={t.documents["My Documents"]} />
+
+					<div className="mt-4 card pt-5 p-5 pb-3">
+						{documents.length !== 0 ?
+							<div className="grid gap-5 grid-cols-3">
+								{documents.map((e: any, i) => (
+									<div className="flex flex-col max-w-16 gap-2 items-center" key={i}>
+										<div className="w-16 h-16 flex items-center justify-center rounded-lg border border-gray-700">
+											<Img src="/id.svg" />
+										</div>
+										<p className="font-bold text-xs text-center">{t.documents[e.name]}</p>
+									</div>))}
+							</div> : <p className="text-center text-sm pb-2">{t['There is no documents yet ):']}</p>}
+						{editable && <button className="w-full mt-4 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
+							<FaPlus />
+							<span className="text-sm font-semibold">
+								{t.documents["Add Document"]}
+								<span className="text-xs font-medium">{' '}(+5 {t.dashboard["point"]})</span>
+							</span>
+						</button>}
+					</div>
+
+				</div>
+				<div className="md:w-[446px] w-full">
+					<Title editable={editable} className="m-0" title={t.profile.about_me} />
+					<div className="mt-2.5 card px-6 text-sm">
+						{user.about?.length > 470 ? <>
+							{user.about.slice(0, 470)}
+							<button className="font-semibold">Plus</button>
+						</> : user.about}
+					</div>
+					<Title editable={editable} className="mt-6" title={t.dashboard.details} />
+					<div className="mt-2.5 card px-6 flex flex-col gap-2 text-sm">
+						{details.map((e, i) => (
+							<div className="flex items-center pb-2 border-b border-gray-ea justify-between" key={i}>
+								<p>{t.details[e.name]}</p>
+
+								{Array.isArray(e.value) ? (
+									<div>
+										{e.value.map((f) => (
+											<p className="font-semibold sm:text-base text-xs rtl:text-left ltr:text-right" key={f}>
+												{t.details[f]}
+											</p>
+										))}
+									</div>
+								) : e.value ? (
+									<p className="font-bold">{t.details[e.value] || e.value}</p>) : (
+									editable ? <button className="w-36 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
+										<Img src="/pen.svg" />
+										<span className="text-sm font-semibold">
+											{t.details["Add"]}
+											<span className="text-xs font-medium">{' '}(+2 {t.dashboard["point"]})</span>
+										</span>
+									</button> : '-'
+								)}
+							</div>
+						))}
+
+					</div>
+					<Title editable={editable} className="mt-6" title={t.dashboard["My Tasks"]} />
+					<div className="mt-4 px-6 card">
+						<div className="gap-2 flex flex-wrap">
+							{Array.isArray(user.capabilities) && user.capabilities.length !== 0 ? user.capabilities.map((e, i) => (
+								<div className="flex flex-col w-16 gap-2 items-center" key={i}>
+									<div className="w-full h-16 flex items-center justify-center rounded-lg border border-gray-700">
+										<div className="text-teal-500" dangerouslySetInnerHTML={{ __html: e.img }}></div>
+									</div>
+									<p className="font-bold text-xs text-center">{t.capabilities[e.name]}</p>
+								</div>
+							)) : <p className="text-center w-full text-sm">There is no task yet ):</p>}
+						</div>
+						{editable && <button className="w-full mt-4 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
+							<FaPlus />
+							<span className="text-sm font-semibold">{t.dashboard.add}
+								<span className="text-xs font-medium">{' '}(+5 ${t.dashboard.point})</span>
+							</span>
+						</button>}
+					</div>
+				</div>
+				<div className="w-full sm:w-[292px]">
+					<Title className="m-0" title={t.dashboard["Video presentation"]} />
+					<div className="mt-2.5 card p-6 flex items-center justify-center relative">
+						<Img src="/nanny1.svg" className="w-full rounded-xl !h-40 object-cover" />
+						<button className="absolute text-white text-3xl">
+							<FaPlay />
+						</button>
+					</div>
+					<h3 className="font-bold mt-7 text-lg">{t.dashboard["My Reviews & Rating"]}</h3>
+					<Rating
+						reviews={reviews}
+						admin={admin}
+						editable={editable}
+					/>
+				</div>
+			</div>}
+	</div>
 }

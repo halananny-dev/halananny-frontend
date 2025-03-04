@@ -3,9 +3,13 @@
 import { FaArrowRight } from "react-icons/fa";
 import Btn from "./Button";
 import { useI18n } from "@/i18/i18Context";
+import { useAppContext } from "@/i18/AppContext";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
   const { t } = useI18n();
+  const { user } = useAppContext()
+  const router = useRouter()
 
   return (
     <section className="max-w-max mt-4 md:py-32 py-28 lg:px-40 px-4 mx-auto">
@@ -21,7 +25,11 @@ export default function Hero() {
           <p className="md:text-lg text-gray-900 font-semibold font-sans mt-3">
             {t.hero_description}
           </p>
-          <Btn size="xl" variant="primary" className="mt-9 w-80 sm:w-96">
+          <Btn
+            size="xl"
+            onClick={() => router.push(user ? '/dashboard' : '/login')}
+            variant="primary"
+            className="mt-9 w-80 sm:w-96">
             {t.hero_button} <FaArrowRight className="inline-block ml-1" />
           </Btn>
         </div>

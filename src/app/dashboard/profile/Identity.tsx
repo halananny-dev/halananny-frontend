@@ -1,17 +1,18 @@
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { getAge } from "@/lib/utils";
 import Title from "./Title";
 
-export default function Identity() {
+export default function Identity({ user }) {
 	const { t } = useI18n();
 	const { countries } = useAppContext()
 
 	const identity = [
-		{ name: t.dashboard.nationality, value: t.countries[countries[0].country_name], type: 'select', },
-		{ name: t.dashboard.age, value: "36", type: "datepicker" },
-		{ name: t.dashboard.number_of_kids, value: "1", type: 'number' },
-		{ name: t.dashboard.marital_status, value: t['marital-status'].Single, type: 'select', },
-		{ name: t.dashboard.religion, value: t.religions.Islam, type: "select", },
+		{ name: t.dashboard.nationality, value: t.countries[countries.find(e => e.id === user.country_id)?.country_name], type: 'select', },
+		{ name: t.dashboard.age, value: getAge(user.date_of_birth), type: "datepicker" },
+		{ name: t.dashboard.number_of_kids, value: user.number_of_kids, type: 'number' },
+		{ name: t.dashboard.marital_status, value: t['marital-status'][user.marital_status], type: 'select', },
+		{ name: t.dashboard.religion, value: t.religions[user.religion], type: "select", },
 	];
 
 	return (

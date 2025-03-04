@@ -3,7 +3,7 @@
 import { useI18n } from '@/i18/i18Context';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { IoChevronBack, IoChevronForward, IoMenu } from 'react-icons/io5';
 import { dashboard_navigation } from '../constants';
 import Img from '../sections/Img';
@@ -12,6 +12,7 @@ import { Button } from '../ui/button';
 export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
   const pathname = usePathname()
   const { t } = useI18n()
+  const router = useRouter()
 
   return (
     <div className={"drop-shadow-sidebar z-20 bg-white text-gray-900 h-screen"}>
@@ -79,6 +80,7 @@ export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
         <Button
           type='button'
           variant="ghost"
+          onClick={() => router.push('/')}
           className={'flex items-center justify-start rounded-xl bg-gray-750 ' + (isCollapsed ? "w-12 h-12 flex items-center justify-center" : "p-3.5 pl-7 gap-2.5")}>
           <Img src="/logout.svg" />
           {!isCollapsed && <span className='text-sm font-semibold'>
