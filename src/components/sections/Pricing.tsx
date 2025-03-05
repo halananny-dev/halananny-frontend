@@ -1,9 +1,8 @@
 "use client";
 
-import { getCurrentPlanName } from "@/app/api/stripe/route";
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
-import { createBillingPortal, createCheckout } from "@/service/stripe";
+import { createBillingPortal, createCheckout, getCurrentPlanName } from "@/service/stripe";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";

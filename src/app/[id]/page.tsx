@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/sections/Navbar"
 import { useParams } from "next/navigation"
-import { Profile } from "../dashboard/profile/page"
+import { Profile } from "../dashboard/profile/Profile"
 
 export default function NannyDetails() {
 	const params = useParams()

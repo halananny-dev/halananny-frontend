@@ -88,37 +88,3 @@ export async function POST(req: NextRequest) {
 
   return new NextResponse(JSON.stringify({ received: true }), { status: 200 });
 }
-
-export async function getCurrentPlanName(customerEmail: string) {
-  try {
-
-    const customers = await stripe.customers.list({ email: customerEmail });
-
-    if (!customers.data.length) {
-      return null;
-    }
-
-    const customerId = customers.data[0].id;
-
-    const subscriptions = await stripe.subscriptions.list({
-      customer: customerId,
-      status: "active",
-    });
-
-    if (!subscriptions.data.length) {
-      return null;
-    }
-
-    const subscription = subscriptions.data[0];
-    const priceId = subscription.items.data[0].price.id;
-
-    const price = await stripe.prices.retrieve(priceId);
-    const productId = price.product;
-
-    const product = await stripe.products.retrieve(productId as string);
-
-    return product.name;
-  } catch (error) {
-    return null;
-  }
-}
