@@ -16,7 +16,6 @@ export default function Saved() {
   useEffect(() => {
     const init = async () => {
       const nannies = await getSavedNannies(user.id)
-      console.log(nannies)
 
       setNannies(nannies)
     }

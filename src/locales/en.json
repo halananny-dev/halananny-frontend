@@ -105,36 +105,20 @@
   "choose": "Choose",
   "pricing": {
     "title": "Plans & Pricing",
+    "subscribed": "Subscribed",
     "mostPopular": "Most Popular",
     "refund": "100% refund if not satisfied",
     "getStarted": "Get Started",
-    "choose": "Choose {plan}",
-    "plans": {
-      "basic plan": {
-        "name": "Basic Plan",
-        "price": "AED 180",
-        "features": ["Access to the nanny directory for a limited time"]
-      },
-      "premium plan": {
-        "name": "Premium Plan",
-        "price": "AED 350",
-        "discount": "30% off",
-        "features": [
-          "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-          "Access to AI-powered 'Personalized Recommendations'"
-        ]
-      },
-      "ultimate plan": {
-        "name": "Ultimate Plan",
-        "price": "AED 399",
-        "description": "(if you offer advanced services)",
-        "features": [
-          "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-          "Access to AI-powered 'Personalized Recommendations'",
-          "Ongoing dedicated support, premium nanny profiles, extra screening options"
-        ]
-      }
-    }
+    "choose": "Choose",
+    "Basic Plan": "Basic Plan",
+    "Free Plan": "Free Plan",
+    "Premium Plan": "Premium Plan",
+    "Ultimate Plan": "Ultimate Plan",
+    "off": "off",
+    "Access to the nanny directory for a limited time": "Access to the nanny directory for a limited time",
+    "Priority booking, unlimited interviews, advanced filters": "Priority booking, unlimited interviews, advanced filters",
+    "Access to AI-powered 'Personalized Recommendations": "Access to AI-powered 'Personalized Recommendations",
+    "Ongoing dedicated support, premium nanny profiles, extra screening options": "Ongoing dedicated support, premium nanny profiles, extra screening options"
   },
   "nannies": {
     "title": "Meet Some of Our Nannies",
@@ -556,7 +540,7 @@
     "See my profile": "See my profile",
     "Contact via WhatsApp": "Contact via WhatsApp",
     "Schedule Interview": "Schedule Interview",
-    "current_plan": "You are currently on the Free Plan.",
+    "current_plan": "You are currently on the",
     "settings": "Account & Settings",
     "Verified": "Verified",
     "register": "Registered on :",

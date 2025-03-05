@@ -57,34 +57,6 @@ experience in raising and caring for children. ‘’`,
   },
 ];
 
-export const plans = [
-  {
-    name: "Basic Plan",
-    price: "AED 180",
-    features: ["Access to the nanny directory for a limited time"],
-  },
-  {
-    name: "Premium Plan",
-    price: "AED 350",
-    discount: "30%",
-    popular: true,
-    features: [
-      "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-      "Access to AI-powered “Personalized Recommendations”",
-    ],
-  },
-  {
-    name: "Ultimate Plan",
-    price: "AED 399",
-    description: "(if you offer advanced services)",
-    features: [
-      "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-      "Access to AI-powered “Personalized Recommendations”",
-      "Ongoing dedicated support, premium nanny profiles, extra screening options",
-    ],
-  },
-];
-
 export const testimonials = [
   {
     name: "Aisha, Riyadh",

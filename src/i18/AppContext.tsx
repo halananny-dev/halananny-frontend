@@ -1,6 +1,7 @@
 "use client";
 
 import { getStaticData } from "@/service/static";
+import { getProducts } from "@/service/stripe";
 import { getUser } from "@/service/user";
 import { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext<any>(null);
@@ -10,8 +11,9 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 	const [experienceWithKids, setExperienceWithKids] = useState<any>([])
 	const [capabilities, setCapabilities] = useState<any>([])
 	const [cities, setCities] = useState<any>([])
+	const [plans, setPlans] = useState<any>([])
 	const [user, setUser] = useState<any>(null)
-	const [userId, setUserId] = useState<any>("9e856b13-5086-446f-87fa-6f0717a1e424")
+	const [userId, setUserId] = useState<any>()
 
 	useEffect(() => {
 		const init = async () => {
@@ -29,6 +31,9 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 
 			const user = await getUser()
 			setUser(user)
+
+			const plans = await getProducts()
+			setPlans(plans)
 		}
 
 		init()
@@ -46,7 +51,8 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 			setCities,
 			user,
 			userId,
-			setUserId
+			setUserId,
+			plans
 		}}>
 			{children}
 		</AppContext.Provider>

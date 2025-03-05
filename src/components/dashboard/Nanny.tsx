@@ -29,7 +29,6 @@ export default function Nanny({ nanny }) {
 	}, [])
 
 	const handleSave = () => {
-		console.log(isSaved)
 		if (!isSaved) {
 			saveNanny(user.id, nanny.id)
 		}

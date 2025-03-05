@@ -12,8 +12,7 @@ export default function Plan() {
     <>
       <DashboardHeader title={t.pricing.title} />
       <Card>
-        <h4 className="md:text-2xl text-xl font-semibold text-center">{t.dashboard.current_plan}</h4>
-        <Plans />
+        <Plans isDashboard />
       </Card>
     </>
   )
