@@ -1,18 +1,24 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import Counter from "../sections/Counter";
 import CustomSelect from "../sections/CustomSelect";
 import Img from "../sections/Img";
+import Loader from "../sections/Loader";
 import Title from "../sections/Title";
 import { Input } from "../ui/input";
 
 const FamilyProfile = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const {
 		control,
@@ -34,9 +40,19 @@ const FamilyProfile = ({ setActiveTab }) => {
 
 	const ages = Array.from({ length: 20 }, (_, i) => `${i + 1} ${i > 1 ? t.years : t.year}`);
 
-	const onSubmit = (data) => {
-		console.log("Form Data:", data);
+	const onSubmit = async (data) => {
+		setLoading(true)
+
+		const payload = {
+			address: data.address,
+			family_size: data.familySize,
+			children_ages: data.kids.filter(e => e.age).map(e => e.age)
+		}
+
+		await updateUser(payload, userId)
+
 		setActiveTab(3);
+		setLoading(false)
 	};
 
 	return (
@@ -105,8 +121,9 @@ const FamilyProfile = ({ setActiveTab }) => {
 						/>
 					</div>
 
-					<Btn className="mt-9" type="submit" variant="primary" size="lg">
+					<Btn className="mt-9" disabled={loading} type="submit" variant="primary" size="lg">
 						{t.experience.next_step}
+						{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 					</Btn>
 				</form>
 			</div>

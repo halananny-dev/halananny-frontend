@@ -1,17 +1,22 @@
 "use client"
 
+import { useAppContext } from '@/i18/AppContext';
 import { useI18n } from '@/i18/i18Context';
 import { cn } from '@/lib/utils';
+import { logout } from '@/service/user';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { IoChevronBack, IoChevronForward, IoMenu } from 'react-icons/io5';
 import { dashboard_navigation } from '../constants';
 import Img from '../sections/Img';
 import { Button } from '../ui/button';
+import { FaUser } from 'react-icons/fa';
 
 export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
   const pathname = usePathname()
   const { t } = useI18n()
+  const router = useRouter()
+  const { setUser, user } = useAppContext()
 
   return (
     <div className={"drop-shadow-sidebar z-20 bg-white text-gray-900 h-screen"}>
@@ -38,9 +43,12 @@ export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
               isCollapsed ? "!bg-white" : "bg-gray-750 px-2 gap-3",
               pathname === '/dashboard/profile' ? "bg-teal-500 text-white " : ""
             )}>
-            <Img src="/english.svg" className='!w-10 !h-10 rounded-full' />
+            {user?.profile_photo_url ?
+              <img alt="profile" src={user.profile_photo_url} className='!w-10 !h-10 rounded-full' /> :
+              <FaUser className='w-10 h-10 rounded-full' />
+            }
             {!isCollapsed && <div className='flex flex-col gap-2'>
-              <h3 className='font-semibold leading-none truncate line-clamp-1'>Fatima Ali Hassan</h3>
+              <h3 className='font-semibold leading-none truncate line-clamp-1'>{user?.name}</h3>
               <div className='text-sm flex gap-1 font-medium leading-none'>
                 <span className='truncate line-clamp-1'>{t.dashboard.profile}</span>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +58,7 @@ export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
             </div>}
           </Link>
           <div className='mt-11 flex flex-col gap-2.5'>
-            {dashboard_navigation.map(({ name, href, icon }) => (
+            {(user?.role === 'user' ? dashboard_navigation : dashboard_navigation.slice(2, 3)).map(({ name, href, icon }) => (
               <Link
                 key={name}
                 href={href}
@@ -79,6 +87,11 @@ export default function DashboardSidebar({ isCollapsed, setIsCollapsed }) {
         <Button
           type='button'
           variant="ghost"
+          onClick={async () => {
+            await logout()
+            router.replace('/')
+            setUser(null)
+          }}
           className={'flex items-center justify-start rounded-xl bg-gray-750 ' + (isCollapsed ? "w-12 h-12 flex items-center justify-center" : "p-3.5 pl-7 gap-2.5")}>
           <Img src="/logout.svg" />
           {!isCollapsed && <span className='text-sm font-semibold'>

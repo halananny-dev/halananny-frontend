@@ -57,34 +57,6 @@ experience in raising and caring for children. ‘’`,
   },
 ];
 
-export const plans = [
-  {
-    name: "Basic Plan",
-    price: "AED 180",
-    features: ["Access to the nanny directory for a limited time"],
-  },
-  {
-    name: "Premium Plan",
-    price: "AED 350",
-    discount: "30%",
-    popular: true,
-    features: [
-      "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-      "Access to AI-powered “Personalized Recommendations”",
-    ],
-  },
-  {
-    name: "Ultimate Plan",
-    price: "AED 399",
-    description: "(if you offer advanced services)",
-    features: [
-      "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-      "Access to AI-powered “Personalized Recommendations”",
-      "Ongoing dedicated support, premium nanny profiles, extra screening options",
-    ],
-  },
-];
-
 export const testimonials = [
   {
     name: "Aisha, Riyadh",
@@ -123,7 +95,7 @@ export const testimonials = [
 export const footerLinks = [
   [
     { name: "home", href: "/" },
-    { name: "Plan", href: "/" },
+    { name: "Plan", href: "#plans" },
     { name: "about_us", href: "/" },
     { name: "contact", href: "/" },
   ],
@@ -133,15 +105,15 @@ export const footerLinks = [
     { name: "labor_law", href: "/" },
   ],
   [
-    { name: "register", href: "/" },
-    { name: "login", href: "/" },
+    { name: "register", href: "/register" },
+    { name: "login", href: "/login" },
   ],
 ];
 
 export const dashboard_navigation = [
   {
     name: "Search for Nannies",
-    href: "/dashboard",
+    href: "/dashboard/nannies",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21.5308 20.4696L16.8368 15.7765C18.1973 14.1431 18.8757 12.048 18.7309 9.92715C18.5861 7.80629 17.6293 5.82289 16.0593 4.38956C14.4894 2.95623 12.4274 2.18333 10.3021 2.23163C8.17687 2.27993 6.15205 3.14571 4.64888 4.64888C3.14571 6.15205 2.27993 8.17687 2.23163 10.3021C2.18333 12.4274 2.95623 14.4894 4.38956 16.0593C5.82289 17.6293 7.80629 18.5861 9.92715 18.7309C12.048 18.8757 14.1431 18.1973 15.7765 16.8368L20.4696 21.5308C20.5393 21.6005 20.622 21.6558 20.713 21.6935C20.8041 21.7312 20.9017 21.7506 21.0002 21.7506C21.0988 21.7506 21.1963 21.7312 21.2874 21.6935C21.3784 21.6558 21.4612 21.6005 21.5308 21.5308C21.6005 21.4612 21.6558 21.3784 21.6935 21.2874C21.7312 21.1963 21.7506 21.0988 21.7506 21.0002C21.7506 20.9017 21.7312 20.8041 21.6935 20.713C21.6558 20.622 21.6005 20.5393 21.5308 20.4696ZM3.75021 10.5002C3.75021 9.16519 4.14609 7.86015 4.88779 6.75011C5.62949 5.64008 6.6837 4.77492 7.9171 4.26403C9.1505 3.75314 10.5077 3.61946 11.8171 3.87991C13.1264 4.14036 14.3292 4.78324 15.2732 5.72724C16.2172 6.67125 16.8601 7.87398 17.1205 9.18335C17.381 10.4927 17.2473 11.8499 16.7364 13.0833C16.2255 14.3167 15.3603 15.3709 14.2503 16.1126C13.1403 16.8543 11.8352 17.2502 10.5002 17.2502C8.71061 17.2482 6.99488 16.5364 5.72944 15.271C4.464 14.0056 3.7522 12.2898 3.75021 10.5002Z" fill="currentColor"/>
 </svg>
@@ -157,14 +129,14 @@ export const dashboard_navigation = [
 
 `,
   },
-//   {
-//     name: "Bookings & Interviews",
-//     href: "/dashboard/booking",
-//     icon: `<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-// <path d="M16.5 2H14.25V1.25C14.25 1.05109 14.171 0.860322 14.0303 0.71967C13.8897 0.579018 13.6989 0.5 13.5 0.5C13.3011 0.5 13.1103 0.579018 12.9697 0.71967C12.829 0.860322 12.75 1.05109 12.75 1.25V2H5.25V1.25C5.25 1.05109 5.17098 0.860322 5.03033 0.71967C4.88968 0.579018 4.69891 0.5 4.5 0.5C4.30109 0.5 4.11032 0.579018 3.96967 0.71967C3.82902 0.860322 3.75 1.05109 3.75 1.25V2H1.5C1.10218 2 0.720644 2.15804 0.43934 2.43934C0.158035 2.72064 0 3.10218 0 3.5V18.5C0 18.8978 0.158035 19.2794 0.43934 19.5607C0.720644 19.842 1.10218 20 1.5 20H16.5C16.8978 20 17.2794 19.842 17.5607 19.5607C17.842 19.2794 18 18.8978 18 18.5V3.5C18 3.10218 17.842 2.72064 17.5607 2.43934C17.2794 2.15804 16.8978 2 16.5 2ZM3.75 3.5V4.25C3.75 4.44891 3.82902 4.63968 3.96967 4.78033C4.11032 4.92098 4.30109 5 4.5 5C4.69891 5 4.88968 4.92098 5.03033 4.78033C5.17098 4.63968 5.25 4.44891 5.25 4.25V3.5H12.75V4.25C12.75 4.44891 12.829 4.63968 12.9697 4.78033C13.1103 4.92098 13.3011 5 13.5 5C13.6989 5 13.8897 4.92098 14.0303 4.78033C14.171 4.63968 14.25 4.44891 14.25 4.25V3.5H16.5V6.5H1.5V3.5H3.75ZM16.5 18.5H1.5V8H16.5V18.5ZM12.9056 10.4694C12.9754 10.539 13.0307 10.6217 13.0684 10.7128C13.1062 10.8038 13.1256 10.9014 13.1256 11C13.1256 11.0986 13.1062 11.1962 13.0684 11.2872C13.0307 11.3783 12.9754 11.461 12.9056 11.5306L8.40563 16.0306C8.33597 16.1004 8.25325 16.1557 8.1622 16.1934C8.07116 16.2312 7.97356 16.2506 7.875 16.2506C7.77644 16.2506 7.67884 16.2312 7.58779 16.1934C7.49675 16.1557 7.41403 16.1004 7.34437 16.0306L5.09437 13.7806C4.95364 13.6399 4.87458 13.449 4.87458 13.25C4.87458 13.051 4.95364 12.8601 5.09437 12.7194C5.23511 12.5786 5.42598 12.4996 5.625 12.4996C5.82402 12.4996 6.01489 12.5786 6.15563 12.7194L7.875 14.4397L11.8444 10.4694C11.914 10.3996 11.9967 10.3443 12.0878 10.3066C12.1788 10.2688 12.2764 10.2494 12.375 10.2494C12.4736 10.2494 12.5712 10.2688 12.6622 10.3066C12.7533 10.3443 12.836 10.3996 12.9056 10.4694Z" fill="currentColor"/>
-// </svg>
-// `,
-//   },
+  //   {
+  //     name: "Bookings & Interviews",
+  //     href: "/dashboard/booking",
+  //     icon: `<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  // <path d="M16.5 2H14.25V1.25C14.25 1.05109 14.171 0.860322 14.0303 0.71967C13.8897 0.579018 13.6989 0.5 13.5 0.5C13.3011 0.5 13.1103 0.579018 12.9697 0.71967C12.829 0.860322 12.75 1.05109 12.75 1.25V2H5.25V1.25C5.25 1.05109 5.17098 0.860322 5.03033 0.71967C4.88968 0.579018 4.69891 0.5 4.5 0.5C4.30109 0.5 4.11032 0.579018 3.96967 0.71967C3.82902 0.860322 3.75 1.05109 3.75 1.25V2H1.5C1.10218 2 0.720644 2.15804 0.43934 2.43934C0.158035 2.72064 0 3.10218 0 3.5V18.5C0 18.8978 0.158035 19.2794 0.43934 19.5607C0.720644 19.842 1.10218 20 1.5 20H16.5C16.8978 20 17.2794 19.842 17.5607 19.5607C17.842 19.2794 18 18.8978 18 18.5V3.5C18 3.10218 17.842 2.72064 17.5607 2.43934C17.2794 2.15804 16.8978 2 16.5 2ZM3.75 3.5V4.25C3.75 4.44891 3.82902 4.63968 3.96967 4.78033C4.11032 4.92098 4.30109 5 4.5 5C4.69891 5 4.88968 4.92098 5.03033 4.78033C5.17098 4.63968 5.25 4.44891 5.25 4.25V3.5H12.75V4.25C12.75 4.44891 12.829 4.63968 12.9697 4.78033C13.1103 4.92098 13.3011 5 13.5 5C13.6989 5 13.8897 4.92098 14.0303 4.78033C14.171 4.63968 14.25 4.44891 14.25 4.25V3.5H16.5V6.5H1.5V3.5H3.75ZM16.5 18.5H1.5V8H16.5V18.5ZM12.9056 10.4694C12.9754 10.539 13.0307 10.6217 13.0684 10.7128C13.1062 10.8038 13.1256 10.9014 13.1256 11C13.1256 11.0986 13.1062 11.1962 13.0684 11.2872C13.0307 11.3783 12.9754 11.461 12.9056 11.5306L8.40563 16.0306C8.33597 16.1004 8.25325 16.1557 8.1622 16.1934C8.07116 16.2312 7.97356 16.2506 7.875 16.2506C7.77644 16.2506 7.67884 16.2312 7.58779 16.1934C7.49675 16.1557 7.41403 16.1004 7.34437 16.0306L5.09437 13.7806C4.95364 13.6399 4.87458 13.449 4.87458 13.25C4.87458 13.051 4.95364 12.8601 5.09437 12.7194C5.23511 12.5786 5.42598 12.4996 5.625 12.4996C5.82402 12.4996 6.01489 12.5786 6.15563 12.7194L7.875 14.4397L11.8444 10.4694C11.914 10.3996 11.9967 10.3443 12.0878 10.3066C12.1788 10.2688 12.2764 10.2494 12.375 10.2494C12.4736 10.2494 12.5712 10.2688 12.6622 10.3066C12.7533 10.3443 12.836 10.3996 12.9056 10.4694Z" fill="currentColor"/>
+  // </svg>
+  // `,
+  //   },
   {
     name: "Account & Settings",
     href: "/dashboard/settings",
@@ -198,65 +170,6 @@ export const COUNTRIES = [
   },
 ];
 
-export const NATIONALITIES = [
-  "American",
-  "British",
-  "French",
-  "German",
-  "Indian",
-  "Japanese",
-  "Chinese",
-  "Australian",
-  "Russian",
-  "Brazilian",
-  "Spanish",
-  "Italian",
-  "South African",
-  "South Korean",
-  "Indonesian",
-  "Dutch",
-  "Swedish",
-  "Swiss",
-  "Mexican",
-  "Turkish",
-  "Egyptian",
-  "Portuguese",
-  "Ukrainian",
-];
-
-export const RELIGIONS = ["Christianity", "Islam", "Atheism"];
-export const VISA_STATUS = ["none"];
-
-export const MARTIAL_STATUS = ["Single", "Married", "Divorced", "Widowed"];
-
-export const EXPERIENCE_WITH_KIDS = [
-  {
-    title: "Newborn",
-    description: "(below 1 year old)",
-  },
-  {
-    title: "Toddler",
-    description: "(1-3 years)",
-  },
-  {
-    title: "Pre-school kids",
-    description: "(4-5 years)",
-  },
-  {
-    title: "Older kids",
-    description: "(6+ years)",
-  },
-];
-
-export const CAPABILITIES = [
-  { title: "Babycare", img: "/capability1.svg" },
-  { title: "Housecleaning", img: "/capability2.svg" },
-  { title: "Cooking", img: "/capability3.svg" },
-  { title: "Driving", img: "/capability4.svg" },
-  { title: "Petcare", img: "/capability5.svg" },
-  { title: "Gardening", img: "/capability6.svg" },
-];
-
 export const AVAILABILITY = [
   "Full-time",
   "Live-out",
@@ -265,19 +178,10 @@ export const AVAILABILITY = [
   "On-demand",
 ];
 
-export const LANGUAGES = [
-  { code: "en", name: "English" },
-  { code: "ar", name: "Arabic" },
-];
-
-export const CURRENCIES = ["AED", "USD"];
+export const LANGUAGES = ["English", "Arabic"];
+export const RELIGIONS = ["Christianity", "Islam", "Atheism"];
+export const VISA_STATUS = ["none"];
+export const MARTIAL_STATUS = ["Single", "Married", "Divorced", "Widowed"];
+export const CURRENCIES = ["AED"];
 export const PRICE_RANGE = ["1000 to 2000", "2000 to 4000"];
-export const CITIES = ["Dubai"];
-export const PREFERRED_EXPERIENCE = [
-  "Newborn experience",
-  "Pre-school kids",
-  "Older kids",
-];
-
-export const CULTURAL_PREFERENCE = ["Muslim-friendly", "Dietary restrictions"];
 export const BOOKING_DURATIONS = ["Limited period", "Unlimited period"];

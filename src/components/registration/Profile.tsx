@@ -1,14 +1,18 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { uploadFile, uploadVideo } from "@/service/file";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { MARTIAL_STATUS, NATIONALITIES, RELIGIONS, screenVariants, VISA_STATUS } from "../constants";
+import { MARTIAL_STATUS, RELIGIONS, screenVariants, VISA_STATUS } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
 import CustomSelect from "../sections/CustomSelect";
+import Loader from "../sections/Loader";
 import Title from "../sections/Title";
 import { DatePicker } from "../ui/datepicker";
 import VideoUpload from "./FileUpload";
@@ -29,8 +33,10 @@ interface FormData {
 
 const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 	const { t } = useI18n();
+	const { countries, userId } = useAppContext()
 	const [img, setImg] = useState<File | null>(null);
 	const [kids, setKids] = useState(0);
+	const [loading, setLoading] = useState(false)
 
 	const {
 		handleSubmit,
@@ -52,9 +58,29 @@ const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 		},
 	});
 
-	const onSubmit = (data: FormData) => {
-		console.log("Form Data:", data);
+	const onSubmit = async (data: FormData) => {
+		setLoading(true)
+		const imgUrl = await uploadFile(img, 'profiles')
+
+		if (data.video) {
+			const videoUrl = await uploadVideo(data.video);
+		}
+
+		const payload = {
+			profile_photo_url: imgUrl,
+			number_of_kids: data.numberOfKids,
+			marital_status: data.maritalStatus,
+			date_of_birth: data.age,
+			visa_status: data.visaStatus,
+			religion: data.religion,
+			nationality_id: countries.find(e => e.nationality === data.nationality)?.id || null,
+			about: data.aboutMe,
+			user_video_consent: data.consent
+		}
+
+		await updateUser(payload, userId)
 		setActiveTab(3);
+		setLoading(false)
 	};
 
 	return (
@@ -97,7 +123,7 @@ const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 						<div className="flex flex-col gap-2 font-semibold">
 							<label>{t.profile.nationality}</label>
 							<CustomSelect
-								options={NATIONALITIES}
+								options={countries?.map(e => e.nationality)}
 								groupName="nationalities"
 								placeholder={t.profile.nationality}
 								onChange={(value: any) => setValue("nationality", value)}
@@ -164,8 +190,10 @@ const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 						className="mt-12 lg:max-w-540"
 						variant="primary"
 						size="lg"
-						disabled={!img}>
+						disabled={!img || loading}
+					>
 						{t.profile.next_step}
+						{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 					</Btn>
 				</form>
 			</div>

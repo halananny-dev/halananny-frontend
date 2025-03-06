@@ -1,6 +1,8 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { LuVideo } from "react-icons/lu";
@@ -16,6 +18,8 @@ export default function Nannies() {
   const { t } = useI18n();
   const [swiper, setSwiper] = useState<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { user } = useAppContext()
+  const router = useRouter()
 
   useEffect(() => {
     if (swiper) {
@@ -114,7 +118,7 @@ export default function Nannies() {
                             <h3 className="text-gray-900">{age}</h3>
                           </div>
                           <div className="flex items-center gap-2">
-                          <Img src="/map.svg" />
+                            <Img src="/map.svg" />
                             <h3 className="text-gray-900">{location}</h3>
                           </div>
                         </div>
@@ -164,7 +168,12 @@ export default function Nannies() {
           )}
         </Swiper>
         <div className="text-center mt-9">
-          <Btn size="lg" variant="primary" className="md:w-96">
+          <Btn
+            size="lg"
+            type="button"
+            onClick={() => router.push(user ? '/dashboard' : '/login')}
+            variant="primary"
+            className="md:w-96">
             {t.nannies.viewAll}
           </Btn>
         </div>

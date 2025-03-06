@@ -105,36 +105,20 @@
   "choose": "Choose",
   "pricing": {
     "title": "Plans & Pricing",
+    "subscribed": "Subscribed",
     "mostPopular": "Most Popular",
     "refund": "100% refund if not satisfied",
     "getStarted": "Get Started",
-    "choose": "Choose {plan}",
-    "plans": {
-      "basic plan": {
-        "name": "Basic Plan",
-        "price": "AED 180",
-        "features": ["Access to the nanny directory for a limited time"]
-      },
-      "premium plan": {
-        "name": "Premium Plan",
-        "price": "AED 350",
-        "discount": "30% off",
-        "features": [
-          "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-          "Access to AI-powered 'Personalized Recommendations'"
-        ]
-      },
-      "ultimate plan": {
-        "name": "Ultimate Plan",
-        "price": "AED 399",
-        "description": "(if you offer advanced services)",
-        "features": [
-          "Priority booking, unlimited interviews, advanced filters (language, special needs)",
-          "Access to AI-powered 'Personalized Recommendations'",
-          "Ongoing dedicated support, premium nanny profiles, extra screening options"
-        ]
-      }
-    }
+    "choose": "Choose",
+    "Basic Plan": "Basic Plan",
+    "Free Plan": "Free Plan",
+    "Premium Plan": "Premium Plan",
+    "Ultimate Plan": "Ultimate Plan",
+    "off": "off",
+    "Access to the nanny directory for a limited time": "Access to the nanny directory for a limited time",
+    "Priority booking, unlimited interviews, advanced filters": "Priority booking, unlimited interviews, advanced filters",
+    "Access to AI-powered 'Personalized Recommendations": "Access to AI-powered 'Personalized Recommendations",
+    "Ongoing dedicated support, premium nanny profiles, extra screening options": "Ongoing dedicated support, premium nanny profiles, extra screening options"
   },
   "nannies": {
     "title": "Meet Some of Our Nannies",
@@ -152,6 +136,7 @@
     "title": "Login",
     "ready": "Ready to resend",
     "s": "s",
+    "google_login": "Sign in with Google",
     "username_email": "Username/Email",
     "password": "Password",
     "remember": "Remember",
@@ -164,7 +149,7 @@
     "new_user": "New to HalaNanny ",
     "create_account": " Create your account",
     "forgot_password_title": "Forgot Password",
-    "send_code": "Send Code",
+    "send_code": "Send Link",
     "reset_password_title": "Reset Password",
     "new_password": "New Password",
     "confirm_password": "Confirm Password",
@@ -227,11 +212,12 @@
   "verify_your_details": "Verify Your Details",
   "otp_sent_message": "We’ve sent an OTP to your WhatsApp. Enter it below to move to the next level!",
   "otp_expiry": "Your OTP will expire in",
-  "otp_expiry_time": "15 min",
+  "min": "min",
   "verify_otp": "Verify OTP",
   "didnt_receive_otp": "Didn't Receive OTP?",
   "resend_otp": "Resend OTP",
   "profile": {
+    "Plus": "Plus",
     "title": "Build Your Profile",
     "profile_picture": "Profile picture",
     "profile_picture_desc": "Put a photo where your face is clearly visible",
@@ -282,10 +268,12 @@
     "Turkish": "Turkish",
     "Egyptian": "Egyptian",
     "Portuguese": "Portuguese",
-    "Ukrainian": "Ukrainian"
+    "Ukrainian": "Ukrainian",
+    "Canadian": "Canadian"
   },
   "religions": {
     "Christianity": "Christianity",
+    "Christian": "Christian",
     "Islam": "Islam",
     "Atheism": "Atheism"
   },
@@ -345,17 +333,43 @@
   },
 
   "countries": {
-    "UAE": "UAE"
+    "Australia": "Australia",
+    "United States": "United States",
+    "United Kingdom": "United Kingdom",
+    "Canada": "Canada",
+    "France": "France",
+    "Germany": "Germany",
+    "India": "India",
+    "Japan": "Japan",
+    "China": "China",
+    "Russia": "Russia",
+    "Brazil": "Brazil",
+    "Spain": "Spain",
+    "Italy": "Italy",
+    "South Africa": "South Africa",
+    "South Korea": "South Korea",
+    "Indonesia": "Indonesia",
+    "Netherlands": "Netherlands",
+    "Sweden": "Sweden",
+    "Switzerland": "Switzerland",
+    "Mexico": "Mexico",
+    "Turkey": "Turkey",
+    "Egypt": "Egypt",
+    "Portugal": "Portugal",
+    "Ukraine": "Ukraine"
   },
 
   "cities": {
-    "Dubai": "Dubai"
-  },
-
-  "preferred-experience": {
-    "Newborn experience": "Newborn experience",
-    "Pre-school kids": "Pre-school kids",
-    "Older kids": "Older kids"
+    "Sydney": "Sydney",
+    "São Paulo": "São Paulo",
+    "Mumbai": "Mumbai",
+    "New York": "New York",
+    "Paris": "Paris",
+    "Tokyo": "Tokyo",
+    "Berlin": "Berlin",
+    "Toronto": "Toronto",
+    "London": "London",
+    "Rome": "Rome"
   },
 
   "cultural-preference": {
@@ -528,7 +542,7 @@
     "See my profile": "See my profile",
     "Contact via WhatsApp": "Contact via WhatsApp",
     "Schedule Interview": "Schedule Interview",
-    "current_plan": "You are currently on the Free Plan.",
+    "current_plan": "You are currently on the",
     "settings": "Account & Settings",
     "Verified": "Verified",
     "register": "Registered on :",
@@ -579,5 +593,16 @@
     "ID": "ID",
     "Driving Licence": "Driving Licence",
     "Exam Certificate": "Exam Certificate"
-  }
+  },
+  "toast": {
+    "This Email is already registered": "This Email is already registered"
+  },
+  "There is no documents yet ):": "There is no documents yet ):",
+  "There is no task yet ):": "There is no task yet ):",
+  "Add your review": "Add your review",
+  "No Nannies Found ):": "No Nannies Found ):",
+  "Nothing provided yet": "Nothing provided yet",
+  "Invalid login credentials": "Invalid login credentials",
+  "OTP sent to your email": "OTP sent to your email",
+  "User with this email is not found": "User with this email is not found"
 }

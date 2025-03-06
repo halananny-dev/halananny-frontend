@@ -4,7 +4,7 @@ import { useI18n } from "@/i18/i18Context"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import React from "react"
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 import { screenVariants } from "../constants"
 import Btn from "../sections/Button"
 import CountryCodeSelect from "../sections/CountryCodeSelect"
@@ -13,20 +13,22 @@ import { Input } from "../ui/input"
 
 interface Props {
 	setScreen: (screen: string) => void
-	img: string
+	img: string,
+	onSubmit: any
 }
 
-const Welcome: React.FC<Props> = ({ setScreen, img }) => {
+const Welcome: React.FC<Props> = ({ setScreen, img, onSubmit }) => {
 	const { t } = useI18n()
 
 	const {
 		register,
 		handleSubmit,
+		control,
 		formState: { isValid }
 	} = useForm({ mode: "onChange" })
 
-	const onSubmit = (data: any) => {
-		console.log("Form Data:", data)
+	const signUp = (data: any) => {
+		onSubmit(data)
 		setScreen("verify")
 	}
 
@@ -35,7 +37,7 @@ const Welcome: React.FC<Props> = ({ setScreen, img }) => {
 			<div className="flex rounded-2xl border border-gray-200">
 				<Img src={img} className="hidden lg:block" />
 				<form
-					onSubmit={handleSubmit(onSubmit)}
+					onSubmit={handleSubmit(signUp)}
 					className="flex items-center p-4 lg:p-0 text-gray-900 justify-center grow"
 				>
 					<div className="sm:w-96 w-full font-semibold">
@@ -54,13 +56,21 @@ const Welcome: React.FC<Props> = ({ setScreen, img }) => {
 						</div>
 
 						<div className="mt-5 flex flex-col gap-2">
-							<label htmlFor="phone">{t.welcome.phone}</label>
+							<label htmlFor="phone_number">{t.welcome.phone}</label>
 							<div className="relative border border-gray-10 rounded-xl overflow-hidden flex">
-								<CountryCodeSelect />
+								<Controller
+									name="country"
+									control={control}
+									render={({ field }) => (
+										<CountryCodeSelect
+											{...field}
+										/>
+									)}
+								/>
 								<Input
 									type="number"
-									{...register("phone", { required: true, minLength: 8 })}
-									id="phone" className="border-none" />
+									{...register("phone_number", { required: true, minLength: 8 })}
+									id="phone_number" className="border-none" />
 							</div>
 						</div>
 

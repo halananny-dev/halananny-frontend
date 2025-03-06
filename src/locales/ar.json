@@ -104,37 +104,21 @@
   "getStarted": "ابدأ الآن",
   "choose": "اختر",
   "pricing": {
+    "subscribed": "مشترك",
     "title": "الخطط والتسعير",
     "mostPopular": "الأكثر شهرة",
     "refund": "استرداد 100٪ إذا لم تكن راضيًا",
     "getStarted": "ابدأ الآن",
-    "choose": "اختر {plan}",
-    "plans": {
-      "basic plan": {
-        "name": "أساسي",
-        "price": "AED 180",
-        "features": ["الوصول إلى دليل المربيات لفترة محدودة"]
-      },
-      "premium plan": {
-        "name": "بريميوم",
-        "price": "AED 350",
-        "discount": "خصم 30٪",
-        "features": [
-          "حجز ذو أولوية، مقابلات غير محدودة، فلاتر متقدمة (اللغة، الاحتياجات الخاصة)",
-          "الوصول إلى \"التوصيات الشخصية\" المدعومة بالذكاء الاصطناعي"
-        ]
-      },
-      "ultimate plan": {
-        "name": "ألتيميت",
-        "price": "AED 399",
-        "description": "(إذا كنت تقدم خدمات متقدمة)",
-        "features": [
-          "حجز ذو أولوية، مقابلات غير محدودة، فلاتر متقدمة (اللغة، الاحتياجات الخاصة)",
-          "الوصول إلى \"التوصيات الشخصية\" المدعومة بالذكاء الاصطناعي",
-          "دعم مستمر، ملفات مربيات مميزة، خيارات فحص إضافية"
-        ]
-      }
-    }
+    "choose": "اختر",
+    "Basic Plan": "الخطة الأساسية",
+    "Free Plan": "الخطة المجانية",
+    "Premium Plan": "الخطة المميزة",
+    "Ultimate Plan": "الخطة النهائية",
+    "off": "خصم",
+    "Access to the nanny directory for a limited time": "الوصول إلى دليل المربيات لفترة محدودة",
+    "Priority booking, unlimited interviews, advanced filters": "حجز ذو أولوية، مقابلات غير محدودة، فلاتر متقدمة",
+    "Access to AI-powered 'Personalized Recommendations": "الوصول إلى 'التوصيات الشخصية' المدعومة بالذكاء الاصطناعي",
+    "Ongoing dedicated support, premium nanny profiles, extra screening options": "دعم مخصص مستمر، ملفات تعريف مربيات متميزة، خيارات فحص إضافية"
   },
   "nannies": {
     "title": "قابل بعض مربياتنا",
@@ -150,6 +134,7 @@
   },
   "Login": {
     "title": "تسجيل الدخول",
+    "google_login": "تسجيل الدخول عبر جوجل",
     "username_email": "اسم المستخدم أو البريد الإلكتروني",
     "otp_resent": "تم إرسال OTP جديد إلى بريدك الإلكتروني.",
     "password": "كلمة المرور",
@@ -164,7 +149,7 @@
     "invalid_otp": "OTP غير صحيح. حاول مرة أخرى.",
     "create_account": "إنشاء حساب",
     "forgot_password_title": "نسيت كلمة المرور",
-    "send_code": "إرسال الرمز",
+    "send_code": "إرسال الرابط",
     "reset_password_title": "إعادة تعيين كلمة المرور",
     "new_password": "كلمة مرور جديدة",
     "confirm_password": "تأكيد كلمة المرور",
@@ -227,11 +212,12 @@
   "verify_your_details": "تحقق من بياناتك",
   "otp_sent_message": "لقد أرسلنا رمز التحقق إلى واتساب الخاص بك. أدخله أدناه للانتقال إلى المستوى التالي!",
   "otp_expiry": "سينتهي صلاحية رمز التحقق خلال",
-  "otp_expiry_time": "١٥ دقيقة",
+  "min": "دقيقة",
   "verify_otp": "تحقق من الرمز",
   "didnt_receive_otp": "لم تستلم رمز التحقق؟",
   "resend_otp": "إعادة إرسال الرمز",
   "profile": {
+    "Plus": "بلاس",
     "title": "أنشئ ملفك الشخصي",
     "profile_picture": "صورة الملف الشخصي",
     "profile_picture_desc": "ضع صورة حيث يكون وجهك مرئيًا بوضوح",
@@ -281,11 +267,14 @@
     "Turkish": "تركي",
     "Egyptian": "مصري",
     "Portuguese": "برتغالي",
-    "Ukrainian": "أوكراني"
+    "Ukrainian": "أوكراني",
+    "Canadian": "كندي"
   },
+
   "religions": {
     "Christianity": "المسيحية",
     "Islam": "الإسلام",
+    "Christian": "مسيحي",
     "Atheism": "الإلحاد"
   },
   "visa-status": {
@@ -343,17 +332,43 @@
   },
 
   "countries": {
-    "UAE": "الإمارات العربية المتحدة"
+    "Australia": "أستراليا",
+    "United States": "الولايات المتحدة",
+    "United Kingdom": "المملكة المتحدة",
+    "France": "فرنسا",
+    "Germany": "ألمانيا",
+    "India": "الهند",
+    "Japan": "اليابان",
+    "Canada": "كندا",
+    "China": "الصين",
+    "Russia": "روسيا",
+    "Brazil": "البرازيل",
+    "Spain": "إسبانيا",
+    "Italy": "إيطاليا",
+    "South Africa": "جنوب أفريقيا",
+    "South Korea": "كوريا الجنوبية",
+    "Indonesia": "إندونيسيا",
+    "Netherlands": "هولندا",
+    "Sweden": "السويد",
+    "Switzerland": "سويسرا",
+    "Mexico": "المكسيك",
+    "Turkey": "تركيا",
+    "Egypt": "مصر",
+    "Portugal": "البرتغال",
+    "Ukraine": "أوكرانيا"
   },
 
   "cities": {
-    "Dubai": "دبي"
-  },
-
-  "preferred-experience": {
-    "Newborn experience": "خبرة حديثي الولادة",
-    "Pre-school kids": "أطفال ما قبل المدرسة",
-    "Older kids": "الأطفال الأكبر سناً"
+    "Sydney": "سيدني",
+    "São Paulo": "ساو باولو",
+    "Mumbai": "مومباي",
+    "New York": "نيويورك",
+    "Paris": "باريس",
+    "Tokyo": "طوكيو",
+    "Berlin": "برلين",
+    "Toronto": "تورونتو",
+    "London": "لندن",
+    "Rome": "روما"
   },
 
   "cultural-preference": {
@@ -525,7 +540,7 @@
     "See my profile": "عرض ملفي الشخصي",
     "Contact via WhatsApp": "التواصل عبر واتساب",
     "Schedule Interview": "جدولة مقابلة",
-    "current_plan": "أنت حاليًا على الخطة المجانية.",
+    "current_plan": "أنت حاليًا على",
     "settings": "الحساب والإعدادات",
     "Verified": "موثّق",
     "register": "مسجل في :",
@@ -576,5 +591,15 @@
     "ID": "بطاقة الهوية",
     "Driving Licence": "رخصة القيادة",
     "Exam Certificate": "شهادة الامتحان"
-  }
+  },
+  "toast": {
+    "This Email is already registered": "هذا البريد الإلكتروني مسجل بالفعل"
+  },
+  "There is no documents yet ):": "لا توجد مستندات حتى الآن ):",
+  "There is no task yet ):": "لا توجد مهام حتى الآن ):",
+  "Add your review": "أضف مراجعتك",
+  "No Nannies Found ):": "لم يتم العثور على مربيات ):",
+  "Nothing provided yet": "لم يتم تقديم أي شيء بعد",
+  "OTP sent to your email": "تم إرسال رمز التحقق إلى بريدك الإلكتروني",
+  "User with this email is not found": "لم يتم العثور على مستخدم بهذا البريد الإلكتروني"
 }

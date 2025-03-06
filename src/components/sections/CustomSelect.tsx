@@ -10,6 +10,7 @@ import {
 import { useI18n } from "@/i18/i18Context"
 import { cn } from "@/lib/utils"
 import * as React from "react"
+import Loader from "./Loader"
 
 interface CustomSelectProps {
 	options: string[]
@@ -47,22 +48,24 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 				)}
 			>
 				<SelectValue placeholder={placeholder}>
-					{selected || placeholder}
+					{selected ? groupName ? t[groupName][selected] : t[selected] : placeholder}
 				</SelectValue>
 			</SelectTrigger>
 			<SelectContent
 				className="rounded-xl border border-gray-10 !bg-white shadow-lg">
-				{options.map((option, index) => (
-					<SelectItem
-						key={index}
-						value={option}>
-						<span className="flex items-center gap-2">
-							{groupName ? t[groupName][option] :
-								preventOptionTranslation ? option :
-									t[option]}
-						</span>
-					</SelectItem>
-				))}
+				{options.length === 0 ?
+					<Loader className="w-full py-3" />
+					: options.map((option, index) => (
+						<SelectItem
+							key={index}
+							value={option}>
+							<span className="flex items-center gap-2">
+								{groupName ? t[groupName][option] :
+									preventOptionTranslation ? option :
+										t[option]}
+							</span>
+						</SelectItem>
+					))}
 			</SelectContent>
 		</Select >
 	)

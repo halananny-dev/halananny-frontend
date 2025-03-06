@@ -1,19 +1,21 @@
 "use client"
 
+import { useAppContext } from "@/i18/AppContext"
 import { useI18n } from "@/i18/i18Context"
-import { AVAILABILITY, CAPABILITIES, COUNTRIES, EXPERIENCE_WITH_KIDS, LANGUAGES } from "../constants"
+import { AVAILABILITY, COUNTRIES, LANGUAGES } from "../constants"
 import Btn from "../sections/Button"
 import CustomSelect from "../sections/CustomSelect"
 import Img from "../sections/Img"
 
 export default function Filter() {
 	const { t } = useI18n()
+	const { capabilities, experienceWithKids } = useAppContext()
 
 	const fields = [
 		{ label: "Location", options: COUNTRIES.map(e => e.name), groupName: 'countries' },
-		{ label: "Experience", options: EXPERIENCE_WITH_KIDS.map(e => e.title), groupName: 'experience-with-kids' },
-		{ label: "Skill", options: CAPABILITIES.map(e => e.title), groupName: 'capabilities' },
-		{ label: "Language", options: LANGUAGES.map(e => e.name), groupName: 'languages' },
+		{ label: "Experience", options: experienceWithKids.map(e => e.title), groupName: 'experience-with-kids' },
+		{ label: "Skill", options: capabilities.map(e => e.name), groupName: 'capabilities' },
+		{ label: "Language", options: LANGUAGES, groupName: 'languages' },
 		{ label: "Availability", options: AVAILABILITY, groupName: 'availability' },
 	]
 
@@ -23,8 +25,8 @@ export default function Filter() {
 				<div className="flex w-full rounded-3xl border drop-shadow-filter border-gray-200 bg-white xl:p-4 p-2">
 					<div className="grow grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2">
 						{fields.map(({ label, options, groupName }, index) => (
-							<div key={index} className={"h-full xl:gap-4 gap-1 flex flex-col md:flex-row md:items-center xl:px-5 px-2.5 md:py-0 py-2 " + (index !== 0 ? "md:ltr:border-l md:rtl:border-r md:border-gray-200" : "")}>
-								<p className="font-bold xl:text-base text-xs text-gray-900">{t.dashboard[label]}</p>
+							<div key={index} className={"h-full xl:gap-2 gap-1 flex flex-col md:flex-row md:items-center xl:px-2 px-2.5 md:py-0 py-2 " + (index !== 0 ? "md:ltr:border-l md:rtl:border-r md:border-gray-200" : "")}>
+								<p className="font-bold xl:text-sm text-xs text-gray-900">{t.dashboard[label]}</p>
 								<CustomSelect
 									groupName={groupName}
 									placeholder={t.dashboard.all}

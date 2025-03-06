@@ -1,17 +1,23 @@
 "use client";
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { CAPABILITIES, EXPERIENCE_WITH_KIDS, LANGUAGES, screenVariants } from "../constants";
+import { LANGUAGES, screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Counter from "../sections/Counter";
 import Title from "../sections/Title";
 import Checkbox from "./Checkbox";
+import Loader from "../sections/Loader";
+import { useState } from "react";
 
 const Experience = ({ setActiveTab }) => {
 	const { t } = useI18n();
+	const { experienceWithKids, capabilities, userId } = useAppContext()
+	const [loading, setLoading] = useState(false)
 
 	const {
 		register,
@@ -30,11 +36,19 @@ const Experience = ({ setActiveTab }) => {
 
 	const experience = watch("experience");
 
-	const onSubmit = (data) => {
-		if (data.experience > 0) {
-			console.log("Form Data:", data);
-			setActiveTab(4);
+	const onSubmit = async (data) => {
+		setLoading(true)
+		const payload = {
+			years_of_experience: data.experience,
+			experience_with_kids: data.experienceWithKids.map(e => experienceWithKids.find(c => c.title === e).id),
+			capabilities: data.capabilities.map(e => capabilities.find(c => c.name === e).id),
+			language: data.languages
 		}
+
+		await updateUser(payload, userId)
+
+		setActiveTab(4);
+		setLoading(false)
 	};
 
 	return (
@@ -55,7 +69,7 @@ const Experience = ({ setActiveTab }) => {
 						variant="variant1"
 						groupName="experience-with-kids"
 						className="mt-5"
-						data={EXPERIENCE_WITH_KIDS}
+						data={experienceWithKids}
 						control={control}
 						name="experienceWithKids"
 					/>
@@ -67,19 +81,19 @@ const Experience = ({ setActiveTab }) => {
 						groupName="capabilities"
 						variant="variant2"
 						className="mt-5"
-						data={CAPABILITIES}
+						data={capabilities}
 					/>
 
 					<h4 className="mt-8 font-bold">{t.experience.language_preference}</h4>
 					<div className="mt-5 flex gap-5">
 						{LANGUAGES.map((lang, index) => (
-							<label key={index} htmlFor={lang.code} className="flex items-center gap-2.5">
+							<label key={index} htmlFor={lang} className="flex items-center gap-2.5">
 								<CheckBox
-									id={lang.code}
-									value={lang.code}
+									id={lang}
+									value={lang}
 									{...register("languages")}
 								/>
-								<span className="font-medium">{t.languages[lang.name]}</span>
+								<span className="font-medium">{t.languages[lang]}</span>
 							</label>
 						))}
 					</div>
@@ -99,9 +113,10 @@ const Experience = ({ setActiveTab }) => {
 							className="lg:max-w-80"
 							variant="primary"
 							size="lg"
-							disabled={experience === 0}
+							disabled={experience === 0 || loading}
 						>
 							{t.experience.next_step}
+							{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 						</Btn>
 					</div>
 				</form>

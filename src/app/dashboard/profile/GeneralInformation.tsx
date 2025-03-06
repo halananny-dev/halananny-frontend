@@ -10,14 +10,15 @@ import { FaWhatsapp } from "react-icons/fa";
 import { LuPen } from "react-icons/lu";
 import { MdStars } from "react-icons/md";
 
-export default function GeneralInformation() {
-	const [img, setImg] = useState('/nanny1.svg')
+export default function GeneralInformation({ editable, user }) {
+	const [img, setImg] = useState(user.profile_photo_url)
 	const { t } = useI18n()
 
 	return (
 		<>
 			<div className="flex justify-center">
 				<ImgUpload
+					editable={editable}
 					imgClass="w-full h-full rounded-18"
 					className="!w-44 !h-44 -mt-20 p-1 bg-white !rounded-18 drop-shadow-avatar"
 					image={img}
@@ -25,33 +26,35 @@ export default function GeneralInformation() {
 				/>
 			</div>
 			<h3 className="mt-4 text-3xl font-bold text-center">
-				Almira A.
+				{user.name}
 			</h3>
-			<div className="flex gap-1 justify-center mx-auto text-xs mt-1 text-white w-32 rounded bg-gray-1 h-5 items-center">
+			{user.verified_at && <div className="flex gap-1 justify-center mx-auto text-xs mt-1 text-white w-32 rounded bg-gray-1 h-5 items-center">
 				<Img src="/verified.svg" />
 				<span>{t.dashboard.Verified}</span>
-			</div>
+			</div>}
 			<p className="mt-4 text-[#979797] font-medium text-center">
 				{t.dashboard.register}
-				<span className="text-gray-900 font-semibold">{' '}01/02/2025</span>
+				<span className="text-gray-900 font-semibold">{' '}{new Date(user.created_at).toLocaleDateString()}</span>
 			</p>
 			<div className="flex flex-col items-center">
-				<Link href="/dashboard/settings">
-					<Btn className="bg-green-900 drop-shadow-btn !border-0 !text-sm max-w-56 mt-4 gap-2" size="lg" variant="primary">
+				<Link
+					target={editable ? "_self" : "_blank"}
+					href={editable ? "/dashboard/settings" : `https://wa.me/${user.phone_number}`}>
+					<Btn className="bg-green-900 drop-shadow-btn !border-0 !text-sm w-56 mt-4 gap-2" size="lg" variant="primary">
 						<FaWhatsapp />
 						<span>
 							{t.dashboard.contact}
 						</span>
-						<LuPen className="w-0.5" />
+						{editable && <LuPen className="w-0.5" />}
 					</Btn>
 				</Link>
-				<Btn className="!text-base max-w-56 mt-5 h-10 gap-2 hover:bg-teal-500 hover:text-white !rounded-lg !border-0" size="lg" variant="primary">
+				<Btn className="!text-base w-56 mt-5 h-10 gap-2 hover:bg-teal-500 hover:text-white !rounded-lg !border-0" size="lg" variant="primary">
 					<MdStars />
 					<span>
 						{t.dashboard.badge}
 					</span>
 				</Btn>
-			</div>
+			</div >
 		</>
 	)
 }

@@ -2,16 +2,17 @@ import Flag from "react-world-flags";
 import { COUNTRIES } from "../constants";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
-export default function CountryCodeSelect() {
+export default function CountryCodeSelect({ onChange }: { onChange?: any }) {
 	return (
-		<Select>
+		<Select onValueChange={(value) => onChange?.(value)}>
 			<SelectTrigger className="w-32 font-semibold bg-white text-gray-900 focus:ring-0 h-12 outline-none border-0 border-r border-r-gray-10 rounded-none">
-				<SelectValue className="pl-2" placeholder={
+				<SelectValue defaultValue="+971" placeholder={
 					<div className="flex items-center gap-2.5">
 						<Flag code="AE" className="w-4" />
 						<span>+971</span>
 					</div>
-				} />
+				}>
+				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
 				<SelectGroup>
@@ -26,5 +27,5 @@ export default function CountryCodeSelect() {
 				</SelectGroup>
 			</SelectContent>
 		</Select>
-	)
+	);
 }

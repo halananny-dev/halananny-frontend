@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/i18/i18Context";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
+import { toast } from "react-toastify";
 import Img from "../sections/Img";
 
 export default function CertificationUpload() {
@@ -49,7 +50,13 @@ export default function CertificationUpload() {
 											className="absolute w-full h-full top-0 opacity-0"
 											onChange={(e: any) => {
 												const file = e.target.files[0];
-												if (file) setValue(`certifications.${index}.file`, file);
+
+												const maxSize = 10 * 1024 * 1024;
+												if (file.size > maxSize) {
+													return toast.error("File size exceeds 10MB. Please select a smaller file.");
+												}
+
+												setValue(`certifications.${index}.file`, file);
 											}}
 										/>
 									</>

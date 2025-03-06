@@ -1,3 +1,4 @@
+import { AppContextProvider } from '@/i18/AppContext';
 import { ToastContainer } from 'react-toastify';
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,11 +16,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html>
       <Metadata />
       <body>
-        <I18nProvider>
-          {children}
-          <ToastContainer />
-        </I18nProvider>
+        <AppContextProvider>
+          <I18nProvider>
+            {children}
+            <ToastContainer />
+          </I18nProvider>
+        </AppContextProvider>
       </body>
-    </html>
+    </html >
   );
 }

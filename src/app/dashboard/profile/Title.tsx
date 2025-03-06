@@ -5,15 +5,16 @@ interface Props {
 	className?: string;
 	title: string;
 	onEdit?: () => void;
+	editable?: boolean
 }
 
-const Title: React.FC<Props> = ({ title, className, onEdit }) => {
+const Title: React.FC<Props> = ({ title, className, onEdit, editable }) => {
 	return (
 		<div className={cn("flex mt-4 items-center gap-2.5 px-2.5", className)}>
 			<h3 className="font-bold text-lg">{title}</h3>
-			<button onClick={onEdit}>
+			{editable && <button onClick={onEdit}>
 				<Img src="/pen.svg" />
-			</button>
+			</button>}
 		</div>
 	);
 };
