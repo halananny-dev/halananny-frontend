@@ -46,8 +46,6 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ setScreen }) => {
 			return toast.error(t.Login.password_mismatch)
 		}
 
-		console.log("Reset Password Data:", data)
-
 		setScreen("login")
 	}
 

@@ -38,12 +38,13 @@ const SignUp: React.FC<SignUpProps> = ({ setActiveTab, img, userType }) => {
 			if (error.code === '23505') {
 				setScreen('signup')
 				toast.error(t.toast['This Email is already registered'])
+				setLoading(false)
 			}
 			return
 		}
 
-		setUserId(data.id)
 		setLoading(false)
+		setUserId(data.id)
 		setActiveTab(2)
 	}
 

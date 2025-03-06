@@ -1,17 +1,19 @@
 "use client"
 
+import Assistant from "@/components/dashboard/Assistant";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import Filter from "@/components/dashboard/Filter";
 import Nanny from "@/components/dashboard/Nanny";
 import Title from "@/components/sections/Title";
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { getNannies } from "@/service/user";
 import { useEffect, useState } from "react";
-import Assistant from "../../components/dashboard/Assistant";
 
 export default function Dashboard() {
 	const { t } = useI18n()
 	const [nannies, setNannies] = useState<any>([])
+	const { user } = useAppContext()
 
 	useEffect(() => {
 		const init = async () => {
@@ -25,7 +27,7 @@ export default function Dashboard() {
 
 	return (
 		<>
-			<DashboardHeader title={<>{t.dashboard.welcome} Fatima ! <br />
+			<DashboardHeader title={<>{t.dashboard.welcome} {user.name} ! <br />
 				{t.dashboard.find}
 			</>} />
 			<div className="xl:p-18 py-10 px-4">

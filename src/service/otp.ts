@@ -32,8 +32,6 @@ async function sendWhatsAppOTP(whatsappNumber, otp) {
         },
       }
     );
-    console.log("OTP Sent:", response.data);
- 
 }
 
 // Example Usage

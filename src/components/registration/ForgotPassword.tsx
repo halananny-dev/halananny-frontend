@@ -25,7 +25,6 @@ const ForgotPassword: React.FC<LoginProps> = ({ setScreen }) => {
 	})
 
 	const forgotPassword = (data: any) => {
-		console.log("Email submitted:", data.email)
 
 		// send otp to email
 		setScreen("reset")

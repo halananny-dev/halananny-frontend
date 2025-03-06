@@ -36,8 +36,6 @@ export async function uploadVideo(file) {
   const fileType = file.type;
   const bucketName = process.env.NEXT_PUBLIC_S3_BUCKET_NAME;
 
-  console.log(file);
-
   const params: any = {
     Bucket: bucketName,
     Key: fileName,
@@ -47,7 +45,6 @@ export async function uploadVideo(file) {
   const command = new PutObjectCommand(params);
 
   const signedUrl = await getSignedUrl(s3, command, { expiresIn: 60 });
-  console.log(signedUrl)
 
   await fetch(signedUrl, {
     method: "PUT",
@@ -57,6 +54,6 @@ export async function uploadVideo(file) {
     },
   });
 
-  const fileUrl = signedUrl.split("?")[0]; // Remove query params
+  const fileUrl = signedUrl.split("?")[0];
   return fileUrl;
 }

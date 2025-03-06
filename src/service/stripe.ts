@@ -54,7 +54,6 @@ export async function createBillingPortal(customerEmail: string) {
 
     return { success: true, url: session.url };
   } catch (error: any) {
-    console.error("❌ Error creating billing portal:", error);
     return { success: false, error: error.message };
   }
 }

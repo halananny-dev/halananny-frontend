@@ -61,12 +61,9 @@ const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true)
 		const imgUrl = await uploadFile(img, 'profiles')
-		console.log(data.video)
 
 		if (data.video) {
 			const videoUrl = await uploadVideo(data.video);
-
-			console.log(videoUrl)
 		}
 
 		const payload = {

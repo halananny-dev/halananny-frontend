@@ -40,25 +40,23 @@ export const Plans: React.FC<Props> = ({ sm, isDashboard }) => {
   }, [])
 
   const getStarted = async (plan) => {
-    // if (!user) {
-    //   return router.push("/login");
-    // }
+    if (!user) {
+      return router.push("/login");
+    }
 
-    const url = await createCheckout("madzoreraa@gmail.com", plan.priceId);
+    const url = await createCheckout(user.email, plan.priceId);
 
     if (url) {
       router.push(url)
-    } else {
-      console.error("Checkout failed: No URL received.");
     }
   };
 
   const manageSubscription = async (plan) => {
-    // if (!user) {
-    //   return router.push("/login");
-    // }
+    if (!user) {
+      return router.push("/login");
+    }
 
-    const { url } = await createBillingPortal("madzoreraa@gmail.com")
+    const { url } = await createBillingPortal(user.email)
 
     if (url) {
       router.push(url)

@@ -1,18 +1,35 @@
 import { supabase } from "@/lib/supabase";
 
 export const createUser = async (payload, password) => {
-  await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email: payload.email,
     password: password,
   });
 
+  if (error) {
+    return { data: null, error };
+  }
+
+  await logout();
   return await supabase.from("users").insert([payload]).select().single();
 };
 
 export const getUser = async () => {
-  const { data } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  return data.user;
+  if (!user) {
+    return;
+  } else {
+    const { data: userDetails } = await supabase
+      .from("users")
+      .select("*")
+      .eq("email", user.email)
+      .single();
+
+    return { ...user, ...userDetails };
+  }
 };
 
 export const updateUser = async (payload, id) => {
@@ -92,3 +109,5 @@ export const removeNanny = async (userId, nannyId) => {
       .select()
   ).data;
 };
+
+export const logout = async () => await supabase.auth.signOut();

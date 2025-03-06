@@ -1,7 +1,10 @@
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { supabase } from "@/lib/supabase";
+import { getUser } from "@/service/user";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -10,8 +13,6 @@ import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Loader from "../sections/Loader";
 import { Input } from "../ui/input";
-import { useAppContext } from "@/i18/AppContext";
-import { useRouter } from "next/navigation";
 
 interface LoginProps {
 	setScreen: (screen: string) => void;
@@ -39,7 +40,12 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true)
 
-		const { data: { user }, error } = await supabase.auth.signInWithPassword({ email: data.email, password: data.password });
+		const { error } = await supabase.auth.signInWithPassword({
+			email: data.email,
+			password: data.password,
+		});
+
+		const user = await getUser()
 
 
 		if (error) {
@@ -47,7 +53,9 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 		}
 		else {
 			setUser(user)
-			router.push('/dashboard')
+			setTimeout(() => {
+				router.replace('/dashboard')
+			}, 0)
 		}
 
 		setLoading(false)

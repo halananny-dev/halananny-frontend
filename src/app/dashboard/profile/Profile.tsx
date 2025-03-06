@@ -2,7 +2,7 @@ import Img from "@/components/sections/Img"
 import Loader from "@/components/sections/Loader"
 import { useAppContext } from "@/i18/AppContext"
 import { useI18n } from "@/i18/i18Context"
-import { getProfile, getTable } from "@/service/user"
+import { getTable } from "@/service/user"
 import { useEffect, useState } from "react"
 import { FaPlay, FaPlus } from "react-icons/fa"
 import GeneralInformation from "./GeneralInformation"
@@ -10,29 +10,19 @@ import Identity from "./Identity"
 import Rating from "./Rating"
 import Title from "./Title"
 
-export const Profile = ({ editable = true, userId }) => {
+export const Profile = ({ editable = true, user }) => {
 	const { t } = useI18n()
 	const { user: admin } = useAppContext()
-	const [user, setUser] = useState<any>(null)
-	const [loading, setLoading] = useState(true)
 	const [documents, setDocuments] = useState<any>([])
 	const [details, setDetails] = useState<any>([])
 	const [reviews, setReviews] = useState<any>([])
 
 	useEffect(() => {
 		const init = async () => {
-			const user = await getProfile(userId)
-
-			setUser(user)
-
-			const documents = await getTable(userId, 'documents')
-
+			const documents = await getTable(user.id, 'documents')
 			setDocuments(documents)
-
-			const reviews = await getTable(userId, 'ratings')
-
+			const reviews = await getTable(user.id, 'ratings')
 			setReviews(reviews)
-
 
 			setDetails([
 				{ name: "City availble to work", value: user.available_city && user.available_city[0] || '' },
@@ -46,17 +36,17 @@ export const Profile = ({ editable = true, userId }) => {
 					name: "Experience with kids", value: user.experience_with_kids
 				},
 			])
-
-
-			setLoading(false)
 		}
 
 
-		init()
-	}, [])
+		if (user) {
+			init()
+		}
+	}, [user])
+
 
 	return <div className="flex justify-center">
-		{loading ? <Loader className="py-20" /> :
+		{!user ? <Loader className="py-20" /> :
 			<div className="flex flex-wrap text-gray-900 items-start justify-start md:px-10 px-4 py-7 gap-4">
 				<div className="pb-7 card w-full lg:w-[309px] mt-9 px-2.5">
 					<GeneralInformation user={user} editable={editable} />

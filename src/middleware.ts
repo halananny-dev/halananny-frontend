@@ -25,42 +25,40 @@ export async function middleware(req: NextRequest) {
       },
     }
   );
-
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isAuthenticated = !!user?.id;
   const path = req.nextUrl.pathname;
 
-  console.log(
-    "Middleware running. Authenticated:",
-    isAuthenticated,
-    "Path:",
-    path
-  );
-
-  // 🔒 Redirect users trying to access protected routes without logging in
   const protectedRoutes = ["/dashboard", "/nannies"];
-  if (
-    !isAuthenticated &&
-    protectedRoutes.some((route) => path.startsWith(route))
-  ) {
+  if (!user?.id && protectedRoutes.some((route) => path.startsWith(route))) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // 🚫 Prevent logged-in users from accessing login/register pages
-  if (
-    isAuthenticated &&
-    (path.startsWith("/login") || path.startsWith("/register"))
-  ) {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+  if (user?.id) {
+    const { data: userData } = await supabase
+      .from("users")
+      .select("*")
+      .eq("email", user.email)
+      .single();
+
+    if (path === "/dashboard") {
+      if (userData?.role === "user") {
+        return NextResponse.redirect(new URL("/dashboard/nannies", req.url));
+      } else {
+        return NextResponse.redirect(new URL("/dashboard/profile", req.url));
+      }
+    }
+
+    if (path.startsWith("/login") || path.startsWith("/register")) {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
   }
 
   return res;
 }
 
-// 🛡️ Apply middleware to relevant routes
 export const config = {
   matcher: [
     "/dashboard/:path*",
