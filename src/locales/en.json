@@ -136,6 +136,7 @@
     "title": "Login",
     "ready": "Ready to resend",
     "s": "s",
+    "google_login": "Sign in with Google",
     "username_email": "Username/Email",
     "password": "Password",
     "remember": "Remember",
@@ -148,7 +149,7 @@
     "new_user": "New to HalaNanny ",
     "create_account": " Create your account",
     "forgot_password_title": "Forgot Password",
-    "send_code": "Send Code",
+    "send_code": "Send Link",
     "reset_password_title": "Reset Password",
     "new_password": "New Password",
     "confirm_password": "Confirm Password",
@@ -601,5 +602,7 @@
   "Add your review": "Add your review",
   "No Nannies Found ):": "No Nannies Found ):",
   "Nothing provided yet": "Nothing provided yet",
-  "Invalid login credentials": "Invalid login credentials"
+  "Invalid login credentials": "Invalid login credentials",
+  "OTP sent to your email": "OTP sent to your email",
+  "User with this email is not found": "User with this email is not found"
 }

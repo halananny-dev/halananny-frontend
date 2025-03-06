@@ -13,6 +13,7 @@ import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Loader from "../sections/Loader";
 import { Input } from "../ui/input";
+import { FcGoogle } from "react-icons/fc"; 
 
 interface LoginProps {
 	setScreen: (screen: string) => void;
@@ -26,9 +27,10 @@ interface FormData {
 
 const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 	const { t } = useI18n();
-	const [loading, setLoading] = useState(false)
-	const { setUser } = useAppContext()
-	const router = useRouter()
+	const [loading, setLoading] = useState(false);
+	const { setUser } = useAppContext();
+	const router = useRouter();
+
 	const {
 		register,
 		handleSubmit,
@@ -38,27 +40,38 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 	});
 
 	const onSubmit = async (data: FormData) => {
-		setLoading(true)
+		setLoading(true);
 
 		const { error } = await supabase.auth.signInWithPassword({
 			email: data.email,
 			password: data.password,
 		});
 
-		const user = await getUser()
-
+		const user = await getUser();
 
 		if (error) {
-			toast.error(t[error?.message])
-		}
-		else {
-			setUser(user)
+			toast.error(t[error?.message]);
+		} else {
+			setUser(user);
 			setTimeout(() => {
-				router.replace('/dashboard')
-			}, 0)
+				router.replace("/dashboard");
+			}, 0);
 		}
 
-		setLoading(false)
+		setLoading(false);
+	};
+
+	const handleGoogleLogin = async () => {
+		const { error } = await supabase.auth.signInWithOAuth({
+			provider: "google",
+			options: {
+				redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}dashboard`,
+			},
+		});
+
+		if (error) {
+			toast.error(t[error?.message]);
+		}
 	};
 
 	return (
@@ -75,9 +88,7 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 				</h2>
 
 				<div className="mt-9 flex flex-col gap-2">
-					<label htmlFor="email">
-						{t.Login.username_email}
-					</label>
+					<label htmlFor="email">{t.Login.username_email}</label>
 					<Input
 						{...register("email", {
 							required: true,
@@ -89,9 +100,7 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 				</div>
 
 				<div className="mt-7 flex flex-col gap-2">
-					<label htmlFor="password">
-						{t.Login.password}
-					</label>
+					<label htmlFor="password">{t.Login.password}</label>
 					<Input
 						{...register("password", {
 							required: true,
@@ -104,12 +113,8 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 
 				<div className="mt-5 text-sm font-semibold flex justify-between items-center">
 					<div className="flex gap-2">
-						<CheckBox
-							{...register("remember")}
-						/>
-						<label htmlFor="remember">
-							{t.Login.remember}
-						</label>
+						<CheckBox {...register("remember")} />
+						<label htmlFor="remember">{t.Login.remember}</label>
 					</div>
 					<button
 						type="button"
@@ -131,11 +136,18 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 					{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 				</Btn>
 
+				<button
+					type="button"
+					onClick={handleGoogleLogin}
+					className="w-full mt-4 flex items-center justify-center gap-3 px-4 md:py-4 py-2 border border-gray-10 rounded-18"
+				>
+					<FcGoogle size={22} />
+					<span className="font-semibold text-lg">{t.Login.google_login}</span>
+				</button>
+
 				<p className="mt-6 text-center">
 					{t.Login.new_user} -{" "}
-					<Link
-						className="font-semibold text-teal-500"
-						href="/register">
+					<Link className="font-semibold text-teal-500" href="/register">
 						{t.Login.create_account}
 					</Link>
 				</p>

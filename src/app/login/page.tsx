@@ -2,7 +2,6 @@
 
 import ForgotPassword from "@/components/registration/ForgotPassword";
 import LoginScreen from "@/components/registration/Login";
-import ResetPassword from "@/components/registration/ResetPassword";
 import Img from "@/components/sections/Img";
 import Navbar from "@/components/sections/Navbar";
 import { AnimatePresence } from "framer-motion";
@@ -27,10 +26,6 @@ export default function Login() {
 								setScreen={setScreen}
 							/>
 							}
-
-							{screen === "reset" && <ResetPassword
-								setScreen={setScreen}
-							/>}
 						</AnimatePresence>
 					</div>
 				</div>

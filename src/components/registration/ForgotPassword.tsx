@@ -1,11 +1,15 @@
 "use client"
 
 import { useI18n } from "@/i18/i18Context"
+import { supabase } from "@/lib/supabase"
 import { motion } from "framer-motion"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { IoIosArrowBack } from "react-icons/io"
+import { toast } from "react-toastify"
 import { screenVariants } from "../constants"
 import Btn from "../sections/Button"
+import Loader from "../sections/Loader"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 
@@ -15,6 +19,7 @@ interface LoginProps {
 
 const ForgotPassword: React.FC<LoginProps> = ({ setScreen }) => {
 	const { t } = useI18n()
+	const [loading, setLoading] = useState(false)
 
 	const {
 		register,
@@ -24,10 +29,24 @@ const ForgotPassword: React.FC<LoginProps> = ({ setScreen }) => {
 		mode: "onChange",
 	})
 
-	const forgotPassword = (data: any) => {
+	const forgotPassword = async (data: any) => {
+		setLoading(true)
 
-		// send otp to email
-		setScreen("reset")
+		const { data: isUserExists } = await supabase.from('users').select('*').eq('email', data.email).single()
+
+		if (isUserExists) {
+			await supabase.auth.signInWithOtp({
+				email: data.email,
+			});
+
+			toast.success('We`ve sent a magic link to your Gmail.')
+			setScreen('login')
+		}
+		else {
+			toast.error(t["User with this email is not found"])
+		}
+
+		setLoading(false)
 	}
 
 	return (
@@ -68,10 +87,11 @@ const ForgotPassword: React.FC<LoginProps> = ({ setScreen }) => {
 				<Btn
 					size="lg"
 					variant="primary"
-					disabled={!isValid}
+					disabled={!isValid || loading}
 					className="mt-8 md:mt-8"
 					type="submit">
 					{t.Login.send_code}
+					{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 				</Btn>
 			</form>
 		</motion.div>

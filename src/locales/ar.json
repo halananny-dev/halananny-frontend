@@ -134,6 +134,7 @@
   },
   "Login": {
     "title": "تسجيل الدخول",
+    "google_login": "تسجيل الدخول عبر جوجل",
     "username_email": "اسم المستخدم أو البريد الإلكتروني",
     "otp_resent": "تم إرسال OTP جديد إلى بريدك الإلكتروني.",
     "password": "كلمة المرور",
@@ -148,7 +149,7 @@
     "invalid_otp": "OTP غير صحيح. حاول مرة أخرى.",
     "create_account": "إنشاء حساب",
     "forgot_password_title": "نسيت كلمة المرور",
-    "send_code": "إرسال الرمز",
+    "send_code": "إرسال الرابط",
     "reset_password_title": "إعادة تعيين كلمة المرور",
     "new_password": "كلمة مرور جديدة",
     "confirm_password": "تأكيد كلمة المرور",
@@ -598,6 +599,7 @@
   "There is no task yet ):": "لا توجد مهام حتى الآن ):",
   "Add your review": "أضف مراجعتك",
   "No Nannies Found ):": "لم يتم العثور على مربيات ):",
-  "Nothing provided yet": "لم يتم تقديم أي شيء بعد"
-
+  "Nothing provided yet": "لم يتم تقديم أي شيء بعد",
+  "OTP sent to your email": "تم إرسال رمز التحقق إلى بريدك الإلكتروني",
+  "User with this email is not found": "لم يتم العثور على مستخدم بهذا البريد الإلكتروني"
 }
