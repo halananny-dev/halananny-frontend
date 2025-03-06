@@ -1,3 +1,7 @@
+import Img from "@/components/sections/Img"
+import Loader from "@/components/sections/Loader"
+import { useAppContext } from "@/i18/AppContext"
+import { useI18n } from "@/i18/i18Context"
 import { getProfile, getTable } from "@/service/user"
 import { useEffect, useState } from "react"
 import { FaPlay, FaPlus } from "react-icons/fa"
@@ -5,10 +9,6 @@ import GeneralInformation from "./GeneralInformation"
 import Identity from "./Identity"
 import Rating from "./Rating"
 import Title from "./Title"
-import Img from "@/components/sections/Img"
-import Loader from "@/components/sections/Loader"
-import { useAppContext } from "@/i18/AppContext"
-import { useI18n } from "@/i18/i18Context"
 
 export const Profile = ({ editable = true, userId }) => {
 	const { t } = useI18n()
@@ -35,12 +35,12 @@ export const Profile = ({ editable = true, userId }) => {
 
 
 			setDetails([
-				{ name: "City availble to work", value: user.available_city[0] || '-' },
+				{ name: "City availble to work", value: user.available_city && user.available_city[0] || '' },
 				{ name: "Desired monthly salary(AED)", value: user.desired_salary },
-				{ name: "Languages", value: user.language.join(', ') },
+				{ name: "Languages", value: user.language?.join(', ') },
 				{ name: "Desired job", value: user.availability },
 				{ name: "Visa status", value: user.visa_status },
-				{ name: "Available from", value: new Date(user.available_from).toLocaleDateString() },
+				{ name: "Available from", value: user.available_from ? new Date(user.available_from).toLocaleDateString() : '' },
 				{ name: "Year of experience", value: user.years_of_experience },
 				{
 					name: "Experience with kids", value: user.experience_with_kids
@@ -78,7 +78,7 @@ export const Profile = ({ editable = true, userId }) => {
 						</div>
 						<Img src="/stars.svg" className="mt-3" />
 					</div>
-					<Identity user={user} />
+					<Identity user={user} editable={editable} />
 					<Title editable={editable} title={t.documents["My Documents"]} />
 
 					<div className="mt-4 card pt-5 p-5 pb-3">
@@ -107,8 +107,10 @@ export const Profile = ({ editable = true, userId }) => {
 					<div className="mt-2.5 card px-6 text-sm">
 						{user.about?.length > 470 ? <>
 							{user.about.slice(0, 470)}
-							<button className="font-semibold">Plus</button>
+							<button className="font-semibold">{t.profile.Plus}</button>
 						</> : user.about}
+
+						{!user.about && (editable ? <textarea className="outline-none w-full" placeholder={t.profile.about_me} /> : <p>{t['Nothing provided yet']}</p>)}
 					</div>
 					<Title editable={editable} className="mt-6" title={t.dashboard.details} />
 					<div className="mt-2.5 card px-6 flex flex-col gap-2 text-sm">
@@ -161,10 +163,17 @@ export const Profile = ({ editable = true, userId }) => {
 				<div className="w-full sm:w-[292px]">
 					<Title className="m-0" title={t.dashboard["Video presentation"]} />
 					<div className="mt-2.5 card p-6 flex items-center justify-center relative">
-						<Img src="/nanny1.svg" className="w-full rounded-xl !h-40 object-cover" />
-						<button className="absolute text-white text-3xl">
-							<FaPlay />
-						</button>
+						{user.video ? <>	<Img src="/nanny1.svg" className="w-full rounded-xl !h-40 object-cover" />
+							<button className="absolute text-white text-3xl">
+								<FaPlay />
+							</button>
+						</> : editable ? <button className="w-full mt-4 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
+							<FaPlus />
+							<span className="text-sm font-semibold">{t.details.Add}
+								<span className="text-xs font-medium">{' '}(+5 ${t.dashboard.point})</span>
+							</span>
+						</button> : t['Nothing provided yet']
+						}
 					</div>
 					<h3 className="font-bold mt-7 text-lg">{t.dashboard["My Reviews & Rating"]}</h3>
 					<Rating

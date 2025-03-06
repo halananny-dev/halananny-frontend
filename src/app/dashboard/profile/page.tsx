@@ -12,7 +12,7 @@ export default function Page() {
 	return (
 		<>
 			<DashboardHeader title={t.dashboard.profile} />
-			<Profile userId="e0ba6bc6-80c6-41ad-8615-046b2f4ee0f2" />
+			<Profile userId="b8f269cf-9200-45df-b85c-4235e716f09e" />
 		</>
 	)
 }

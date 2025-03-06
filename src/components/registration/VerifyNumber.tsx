@@ -10,9 +10,10 @@ import Img from "../sections/Img";
 interface LoginProps {
 	img: string;
 	onSubmit: any;
+	loading: boolean
 }
 
-const VerifyNumber: React.FC<LoginProps> = ({ img, onSubmit }) => {
+const VerifyNumber: React.FC<LoginProps> = ({ img, onSubmit, loading }) => {
 	const { t } = useI18n();
 	const { handleSubmit, setValue, watch } = useForm<{ otp: string[] }>({
 		defaultValues: { otp: Array(6).fill("") }
@@ -35,7 +36,7 @@ const VerifyNumber: React.FC<LoginProps> = ({ img, onSubmit }) => {
 					<div className="sm:w-96 w-full font-semibold">
 						<p className="text-teal-500 text-center font-bold text-lg">{t.stepn}</p>
 						<h2 className="text-3xl text-center mt-1.2 font-bold">{t.verify_your_details}</h2>
-						<VerifyOtp otp={otp} setOtp={(value) => setValue("otp", value)} />
+						<VerifyOtp loading={loading} otp={otp} setOtp={(value) => setValue("otp", value)} />
 					</div>
 				</form>
 			</div>

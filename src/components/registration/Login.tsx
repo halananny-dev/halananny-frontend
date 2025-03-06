@@ -1,12 +1,17 @@
 import { useI18n } from "@/i18/i18Context";
+import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
+import Loader from "../sections/Loader";
 import { Input } from "../ui/input";
+import { useAppContext } from "@/i18/AppContext";
+import { useRouter } from "next/navigation";
 
 interface LoginProps {
 	setScreen: (screen: string) => void;
@@ -20,6 +25,9 @@ interface FormData {
 
 const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 	const { t } = useI18n();
+	const [loading, setLoading] = useState(false)
+	const { setUser } = useAppContext()
+	const router = useRouter()
 	const {
 		register,
 		handleSubmit,
@@ -28,9 +36,21 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 		mode: "onChange",
 	});
 
-	const onSubmit = (data: FormData) => {
-		console.log("Login Data:", data);
-		// check data and navigate to home screen
+	const onSubmit = async (data: FormData) => {
+		setLoading(true)
+
+		const { data: { user }, error } = await supabase.auth.signInWithPassword({ email: data.email, password: data.password });
+
+
+		if (error) {
+			toast.error(t[error?.message])
+		}
+		else {
+			setUser(user)
+			router.push('/dashboard')
+		}
+
+		setLoading(false)
 	};
 
 	return (
@@ -93,13 +113,14 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 				</div>
 
 				<Btn
-					disabled={!isValid}
+					disabled={!isValid || loading}
 					type="submit"
 					size="lg"
 					variant="primary"
 					className="mt-8 md:mt-14"
 				>
 					{t.Login.login_button}
+					{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 				</Btn>
 
 				<p className="mt-6 text-center">

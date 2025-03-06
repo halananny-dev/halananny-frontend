@@ -1,9 +1,10 @@
+import Img from "@/components/sections/Img";
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { getAge } from "@/lib/utils";
 import Title from "./Title";
 
-export default function Identity({ user }) {
+export default function Identity({ user, editable }) {
 	const { t } = useI18n();
 	const { countries } = useAppContext()
 
@@ -22,7 +23,13 @@ export default function Identity({ user }) {
 				{identity.map((e, i) => (
 					<div className="flex items-center pb-3 border-b border-gray-ea justify-between" key={i}>
 						<p>{e.name}</p>
-						<p className="font-bold">{e.value}</p>
+						{e.value ? <p className="font-bold">{e.value}</p> : editable ? 
+						<button className="w-20 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
+							<Img src="/pen.svg" className="!w-4" />
+							<span className="text-sm font-semibold">
+								{t.details["Add"]}
+							</span>
+						</button> : '-'}
 					</div>
 				))}
 			</div>

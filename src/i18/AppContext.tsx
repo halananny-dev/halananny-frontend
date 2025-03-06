@@ -50,6 +50,7 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 			cities,
 			setCities,
 			user,
+			setUser,
 			userId,
 			setUserId,
 			plans

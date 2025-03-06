@@ -12,7 +12,7 @@ interface Props {
 const Rating: React.FC<Props> = ({ editable, admin, reviews }) => {
 	const { t } = useI18n()
 
-	const rating = reviews.reduce((sum, e) => sum + e.score, 0) / reviews.length;
+	const rating = reviews.reduce((sum, e) => sum + e.score, 0) / reviews.length || 0;
 
 	return (
 		<div className="mt-2.5 card py-6 px-7">

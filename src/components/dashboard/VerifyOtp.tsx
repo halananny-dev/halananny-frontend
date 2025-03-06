@@ -1,13 +1,14 @@
 "use client"
 
 import { useI18n } from "@/i18/i18Context"
+import { cn } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import OTPInput from "../registration/OTPInput"
 import Btn from "../sections/Button"
 import Img from "../sections/Img"
-import { cn } from "@/lib/utils"
+import Loader from "../sections/Loader"
 
-export default function VerifyOtp({ otp, setOtp }) {
+export default function VerifyOtp({ otp, setOtp, loading = false }) {
 	const { t } = useI18n()
 
 	const [otpTimer, setOtpTimer] = useState(15 * 60);
@@ -60,11 +61,12 @@ export default function VerifyOtp({ otp, setOtp }) {
 			/>
 			<Btn
 				type="submit"
-				disabled={otp.join('').length !== 6}
+				disabled={otp.join('').length !== 6 || loading}
 				size="lg"
 				variant="primary"
 				className="mt-11">
 				{t.verify_otp}
+				{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 			</Btn>
 			<p className="mt-5 text-center">
 				{t.didnt_receive_otp} {" "}

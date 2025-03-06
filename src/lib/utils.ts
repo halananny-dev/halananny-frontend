@@ -51,6 +51,10 @@ const createImage = (url: string): Promise<HTMLImageElement> =>
     img.onerror = (error) => reject(error);
   });
 
-export const getAge = (birtDate) => {
-  return new Date().getFullYear() - new Date(birtDate).getFullYear();
+export const getAge = (birthDate) => {
+  if (birthDate) {
+    return new Date().getFullYear() - new Date(birthDate).getFullYear();
+  } else {
+    return "";
+  }
 };

@@ -3,8 +3,8 @@
 import { useI18n } from "@/i18/i18Context";
 import React, { useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
-import Img from "../sections/Img";
 import { toast } from "react-toastify";
+import Img from "../sections/Img";
 
 interface VideoProps {
 	text?: string;
@@ -98,6 +98,7 @@ const VideoUpload: React.FC<VideoProps> = ({ text, img, accept, value, onChange 
 						{!accept ? (
 							<div className="relative">
 								<button
+									type="button"
 									onClick={togglePlayPause}
 									className="absolute z-40 text-white text-xs w-full h-full top-0 left-0 flex items-center justify-center">
 									{!isPlaying ? <FaPlay /> : <FaPause />}

@@ -1,6 +1,11 @@
 import { supabase } from "@/lib/supabase";
 
-export const createUser = async (payload) => {
+export const createUser = async (payload, password) => {
+  await supabase.auth.signUp({
+    email: payload.email,
+    password: password,
+  });
+
   return await supabase.from("users").insert([payload]).select().single();
 };
 
@@ -20,6 +25,7 @@ export const getNannies = async () => {
       .from("users")
       .select("*")
       .eq("role", "nanny")
+      .not("verified_at", "is", null)
       .select()
       .limit(50)
   ).data;

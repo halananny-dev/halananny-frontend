@@ -216,6 +216,7 @@
   "didnt_receive_otp": "لم تستلم رمز التحقق؟",
   "resend_otp": "إعادة إرسال الرمز",
   "profile": {
+    "Plus": "بلاس",
     "title": "أنشئ ملفك الشخصي",
     "profile_picture": "صورة الملف الشخصي",
     "profile_picture_desc": "ضع صورة حيث يكون وجهك مرئيًا بوضوح",
@@ -596,5 +597,7 @@
   "There is no documents yet ):": "لا توجد مستندات حتى الآن ):",
   "There is no task yet ):": "لا توجد مهام حتى الآن ):",
   "Add your review": "أضف مراجعتك",
-  "No Nannies Found ):": "لم يتم العثور على مربيات ):"
+  "No Nannies Found ):": "لم يتم العثور على مربيات ):",
+  "Nothing provided yet": "لم يتم تقديم أي شيء بعد"
+
 }

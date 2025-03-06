@@ -2,7 +2,7 @@
 
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
-import { uploadFile } from "@/service/file";
+import { uploadFile, uploadVideo } from "@/service/file";
 import { updateUser } from "@/service/user";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -61,6 +61,13 @@ const Profile = ({ setActiveTab }: { setActiveTab: (tab: number) => void }) => {
 	const onSubmit = async (data: FormData) => {
 		setLoading(true)
 		const imgUrl = await uploadFile(img, 'profiles')
+		console.log(data.video)
+
+		if (data.video) {
+			const videoUrl = await uploadVideo(data.video);
+
+			console.log(videoUrl)
+		}
 
 		const payload = {
 			profile_photo_url: imgUrl,

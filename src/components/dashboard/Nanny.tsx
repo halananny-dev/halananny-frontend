@@ -100,7 +100,7 @@ export default function Nanny({ nanny }) {
 
 				<div className="mt-4 flex gap-3">
 					<Button
-						onClick={() => router.push('/' + id)}
+						onClick={() => router.push('/nannies' + id)}
 						variant="outline"
 						className="border-teal-500 text-teal-500 text-xs rounded-md hover:text-teal-500 w-full"
 					>

@@ -216,6 +216,7 @@
   "didnt_receive_otp": "Didn't Receive OTP?",
   "resend_otp": "Resend OTP",
   "profile": {
+    "Plus": "Plus",
     "title": "Build Your Profile",
     "profile_picture": "Profile picture",
     "profile_picture_desc": "Put a photo where your face is clearly visible",
@@ -598,5 +599,7 @@
   "There is no documents yet ):": "There is no documents yet ):",
   "There is no task yet ):": "There is no task yet ):",
   "Add your review": "Add your review",
-  "No Nannies Found ):": "No Nannies Found ):"
+  "No Nannies Found ):": "No Nannies Found ):",
+  "Nothing provided yet": "Nothing provided yet",
+  "Invalid login credentials": "Invalid login credentials"
 }

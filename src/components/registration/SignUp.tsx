@@ -19,19 +19,20 @@ interface SignUpProps {
 const SignUp: React.FC<SignUpProps> = ({ setActiveTab, img, userType }) => {
 	const [screen, setScreen] = useState("signup");
 	const [userDetails, setUserDetails] = useState<any>({})
+	const [loading, setLoading] = useState(false)
 	const { t } = useI18n()
 	const { setUserId } = useAppContext()
 
 	const handleVerify = async () => {
+		setLoading(true)
 		const payload = {
 			role: userType,
 			phone_number: `${userDetails.country || '+971'}${userDetails.phone_number}`,
 			email: userDetails.email,
 			name: userDetails.name,
-			password: userDetails.password
 		}
 
-		const { data, error } = await createUser(payload)
+		const { data, error } = await createUser(payload, userDetails.password)
 
 		if (error) {
 			if (error.code === '23505') {
@@ -42,6 +43,7 @@ const SignUp: React.FC<SignUpProps> = ({ setActiveTab, img, userType }) => {
 		}
 
 		setUserId(data.id)
+		setLoading(false)
 		setActiveTab(2)
 	}
 
@@ -54,6 +56,7 @@ const SignUp: React.FC<SignUpProps> = ({ setActiveTab, img, userType }) => {
 					setScreen={setScreen}
 				/>}
 				{screen === "verify" && <VerifyNumber
+					loading={loading}
 					onSubmit={handleVerify}
 					img={img} />}
 			</AnimatePresence>
