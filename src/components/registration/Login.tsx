@@ -1,19 +1,19 @@
 import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
 import { supabase } from "@/lib/supabase";
-import { getUser } from "@/service/user";
+import { getUser, logout } from "@/service/user";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { screenVariants } from "../constants";
 import Btn from "../sections/Button";
 import CheckBox from "../sections/Checkbox";
 import Loader from "../sections/Loader";
 import { Input } from "../ui/input";
-import { FcGoogle } from "react-icons/fc"; 
 
 interface LoginProps {
 	setScreen: (screen: string) => void;
@@ -53,25 +53,19 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 			toast.error(t[error?.message]);
 		} else {
 			setUser(user);
-			setTimeout(() => {
-				router.replace("/dashboard");
-			}, 0);
+			router.push('/dashboard')
 		}
 
 		setLoading(false);
 	};
 
 	const handleGoogleLogin = async () => {
-		const { error } = await supabase.auth.signInWithOAuth({
+		await supabase.auth.signInWithOAuth({
 			provider: "google",
 			options: {
-				redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}dashboard`,
+				redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}auth`,
 			},
 		});
-
-		if (error) {
-			toast.error(t[error?.message]);
-		}
 	};
 
 	return (
@@ -83,7 +77,8 @@ const LoginScreen: React.FC<LoginProps> = ({ setScreen }) => {
 			exit="exit"
 		>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<h2 className="text-3xl text-center lg:text-start font-bold">
+				<h2
+					className="text-3xl text-center lg:text-start font-bold">
 					{t.Login.title}
 				</h2>
 

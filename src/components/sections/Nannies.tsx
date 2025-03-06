@@ -170,6 +170,7 @@ export default function Nannies() {
         <div className="text-center mt-9">
           <Btn
             size="lg"
+            type="button"
             onClick={() => router.push(user ? '/dashboard' : '/login')}
             variant="primary"
             className="md:w-96">

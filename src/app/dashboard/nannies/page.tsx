@@ -27,7 +27,7 @@ export default function Dashboard() {
 
 	return (
 		<>
-			<DashboardHeader title={<>{t.dashboard.welcome} {user.name} ! <br />
+			<DashboardHeader title={<>{t.dashboard.welcome} {user?.name} ! <br />
 				{t.dashboard.find}
 			</>} />
 			<div className="xl:p-18 py-10 px-4">

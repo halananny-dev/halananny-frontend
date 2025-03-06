@@ -3,6 +3,7 @@
 import { getStaticData } from "@/service/static";
 import { getProducts } from "@/service/stripe";
 import { getUser } from "@/service/user";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 const AppContext = createContext<any>(null);
 
@@ -14,6 +15,7 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 	const [plans, setPlans] = useState<any>([])
 	const [user, setUser] = useState<any>(null)
 	const [userId, setUserId] = useState<any>()
+	const router = useRouter()
 
 	useEffect(() => {
 		const init = async () => {

@@ -27,6 +27,7 @@ export default function Hero() {
           </p>
           <Btn
             size="xl"
+            type="button"
             onClick={() => router.push(user ? '/dashboard' : '/login')}
             variant="primary"
             className="mt-9 w-80 sm:w-96">
