@@ -605,5 +605,6 @@
   "Nothing provided yet": "Nothing provided yet",
   "Invalid login credentials": "Invalid login credentials",
   "OTP sent to your email": "OTP sent to your email",
-  "User with this email is not found": "User with this email is not found"
+  "User with this email is not found": "User with this email is not found",
+  "People under 16 are not allowed": "People under 16 are not allowed"
 }

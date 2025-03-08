@@ -12,15 +12,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useI18n } from "@/i18/i18Context"
-import { cn } from "@/lib/utils"
+import { cn, getAge } from "@/lib/utils"
+import { toast } from "react-toastify"
 
 
 interface Props {
   onChange?: any
+  defaultDate?: any
 }
 
-export const DatePicker: React.FC<Props> = ({ onChange }) => {
-  const [date, setDate] = React.useState<Date>()
+export const DatePicker: React.FC<Props> = ({ onChange, defaultDate }) => {
+  const [date, setDate] = React.useState<Date>(defaultDate);
   const { t } = useI18n()
 
   return (
@@ -41,7 +43,13 @@ export const DatePicker: React.FC<Props> = ({ onChange }) => {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={(date) => {
+          disabled={(date) => date > new Date()}
+          toYear={new Date().getFullYear() - 16}
+          defaultMonth={new Date(new Date().getFullYear() - 16, 0, 1)}
+          onSelect={(date: any) => {
+            if (getAge(date) < 16) {
+              return toast.error(t['People under 16 are not allowed'])
+            }
             setDate(date)
             onChange && onChange(date)
           }}

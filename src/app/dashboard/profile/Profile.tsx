@@ -2,9 +2,12 @@ import Img from "@/components/sections/Img"
 import Loader from "@/components/sections/Loader"
 import { useAppContext } from "@/i18/AppContext"
 import { useI18n } from "@/i18/i18Context"
+import { cn } from "@/lib/utils"
 import { getTable } from "@/service/user"
 import { useEffect, useState } from "react"
 import { FaPlay, FaPlus } from "react-icons/fa"
+import Awards from "./Awards"
+import Completion from "./Completion"
 import GeneralInformation from "./GeneralInformation"
 import Identity from "./Identity"
 import Rating from "./Rating"
@@ -50,25 +53,9 @@ export const Profile = ({ editable = true, user }) => {
 			<div className="flex flex-wrap text-gray-900 items-start justify-start md:px-10 px-4 py-7 gap-4">
 				<div className="pb-7 card w-full lg:w-[309px] mt-9 px-2.5">
 					<GeneralInformation user={user} editable={editable} />
-					<div className="mt-7 card">
-						<p className="text-sm font-medium">{t.dashboard['Profile completion']}</p>
-						<div className="mt-1 text-xs font-medium flex justify-between">
-							<p><span className="text-2xl font-bold">65%</span> {t.dashboard['Complete']}</p>
-							<p className="mt-3">{t.dashboard.earning} 10/20 {t.dashboard.point}</p>
-						</div>
-						<div className="h-2 w-full bg-gray-ea rounded-full mt-1">
-							<div className="rounded-full w-1/2 bg-yellow-600 h-full"></div>
-						</div>
-					</div>
-					<div className="mt-4 card">
-						<p className="text-sm font-medium">{t.dashboard.award}</p>
-						<div className="mt-1 text-xs font-medium flex justify-between items-center">
-							<p className="text-lg font-bold">{t.dashboard.skill}</p>
-							<Img src="/badge.svg" />
-						</div>
-						<Img src="/stars.svg" className="mt-3" />
-					</div>
-					<Identity user={user} editable={editable} />
+					<Completion />
+					{/* <Awards /> */}
+					<Identity editable={editable} />
 					<Title editable={editable} title={t.documents["My Documents"]} />
 
 					<div className="mt-4 card pt-5 p-5 pb-3">
@@ -105,7 +92,10 @@ export const Profile = ({ editable = true, user }) => {
 					<Title editable={editable} className="mt-6" title={t.dashboard.details} />
 					<div className="mt-2.5 card px-6 flex flex-col gap-2 text-sm">
 						{details.map((e, i) => (
-							<div className="flex items-center pb-2 border-b border-gray-ea justify-between" key={i}>
+							<div className={cn("flex items-center pb-2 justify-between",
+								i !== details.length - 1 && "border-b border-gray-ea"
+							)} key={i}
+							>
 								<p>{t.details[e.name]}</p>
 
 								{Array.isArray(e.value) ? (

@@ -55,6 +55,6 @@ export const getAge = (birthDate) => {
   if (birthDate) {
     return new Date().getFullYear() - new Date(birthDate).getFullYear();
   } else {
-    return "";
+    return 0;
   }
 };

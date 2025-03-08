@@ -33,7 +33,9 @@ export const getUser = async () => {
 };
 
 export const updateUser = async (payload, id) => {
-  await supabase.from("users").update(payload).eq("id", id).select();
+  return (
+    await supabase.from("users").update(payload).eq("id", id).select().single()
+  ).data;
 };
 
 export const getNannies = async () => {

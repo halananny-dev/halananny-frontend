@@ -15,7 +15,6 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 	const [plans, setPlans] = useState<any>([])
 	const [user, setUser] = useState<any>(null)
 	const [userId, setUserId] = useState<any>()
-	const router = useRouter()
 
 	useEffect(() => {
 		const init = async () => {
@@ -31,11 +30,14 @@ export function AppContextProvider({ children }: { children: React.ReactNode; })
 			const cities = await getStaticData('cities')
 			setCities(cities)
 
-			const user = await getUser()
-			setUser(user)
-
 			const plans = await getProducts()
 			setPlans(plans)
+
+			const user = await getUser()
+
+			if (user) {
+				setUser(user)
+			}
 		}
 
 		init()

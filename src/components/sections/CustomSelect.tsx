@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select"
 import { useI18n } from "@/i18/i18Context"
 import { cn } from "@/lib/utils"
-import * as React from "react"
+import { useState } from "react"
 import Loader from "./Loader"
 
 interface CustomSelectProps {
@@ -18,7 +18,8 @@ interface CustomSelectProps {
 	className?: string
 	onChange?: (value: string | string[]) => void
 	groupName?: any,
-	preventOptionTranslation?: boolean
+	preventOptionTranslation?: boolean,
+	defaultValue?: string
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -27,18 +28,19 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 	className,
 	onChange,
 	groupName,
-	preventOptionTranslation
+	preventOptionTranslation,
+	defaultValue = ''
 }) => {
 	const { t } = useI18n()
-	const [selected, setSelected] = React.useState<string>()
+	const [selected, setSelected] = useState(defaultValue)
 
-	const handleSelect = (value: string) => {
+	const handleSelect = (value) => {
 		setSelected(value)
 		onChange?.(value)
 	}
 
 	return (
-		<Select onValueChange={handleSelect}>
+		<Select onValueChange={handleSelect} defaultValue={defaultValue}>
 			<SelectTrigger
 				className={cn(
 					"rounded-xl !bg-white border border-gray-10 flex w-full px-4 h-11 font-semibold text-sm outline-none",
