@@ -142,6 +142,7 @@
     "remember": "Remember",
     "lost_password": "Lost Password?",
     "login_button": "Login",
+    "Incorrect current password!": "Incorrect current password!",
     "otp_code": "Enter OTP Code",
     "invalid_otp": "Invalid OTP. Please try again.",
     "otp_resent": "A new OTP has been sent to your email.",
