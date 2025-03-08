@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils"
 import { getTable } from "@/service/user"
 import { useEffect, useState } from "react"
 import { FaPlay, FaPlus } from "react-icons/fa"
-import Awards from "./Awards"
 import Completion from "./Completion"
+import Documents from "./Documents"
 import GeneralInformation from "./GeneralInformation"
 import Identity from "./Identity"
 import Rating from "./Rating"
@@ -16,14 +16,13 @@ import Title from "./Title"
 export const Profile = ({ editable = true, user }) => {
 	const { t } = useI18n()
 	const { user: admin } = useAppContext()
-	const [documents, setDocuments] = useState<any>([])
 	const [details, setDetails] = useState<any>([])
 	const [reviews, setReviews] = useState<any>([])
 
 	useEffect(() => {
+		if (!user) return
+
 		const init = async () => {
-			const documents = await getTable(user.id, 'documents')
-			setDocuments(documents)
 			const reviews = await getTable(user.id, 'ratings')
 			setReviews(reviews)
 
@@ -41,10 +40,7 @@ export const Profile = ({ editable = true, user }) => {
 			])
 		}
 
-
-		if (user) {
-			init()
-		}
+		init()
 	}, [user])
 
 
@@ -56,28 +52,7 @@ export const Profile = ({ editable = true, user }) => {
 					<Completion />
 					{/* <Awards /> */}
 					<Identity editable={editable} />
-					<Title editable={editable} title={t.documents["My Documents"]} />
-
-					<div className="mt-4 card pt-5 p-5 pb-3">
-						{documents.length !== 0 ?
-							<div className="grid gap-5 grid-cols-3">
-								{documents.map((e: any, i) => (
-									<div className="flex flex-col max-w-16 gap-2 items-center" key={i}>
-										<div className="w-16 h-16 flex items-center justify-center rounded-lg border border-gray-700">
-											<Img src="/id.svg" />
-										</div>
-										<p className="font-bold text-xs text-center">{t.documents[e.name]}</p>
-									</div>))}
-							</div> : <p className="text-center text-sm pb-2">{t['There is no documents yet ):']}</p>}
-						{editable && <button className="w-full mt-4 text-teal-500 border h-9 flex justify-center items-center gap-2.5 border-teal-500 rounded-lg bg-white">
-							<FaPlus />
-							<span className="text-sm font-semibold">
-								{t.documents["Add Document"]}
-								<span className="text-xs font-medium">{' '}(+5 {t.dashboard["point"]})</span>
-							</span>
-						</button>}
-					</div>
-
+					<Documents editable={editable} />
 				</div>
 				<div className="md:w-[446px] w-full">
 					<Title editable={editable} className="m-0" title={t.profile.about_me} />

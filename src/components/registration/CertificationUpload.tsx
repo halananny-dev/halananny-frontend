@@ -2,14 +2,18 @@
 
 import { useI18n } from "@/i18/i18Context";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
+import { FaTrashAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Img from "../sections/Img";
+import { removeDocument } from "@/service/file";
+import { useAppContext } from "@/i18/AppContext";
 
-export default function CertificationUpload() {
+export default function CertificationUpload({ deletable = false }) {
 	const { t } = useI18n();
 	const { control, register, setValue } = useFormContext();
+	const { user } = useAppContext()
 
-	const { fields, append } = useFieldArray({
+	const { fields, append, remove } = useFieldArray({
 		control,
 		name: "certifications",
 	});
@@ -17,6 +21,13 @@ export default function CertificationUpload() {
 	const addRow = () => {
 		append({ name: "", file: null });
 	};
+
+
+	const handleRemove = async (certificate, index) => {
+		await removeDocument(certificate.name, user.id)
+
+		remove(index)
+	}
 
 	return (
 		<div className="mt-8 text-gray-900">
@@ -26,7 +37,7 @@ export default function CertificationUpload() {
 					<Img src="/plus.svg" />
 				</button>
 			</div>
-			<div className="flex flex-col mt-5 border rounded border-b-0 overflow-hidden border-gray-40">
+			<div className="flex flex-col max-h-[400px] overflow-auto mt-5 border rounded border-b-0 border-gray-40">
 				{fields.map((certificate, index) => (
 					<div key={certificate.id} className="flex border-b border-b-40">
 						<input
@@ -63,6 +74,13 @@ export default function CertificationUpload() {
 								)}
 							/>
 						</div>
+						{deletable && <button
+							type="button"
+							onClick={() => handleRemove(certificate, index)}
+							className="h-8 flex justify-center items-center w-8 p-px border-l border-gray-40"
+						>
+							<FaTrashAlt className="text-red-500" />
+						</button>}
 					</div>
 				))}
 			</div>

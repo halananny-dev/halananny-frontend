@@ -146,6 +146,7 @@ export default function Identity({ editable }) {
 						<Btn
 							type="submit"
 							className="mt-6"
+							disabled={loading}
 							variant="primary"
 							size="lg"
 						>

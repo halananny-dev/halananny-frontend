@@ -23,6 +23,15 @@ export const addDocument = async (file, name, user_id) => {
     .select();
 };
 
+export const removeDocument = async (name, user_id) => {
+  await supabase
+    .from("documents")
+    .delete()
+    .eq("user_id", user_id)
+    .eq("name", name)
+    .select();
+};
+
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_REGION!,
   credentials: {
