@@ -13,13 +13,14 @@ interface CheckboxProps {
 	control: any;
 	name: string;
 	groupName?: string;
+	defaultValue?: any
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className, control, name, groupName }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className, control, name, groupName, defaultValue = [] }) => {
 	const { t } = useI18n();
 
 	const {
-		field: { value = [], onChange },
+		field: { value = defaultValue, onChange },
 	} = useController({ name, control });
 
 	const handleChange = (title: string) => {
@@ -38,7 +39,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ variant, data, className, control, 
 					htmlFor={item.title}
 					className={cn(
 						"border py-2 cursor-pointer select-none h-14 px-3.5 rounded-lg",
-						value.includes(item.title) ? "border-teal-500 shadow-lg" : "border-gray-150"
+						value.includes(item.title || item.name) ? "border-teal-500 shadow-lg" : "border-gray-150"
 					)}
 				>
 					{variant === "variant1" && (

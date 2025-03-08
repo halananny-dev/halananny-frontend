@@ -150,7 +150,7 @@ export default function Identity({ editable }) {
 							variant="primary"
 							size="lg"
 						>
-							{t.profile.next_step}
+							{t.dashboard.save}
 							{loading && <Loader className="ltr:ml-2 rtl:mr-2" />}
 						</Btn>
 					</form>

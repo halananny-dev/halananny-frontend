@@ -1,16 +1,31 @@
 "use client"
 
+import { useAppContext } from "@/i18/AppContext";
 import { useI18n } from "@/i18/i18Context";
+import { getTable } from "@/service/user";
+import { useEffect, useState } from "react";
 import { FaPen } from "react-icons/fa";
 
 interface Props {
 	editable: boolean
 	admin: any,
-	reviews: any
 }
 
-const Rating: React.FC<Props> = ({ editable, admin, reviews }) => {
+const Rating: React.FC<Props> = ({ editable, admin }) => {
 	const { t } = useI18n()
+	const { user } = useAppContext()
+	const [reviews, setReviews] = useState<any>([])
+
+	useEffect(() => {
+		if (!user) return
+
+		const init = async () => {
+			const reviews = await getTable(user.id, 'ratings')
+			setReviews(reviews)
+		}
+
+		init()
+	}, [user])
 
 	const rating = reviews.reduce((sum, e) => sum + e.score, 0) / reviews.length || 0;
 

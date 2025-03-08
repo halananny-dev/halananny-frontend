@@ -15,6 +15,7 @@ interface CustomMultiSelectProps {
 	className?: string;
 	onChange?: (value: string[]) => void;
 	groupName?: string
+	defaultSelected?: any
 }
 
 const MultiSelect = ({
@@ -22,10 +23,11 @@ const MultiSelect = ({
 	placeholder = "Select options",
 	className,
 	onChange,
-	groupName
+	groupName,
+	defaultSelected = []
 }: CustomMultiSelectProps) => {
 	const { t } = useI18n();
-	const [selected, setSelected] = React.useState<string[]>([]);
+	const [selected, setSelected] = React.useState<string[]>(defaultSelected);
 	const [open, setOpen] = React.useState(false);
 
 	const handleSelect = (value: string) => {
